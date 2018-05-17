@@ -15,6 +15,8 @@ import {FeedbackPage} from '../pages/feedback/feedback';
 import {DisclaimerPage} from '../pages/disclaimer/disclaimer'
 import {OrderhistoryPage} from '../pages/orderhistory/orderhistory'
 import { FilterPage } from '../pages/filter/filter'
+import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
+
 
 @Component({
   templateUrl: 'app.html'
@@ -41,6 +43,7 @@ export class MyApp {
       { title: 'SignOut', component: SignOutPage },
       { title: 'About', component: AboutPage },
       { title: 'Exit', component: ExitPage },
+      { title: 'MapView', component: GeolocationMapPage },
     ];
   }
 
