@@ -14,6 +14,7 @@ import { AboutPage } from '../pages/about/about';
 import {FeedbackPage} from '../pages/feedback/feedback';
 import {DisclaimerPage} from '../pages/disclaimer/disclaimer'
 import {OrderhistoryPage} from '../pages/orderhistory/orderhistory'
+import { FilterPage } from '../pages/filter/filter'
 
 @Component({
   templateUrl: 'app.html'
@@ -33,6 +34,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Order History', component: OrderhistoryPage },
       { title: 'Offers', component: OfferPage },
+      { title: 'Filter', component: FilterPage },
       { title: 'Track Order', component: TrackOrderPage },
       { title: 'T&C Disclaimer', component: DisclaimerPage },
       { title: 'Feedback', component: FeedbackPage },
