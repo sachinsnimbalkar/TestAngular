@@ -12,9 +12,11 @@ import { OfferPage } from '../pages/offer/offer';
 import { ExitPage } from '../pages/exit/exit';
 import { AboutPage } from '../pages/about/about';
 import {FeedbackPage} from '../pages/feedback/feedback';
-import {DisclaimerPage} from '../pages/disclaimer/disclaimer';
-import {OrderhistoryPage} from '../pages/orderhistory/orderhistory';
+import {DisclaimerPage} from '../pages/disclaimer/disclaimer'
+import {OrderhistoryPage} from '../pages/orderhistory/orderhistory'
+import { FilterPage } from '../pages/filter/filter'
 import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
+
 
 @Component({
   templateUrl: 'app.html'
@@ -34,6 +36,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Order History', component: OrderhistoryPage },
       { title: 'Offers', component: OfferPage },
+      { title: 'Filter', component: FilterPage },
       { title: 'Track Order', component: TrackOrderPage },
       { title: 'T&C Disclaimer', component: DisclaimerPage },
       { title: 'Feedback', component: FeedbackPage },

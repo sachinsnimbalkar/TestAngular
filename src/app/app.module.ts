@@ -14,7 +14,7 @@ import { TrackOrderPage } from '../pages/track-order/track-order';
 import { OrderhistoryPage } from '../pages/orderhistory/orderhistory';
 import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
 import { FeedbackPage } from '../pages/feedback/feedback';
- 
+import { FilterPage } from '../pages/filter/filter'
 import { ExitPage } from '../pages/exit/exit';
 import { OfferPage } from '../pages/offer/offer';
 import { AboutPage } from '../pages/about/about';
@@ -29,6 +29,7 @@ import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
     ListPage,
     LoginPage,
     OfferPage,
+    FilterPage,
     OrderhistoryPage,
     TrackOrderPage,
     DisclaimerPage,
@@ -50,6 +51,7 @@ import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
     ListPage,
     OrderhistoryPage,
     OfferPage,
+    FilterPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
