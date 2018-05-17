@@ -12,8 +12,9 @@ import { OfferPage } from '../pages/offer/offer';
 import { ExitPage } from '../pages/exit/exit';
 import { AboutPage } from '../pages/about/about';
 import {FeedbackPage} from '../pages/feedback/feedback';
-import {DisclaimerPage} from '../pages/disclaimer/disclaimer'
-import {OrderhistoryPage} from '../pages/orderhistory/orderhistory'
+import {DisclaimerPage} from '../pages/disclaimer/disclaimer';
+import {OrderhistoryPage} from '../pages/orderhistory/orderhistory';
+import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
 
 @Component({
   templateUrl: 'app.html'
@@ -39,6 +40,7 @@ export class MyApp {
       { title: 'SignOut', component: SignOutPage },
       { title: 'About', component: AboutPage },
       { title: 'Exit', component: ExitPage },
+      { title: 'MapView', component: GeolocationMapPage },
     ];
   }
 
