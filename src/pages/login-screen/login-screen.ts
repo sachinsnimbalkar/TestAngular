@@ -15,14 +15,7 @@ import { AuthService } from '../../providers/auth-service/auth-service';
   templateUrl: 'login-screen.html',
 })
 export class LoginScreenPage {
-
   [x: string]: any;
-  // constructor(public navCtrl: NavController, public navParams: NavParams) {
-  // }
-
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad LoginScreenPage');
-  // }
   loading: Loading;
   registerCredentials = { email: '', password: '' };
   constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
@@ -73,5 +66,4 @@ export class LoginScreenPage {
     });
     //alert.present(prompt);
   }
-
 }

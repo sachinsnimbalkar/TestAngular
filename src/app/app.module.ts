@@ -14,6 +14,7 @@ import { TrackOrderPage } from '../pages/track-order/track-order';
 import { OrderhistoryPage } from '../pages/orderhistory/orderhistory';
 import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
 import { FeedbackPage } from '../pages/feedback/feedback';
+import { FilterPage } from '../pages/filter/filter'
 import { ExitPage } from '../pages/exit/exit';
 import { OfferPage } from '../pages/offer/offer';
 import { AboutPage } from '../pages/about/about';
@@ -23,6 +24,8 @@ import { LoginScreenPage } from '../pages/login-screen/login-screen';
 import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
 import { VerificationCodePage } from '../pages/verification-code/verification-code';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
+import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
+
 @NgModule({
   declarations: [
     MyApp,
@@ -35,10 +38,12 @@ import { ResetPasswordPage } from '../pages/reset-password/reset-password';
    // ForgetPasswordPage,
     VerificationCodePage,
     ResetPasswordPage,
+    FilterPage,
     OrderhistoryPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
+    GeolocationMapPage,
     ExitPage,
 
   ],
@@ -61,7 +66,11 @@ import { ResetPasswordPage } from '../pages/reset-password/reset-password';
     ResetPasswordPage,
     TrackOrderPage,
     DisclaimerPage,
+    FilterPage,
+    TrackOrderPage,
+    DisclaimerPage,
     FeedbackPage,
+    GeolocationMapPage,
    ExitPage,
 
   ],
