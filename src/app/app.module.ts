@@ -20,6 +20,8 @@ import { OfferPage } from '../pages/offer/offer';
 import { AboutPage } from '../pages/about/about';
 import { GetDataProvider } from '../providers/get-data/get-data';
 import { HttpModule } from '@angular/http';
+import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
+
 @NgModule({
   declarations: [
     MyApp,
@@ -31,6 +33,7 @@ import { HttpModule } from '@angular/http';
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
+    GeolocationMapPage,
  
     ExitPage,
 
@@ -50,6 +53,7 @@ import { HttpModule } from '@angular/http';
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
+    GeolocationMapPage,
  
    ExitPage,
 
