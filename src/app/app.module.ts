@@ -14,24 +14,31 @@ import { TrackOrderPage } from '../pages/track-order/track-order';
 import { OrderhistoryPage } from '../pages/orderhistory/orderhistory';
 import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
 import { FeedbackPage } from '../pages/feedback/feedback';
- 
 import { ExitPage } from '../pages/exit/exit';
 import { OfferPage } from '../pages/offer/offer';
 import { AboutPage } from '../pages/about/about';
 import { GetDataProvider } from '../providers/get-data/get-data';
 import { HttpModule } from '@angular/http';
+import { LoginScreenPage } from '../pages/login-screen/login-screen';
+import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
+import { VerificationCodePage } from '../pages/verification-code/verification-code';
+import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 @NgModule({
   declarations: [
     MyApp,
+    HomePage,
    AboutPage,
     ListPage,
     LoginPage,
+    LoginScreenPage,
     OfferPage,
+   // ForgetPasswordPage,
+    VerificationCodePage,
+    ResetPasswordPage,
     OrderhistoryPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
- 
     ExitPage,
 
   ],
@@ -43,14 +50,18 @@ import { HttpModule } from '@angular/http';
   entryComponents: [
     MyApp,
     LoginPage,
+    HomePage,
+    LoginScreenPage,
     AboutPage,
     ListPage,
     OrderhistoryPage,
     OfferPage,
+   // ForgetPasswordPage,
+    VerificationCodePage,
+    ResetPasswordPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
- 
    ExitPage,
 
   ],

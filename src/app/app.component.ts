@@ -13,8 +13,8 @@ import { ExitPage } from '../pages/exit/exit';
 import { AboutPage } from '../pages/about/about';
 import {FeedbackPage} from '../pages/feedback/feedback';
 import {DisclaimerPage} from '../pages/disclaimer/disclaimer'
-import {WalletPage} from '../pages/Wallet/wallet'
 import {OrderhistoryPage} from '../pages/orderhistory/orderhistory'
+import { LoginScreenPage } from '../pages/login-screen/login-screen';
 
 @Component({
   templateUrl: 'app.html'
@@ -22,7 +22,7 @@ import {OrderhistoryPage} from '../pages/orderhistory/orderhistory'
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -37,7 +37,6 @@ export class MyApp {
       { title: 'Track Order', component: TrackOrderPage },
       { title: 'T&C Disclaimer', component: DisclaimerPage },
       { title: 'Feedback', component: FeedbackPage },
-      { title: 'Wallet', component: WalletPage },
       { title: 'SignOut', component: SignOutPage },
       { title: 'About', component: AboutPage },
       { title: 'Exit', component: ExitPage },
