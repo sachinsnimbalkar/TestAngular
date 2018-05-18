@@ -20,22 +20,30 @@ import { OfferPage } from '../pages/offer/offer';
 import { AboutPage } from '../pages/about/about';
 import { GetDataProvider } from '../providers/get-data/get-data';
 import { HttpModule } from '@angular/http';
+import { LoginScreenPage } from '../pages/login-screen/login-screen';
+import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
+import { VerificationCodePage } from '../pages/verification-code/verification-code';
+import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
 
 @NgModule({
   declarations: [
     MyApp,
+    HomePage,
    AboutPage,
     ListPage,
     LoginPage,
+    LoginScreenPage,
     OfferPage,
+   // ForgetPasswordPage,
+    VerificationCodePage,
+    ResetPasswordPage,
     FilterPage,
     OrderhistoryPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
     GeolocationMapPage,
- 
     ExitPage,
 
   ],
@@ -47,16 +55,22 @@ import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
   entryComponents: [
     MyApp,
     LoginPage,
+    HomePage,
+    LoginScreenPage,
     AboutPage,
     ListPage,
     OrderhistoryPage,
     OfferPage,
+   // ForgetPasswordPage,
+    VerificationCodePage,
+    ResetPasswordPage,
+    TrackOrderPage,
+    DisclaimerPage,
     FilterPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
     GeolocationMapPage,
- 
    ExitPage,
 
   ],

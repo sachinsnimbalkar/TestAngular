@@ -22,7 +22,7 @@ export class GetDataProvider {
     // this.http.get('../assets/data/BJPProducts.json').map(res => res.json()).subscribe(data=>{
     //     console.log(data);
     // });
-    return this.http.get('../assets/data/BJPProducts.json')
+    return this.http.get('../assets/data/BJPCategory.json')
     .map(res => res.json());
 }
 }

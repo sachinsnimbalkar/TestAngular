@@ -14,17 +14,16 @@ import { AboutPage } from '../pages/about/about';
 import {FeedbackPage} from '../pages/feedback/feedback';
 import {DisclaimerPage} from '../pages/disclaimer/disclaimer'
 import {OrderhistoryPage} from '../pages/orderhistory/orderhistory'
+import { LoginScreenPage } from '../pages/login-screen/login-screen';
 import { FilterPage } from '../pages/filter/filter'
 import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
-
-
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
