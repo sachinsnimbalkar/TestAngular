@@ -560,6 +560,7 @@ export class GeolocationMapPage {
   
   constructor(public navCtrl: NavController, public platform: Platform,private http: Http) {
     
+
     platform.ready().then(() => {
       this.initMap();
     });

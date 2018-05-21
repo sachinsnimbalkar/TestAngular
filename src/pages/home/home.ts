@@ -24,6 +24,17 @@ public products:Observable<Product[]>;
   viewCart(){
     this.nav.push('LoginScreenPage');
   }
+  openFilters(){
+    this.nav.push('FilterPage');
+  }
+  listView(){
+    this.nav.push('');
+  }
+  mapView(){
+    this.nav.push('GeolocationMapPage');
+  }
+  
+ // openFilters(){}
   }
 
 
