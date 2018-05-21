@@ -15,12 +15,13 @@ import { AuthService } from '../../providers/auth-service/auth-service';
   templateUrl: 'login-screen.html',
 })
 export class LoginScreenPage {
-  [x: string]: any;
   loading: Loading;
   registerCredentials = { email: '', password: '' };
+
+
+
   constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginScreenPage');
   }
@@ -31,7 +32,7 @@ export class LoginScreenPage {
     this.nav.push('ForgetPasswordPage');
   }
   goBack() {
-    this.navCtrl.pop();
+    this.nav.pop();
   }
  
   public login() {
@@ -47,7 +48,6 @@ export class LoginScreenPage {
         this.showError(error);
       });
   }
- 
   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: 'Please wait...',
