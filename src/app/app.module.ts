@@ -25,15 +25,18 @@ import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
 import { VerificationCodePage } from '../pages/verification-code/verification-code';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
+import { CachcingServiceBase } from '../providers/caching.service';
+import { LoginScreenPageModule } from '../pages/login-screen/login-screen.module';
+import { HomePageModule } from '../pages/home/home.module';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    //HomePage,
    AboutPage,
     ListPage,
     LoginPage,
-    LoginScreenPage,
+   // LoginScreenPage,
     OfferPage,
    // ForgetPasswordPage,
     VerificationCodePage,
@@ -48,15 +51,15 @@ import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
 
   ],
   imports: [
-    BrowserModule,HttpModule,
+    BrowserModule,HttpModule,LoginScreenPageModule,HomePageModule,
     IonicModule.forRoot(MyApp),
       ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     LoginPage,
-    HomePage,
-    LoginScreenPage,
+  //  HomePage,
+   // LoginScreenPage,
     AboutPage,
     ListPage,
     OrderhistoryPage,
@@ -77,6 +80,7 @@ import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
   providers: [
     StatusBar,
     SplashScreen,
+    
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
     GetDataProvider,

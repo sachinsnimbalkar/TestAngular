@@ -21,5 +21,8 @@ export class OfferPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad OfferPage');
   }
-
+  goBack() {
+    this.navCtrl.pop();
+  }
+ 
 }

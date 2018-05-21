@@ -2,13 +2,15 @@
  {
    "SrNo": 1,
    "ProductName": "ORIGINAL HAND TOSSED ROUND OR THIN & CRISPY CRUST",
+   "Price": 11,
    "CatId": 1,
-   "ProdDesc": "Available in 12″, 14″ and 16″ sizes",
+   "ProdDesc": "Available in 12?, 14? and 16? sizes",
    "ProductImgURL": "/img/BJP_FL_Cheesing.jpg"
  },
  {
    "SrNo": 2,
    "ProductName": "SQUARE PAN PIZZA CRUST",
+   "Price": 12,
    "CatId": 1,
    "ProdDesc": "Available in Small or Large Sizes (at participating locations)",
    "ProductImgURL": "/img/PR_Sausage_Pepperoni_Woodboard.jpg"
@@ -16,6 +18,7 @@
  {
    "SrNo": 3,
    "ProductName": "CALZONES",
+   "Price": 13,
    "CatId": 1,
    "ProdDesc": "Made with Ricotta & Mozzarella Cheese and your choice of pizza toppings. (Limit 5 toppings for proper bake) Includes sauce for dipping on the side.",
    "ProductImgURL": "/img/BX-PPTG-BJP_Calzone_WoodBoard.jpg"
@@ -23,6 +26,7 @@
  {
    "SrNo": 4,
    "ProductName": "GOOD DEAL",
+   "Price": 14,
    "CatId": 2,
    "ProdDesc": "A sampling of our most popular toppings. Sausage, pepperoni, onions, green peppers, and fresh mushrooms. Available in hand-tossed round, square pan or thin crust.",
    "ProductImgURL": "/img/Good-Deal-002-copy.jpg"
@@ -30,6 +34,7 @@
  {
    "SrNo": 5,
    "ProductName": "FULL HOUSE",
+   "Price": 15,
    "CatId": 2,
    "ProdDesc": "For the meat lover. Enjoy the best meats on this pizza; sausage, pepperoni, ham and beef. Available in hand-tossed round, square pan or thin crust.",
    "ProductImgURL": "/img/Full-House-044-copy.jpg"
@@ -37,6 +42,7 @@
  {
    "SrNo": 6,
    "ProductName": "NATURAL",
+   "Price": 16,
    "CatId": 2,
    "ProdDesc": "For the veggie lover! Fresh mushrooms, onions, green peppers and black olives. Available in hand-tossed round, square pan or thin crust.",
    "ProductImgURL": "/img/Natural-049-copy.jpg"
@@ -44,6 +50,7 @@
  {
    "SrNo": 7,
    "ProductName": "JACKPOT",
+   "Price": 17,
    "CatId": 2,
    "ProdDesc": "All of our most popular toppings, including pepperoni, sausage, ham, ground beef, onions, mushrooms, green peppers, green and black olives. Available in hand-tossed round, square pan or thin crust.",
    "ProductImgURL": "/img/BJP_FL_Jackpot.jpg"
@@ -51,6 +58,7 @@
  {
    "SrNo": 8,
    "ProductName": "MEDITERRANEAN",
+   "Price": 18,
    "CatId": 2,
    "ProdDesc": "For something lighter, give this combination a try! Extra virgin olive oil, mozzarella & feta cheese, chicken breast, red onions, tomatoes, black & green olives and garlic. Available in hand-tossed round, square pan or thin crust.",
    "ProductImgURL": "/img/Chicken-Med-010-copy.jpg"
@@ -58,20 +66,23 @@
  {
    "SrNo": 9,
    "ProductName": "SANTA FE",
+   "Price": 19,
    "CatId": 2,
-   "ProdDesc": "Direct from the Southwest! Lindy’s green chile, mozzarella & cheddar cheese, red onion, tomatoes, black olives, and chicken breast. Available in hand-tossed round, square pan or thin crust.",
+   "ProdDesc": "Direct from the Southwest! Lindy�s green chile, mozzarella & cheddar cheese, red onion, tomatoes, black olives, and chicken breast. Available in hand-tossed round, square pan or thin crust.",
    "ProductImgURL": "/img/Santa-Fe-052.jpg"
  },
  {
    "SrNo": 10,
    "ProductName": "WESTERN BBQ CHICKEN",
+   "Price": 20,
    "CatId": 2,
-   "ProdDesc": "Get your taste buds warmed up for this pizza! Chicken breast, red onions, bacon and Sweet Baby Ray’s® bbq sauce. Available in hand-tossed round, square pan or thin crust.",
+   "ProdDesc": "Get your taste buds warmed up for this pizza! Chicken breast, red onions, bacon and Sweet Baby Ray�s� bbq sauce. Available in hand-tossed round, square pan or thin crust.",
    "ProductImgURL": "/img/BJP_FL_BBQ_Square-1.jpg"
  },
  {
    "SrNo": 11,
    "ProductName": "GREEK SALAD",
+   "Price": 21,
    "CatId": 3,
    "ProdDesc": "Our new Greek salads are made from the freshest ingredients. Starting with a blend of crispy iceberg and romaine lettuce, red onions, tomatoes, beets and kalamata olives. Topped with pepperoncini and feta cheese. Add grilled chicken for an additional fee.Recommended Dressing: Greek",
    "ProductImgURL": "/img/BJP_Greek-Salad-CO-copy.jpg"
@@ -79,6 +90,7 @@
  {
    "SrNo": 12,
    "ProductName": "MICHIGAN CHERRY SALAD",
+   "Price": 22,
    "CatId": 3,
    "ProdDesc": "Our new Michigan Cherry salads are made from the freshest ingredients available. Starting with fresh spinach, red onions, dried cherries, walnuts, bacon and Gorgonzola cheese.Recommended Dressing: Balsamic",
    "ProductImgURL": "/img/Salad-Spinach_Cherry.jpg"
@@ -86,6 +98,7 @@
  {
    "SrNo": 13,
    "ProductName": "ANTIPASTO SALAD",
+   "Price": 23,
    "CatId": 3,
    "ProdDesc": "Our Antipasto salads are made from the freshest ingredients available. Starting with a blend of crispy iceberg and romaine lettuce, fresh cut onions, tomatoes, peppers, pepperoni, ham and mozzarella cheese. Add grilled chicken for an additional fee.Recommended Dressing: Italian",
    "ProductImgURL": "/img/Antipasto-Salad-Bowl.jpg"
@@ -93,6 +106,7 @@
  {
    "SrNo": 14,
    "ProductName": "SOUTHWEST SALAD",
+   "Price": 24,
    "CatId": 3,
    "ProdDesc": "Our new Southwest salads are made from the freshest ingredients. Starting with a blend of crispy iceberg and romaine lettuce, red onions and tomatoes. Topped with black beans, cheddar cheese and crispy tortilla strips. Add grilled chicken for an additional fee.Recommended Dressing: Spicy Ranch",
    "ProductImgURL": "/img/BJP_Southwest_Salad-Dressing.jpg"
@@ -100,6 +114,7 @@
  {
    "SrNo": 15,
    "ProductName": "CHICKEN CAESAR SALAD",
+   "Price": 25,
    "CatId": 3,
    "ProdDesc": "Our Chicken Caesar salads are made from the freshest ingredients. Starting with crispy 100% romaine lettuce, crunchy croutons and shredded parmesan cheese. Topped with warm grilled chicken breast strips, accompanied with our gourmet Caesar dressing or dressing of your choice.",
    "ProductImgURL": "/img/BJP_PR_Chicken_Caesar_Salad.jpg"
@@ -107,6 +122,7 @@
  {
    "SrNo": 16,
    "ProductName": "GARDEN SALAD",
+   "Price": 26,
    "CatId": 3,
    "ProdDesc": "Our Garden salads are made from the freshest ingredients. Starting with a blend of crispy iceberg and romaine lettuce, red onions, green peppers, and tomatoes. Topped with black olives and mozzarella cheese Add grilled chicken for an additional fee.Recommended Dressing: Ranch",
    "ProductImgURL": "/img/Garden-Salad.jpg"
@@ -114,13 +130,15 @@
  {
    "SrNo": 17,
    "ProductName": "MEDITERRANEAN SALAD",
+   "Price": 27,
    "CatId": 3,
    "ProdDesc": "Our Mediterranean salads are made from the freshest ingredients. Starting with a blend of crispy iceberg and romaine lettuce, red onions and tomatoes. Followed with black & green olives and banana peppers. Add grilled chicken for an additional fee.Recommended Dressing: Balsamic",
    "ProductImgURL": "/img/BJP_FL_Mediterranean_Salad.jpg"
  },
  {
    "SrNo": 18,
-   "ProductName": "CHEESEBREAD™",
+   "ProductName": "CHEESEBREAD�",
+   "Price": 28,
    "CatId": 4,
    "ProdDesc": "Choose from Original Hand-Tossed or Deep Dish! Garlic breadsticks topped with mozzarella cheese. Your dipping sauce options are: Marinara, Ranch or Spicy Ranch.",
    "ProductImgURL": "/img/BJPCheeseBread.jpg"
@@ -128,6 +146,7 @@
  {
    "SrNo": 19,
    "ProductName": "WINGS",
+   "Price": 29,
    "CatId": 4,
    "ProdDesc": "Hot & Spicy or BBQ wings with your choice of Ranch or Bleu Cheese dressing on the side.(Only at participating locations.)",
    "ProductImgURL": "/img/BJP_FL_Wings.jpg"
@@ -135,29 +154,33 @@
  {
    "SrNo": 20,
    "ProductName": "BONELESS WINGS",
+   "Price": 30,
    "CatId": 4,
    "ProdDesc": "Hot & Spicy or BBQ Boneless Chicken Wings with your choice of Ranch, Spicy Ranch or Blue Cheese dressing on the side.",
    "ProductImgURL": "/img/BonelessWings_Hot.jpg"
  },
  {
    "SrNo": 21,
-   "ProductName": "CINNABREAD™",
+   "ProductName": "CINNABREAD�",
+   "Price": 31,
    "CatId": 5,
    "ProdDesc": "Breadsticks made with the perfect blend of cinnamon and sugar, with creamy icing drizzled on top!",
    "ProductImgURL": "/img/AllBrands_CinnamonSticks.jpg"
  },
  {
    "SrNo": 22,
-   "ProductName": "BLUE BELL® ICE CREAM",
+   "ProductName": "BLUE BELL� ICE CREAM",
+   "Price": 32,
    "CatId": 5,
-   "ProdDesc": "Cool off with some Blue Bell® Ice Cream! \n(Flavor selections vary by location.)",
+   "ProdDesc": "Cool off with some Blue Bell� Ice Cream! \n(Flavor selections vary by location.)",
    "ProductImgURL": "/img/BlueBellIceCream.jpg"
  },
  {
    "SrNo": 23,
    "ProductName": "SODAS",
+   "Price": 33,
    "CatId": 6,
-   "ProdDesc": "We offer a variety of ice cold sodas to compliment your order. • Pepsi\n• Diet Pepsi\n• Mountain Dew\n• Dr. Pepper\n• Mist Twst",
+   "ProdDesc": "We offer a variety of ice cold sodas to compliment your order. � Pepsi\n� Diet Pepsi\n� Mountain Dew\n� Dr. Pepper\n� Mist Twst",
    "ProductImgURL": "/img/soda.jpg"
  }
 ]

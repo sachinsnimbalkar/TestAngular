@@ -38,17 +38,17 @@
       <ion-row>
         <ion-col class="signup-col">
           <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>
-         
         </ion-col>
       </ion-row>
-     
-          <div>Or</div>
+      <div>Or</div>
       
           <ion-label>Login With Account</ion-label>
-          <ion-img style="width: 210px; height: 60px;" src="../../assets/imgs/l.png"></ion-img>
-          <div (click)="createAccount()" > Dont have an account? Sign Up</div>
-    </form>
-  
-  </div>
-   
+          <ion-img style="width: 310px; height: 60px;" src="../../assets/imgs/l.png"></ion-img> 
+          <ion-row>
+            <ion-col class="signup-col">
+              <div (click)="createAccount()" > Dont have an account? Sign Up</div>
+            </ion-col>
+          </ion-row>
+    </form>      
+  </div>   
 </ion-content>
