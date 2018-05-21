@@ -2,547 +2,547 @@
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import {  Platform } from 'ionic-angular';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+//import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
 
 declare var google;
-let map: any;
-let infowindow: any;
-let arrstores = [{
-  "lat": 39.71004,
+var map: any;
+var infowindow: any;
+
+var arrstores = [{
+  "lat4": 39.71004,
   ",": ",",
-  "lng": -104.829,
+  "lng4": -104.829,
   "name": "Store 311"
 },
 {
-  "lat": 39.67946,
+  "lat4": 39.67946,
   ",": ",",
-  "lng": -104.876,
+  "lng4": -104.876,
   "name": "Store 313"
 },
 {
-  "lat": 39.63946,
+  "lat4": 39.63946,
   ",": ",",
-  "lng": -104.789,
+  "lng4": -104.789,
   "name": "Store 315"
 },
 {
-  "lat": 40.02017,
+  "lat4": 40.02017,
   ",": ",",
-  "lng": -105.253,
+  "lng4": -105.253,
   "name": "Store 317"
 },
 {
-  "lat": 40.5752,
+  "lat4": 40.5752,
   ",": ",",
-  "lng": -105.099,
+  "lng4": -105.099,
   "name": "Store 62"
 },
 {
-  "lat": 39.9878,
+  "lat4": 39.9878,
   ",": ",",
-  "lng": -104.803,
+  "lng4": -104.803,
   "name": "Store 319"
 },
 {
-  "lat": 40.40811,
+  "lat4": 40.40811,
   ",": ",",
-  "lng": -105.074,
+  "lng4": -105.074,
   "name": "Store 64"
 },
 {
-  "lat": 40.41347,
+  "lat4": 40.41347,
   ",": ",",
-  "lng": -104.692,
+  "lng4": -104.692,
   "name": "Store 65"
 },
 {
-  "lat": 39.91376,
+  "lat4": 39.91376,
   ",": ",",
-  "lng": -105.069,
+  "lng4": -105.069,
   "name": "Store 321"
 },
 {
-  "lat": 39.88473,
+  "lat4": 39.88473,
   ",": ",",
-  "lng": -104.946,
+  "lng4": -104.946,
   "name": "Store 66"
 },
 {
-  "lat": 39.81282,
+  "lat4": 39.81282,
   ",": ",",
-  "lng": -105.128,
+  "lng4": -105.128,
   "name": "Store 67"
 },
 {
-  "lat": 38.88975,
+  "lat4": 38.88975,
   ",": ",",
-  "lng": -104.714,
+  "lng4": -104.714,
   "name": "Store 69"
 },
 {
-  "lat": 41.13659,
+  "lat4": 41.13659,
   ",": ",",
-  "lng": -104.805,
+  "lng4": -104.805,
   "name": "Store 70"
 },
 {
-  "lat": 38.79837,
+  "lat4": 38.79837,
   ",": ",",
-  "lng": -104.758,
+  "lng4": -104.758,
   "name": "Store 326"
 },
 {
-  "lat": 32.21995,
+  "lat4": 32.21995,
   ",": ",",
-  "lng": -110.809,
+  "lng4": -110.809,
   "name": "Store 71"
 },
 {
-  "lat": 38.84752,
+  "lat4": 38.84752,
   ",": ",",
-  "lng": -104.85,
+  "lng4": -104.85,
   "name": "Store 328"
 },
 {
-  "lat": 46.84853,
+  "lat4": 46.84853,
   ",": ",",
-  "lng": -114.019,
+  "lng4": -114.019,
   "name": "Store 73"
 },
 {
-  "lat": 39.82666,
+  "lat4": 39.82666,
   ",": ",",
-  "lng": -104.916,
+  "lng4": -104.916,
   "name": "Store 330"
 },
 {
-  "lat": 39.73981,
+  "lat4": 39.73981,
   ",": ",",
-  "lng": -104.966,
+  "lng4": -104.966,
   "name": "Store 332"
 },
 {
-  "lat": 39.67744,
+  "lat4": 39.67744,
   ",": ",",
-  "lng": -105.025,
+  "lng4": -105.025,
   "name": "Store 334"
 },
 {
-  "lat": 39.7664,
+  "lat4": 39.7664,
   ",": ",",
-  "lng": -104.905,
+  "lng4": -104.905,
   "name": "Store 336"
 },
 {
-  "lat": 39.67219,
+  "lat4": 39.67219,
   ",": ",",
-  "lng": -104.96,
+  "lng4": -104.96,
   "name": "Store 338"
 },
 {
-  "lat": 39.59575,
+  "lat4": 39.59575,
   ",": ",",
-  "lng": -104.877,
+  "lng4": -104.877,
   "name": "Store 340"
 },
 {
-  "lat": 40.04926,
+  "lat4": 40.04926,
   ",": ",",
-  "lng": -105.047,
+  "lng4": -105.047,
   "name": "Store 342"
 },
 {
-  "lat": 39.8492,
+  "lat4": 39.8492,
   ",": ",",
-  "lng": -105.025,
+  "lng4": -105.025,
   "name": "Store 344"
 },
 {
-  "lat": 40.12178,
+  "lat4": 40.12178,
   ",": ",",
-  "lng": -104.941,
+  "lng4": -104.941,
   "name": "Store 346"
 },
 {
-  "lat": 40.4218,
+  "lat4": 40.4218,
   ",": ",",
-  "lng": -104.743,
+  "lng4": -104.743,
   "name": "Store 350"
 },
 {
-  "lat": 40.07069,
+  "lat4": 40.07069,
   ",": ",",
-  "lng": -105.2,
+  "lng4": -105.2,
   "name": "Store 352"
 },
 {
-  "lat": 39.74047,
+  "lat4": 39.74047,
   ",": ",",
-  "lng": -105.068,
+  "lng4": -105.068,
   "name": "Store 354"
 },
 {
-  "lat": 39.68229,
+  "lat4": 39.68229,
   ",": ",",
-  "lng": -105.1,
+  "lng4": -105.1,
   "name": "Store 356"
 },
 {
-  "lat": 39.60875,
+  "lat4": 39.60875,
   ",": ",",
-  "lng": -105.108,
+  "lng4": -105.108,
   "name": "Store 358"
 },
 {
-  "lat": 39.58013,
+  "lat4": 39.58013,
   ",": ",",
-  "lng": -104.959,
+  "lng4": -104.959,
   "name": "Store 360"
 },
 {
-  "lat": 40.17785,
+  "lat4": 40.17785,
   ",": ",",
-  "lng": -105.116,
+  "lng4": -105.116,
   "name": "Store 362"
 },
 {
-  "lat": 39.98767,
+  "lat4": 39.98767,
   ",": ",",
-  "lng": -105.13,
+  "lng4": -105.13,
   "name": "Store 364"
 },
 {
-  "lat": 39.78536,
+  "lat4": 39.78536,
   ",": ",",
-  "lng": -104.808,
+  "lng4": -104.808,
   "name": "Store 368"
 },
 {
-  "lat": 39.53863,
+  "lat4": 39.53863,
   ",": ",",
-  "lng": -104.771,
+  "lng4": -104.771,
   "name": "Store 370"
 },
 {
-  "lat": 38.27217,
+  "lat4": 38.27217,
   ",": ",",
-  "lng": -104.621,
+  "lng4": -104.621,
   "name": "Store 373"
 },
 {
-  "lat": 32.25228,
+  "lat4": 32.25228,
   ",": ",",
-  "lng": -110.944,
+  "lng4": -110.944,
   "name": "Store 377"
 },
 {
-  "lat": 39.83292,
+  "lat4": 39.83292,
   ",": ",",
-  "lng": -105.053,
+  "lng4": -105.053,
   "name": "Store 379"
 },
 {
-  "lat": 27.89369,
+  "lat4": 27.89369,
   ",": ",",
-  "lng": -82.5044,
+  "lng4": -82.5044,
   "name": "Store 982"
 },
 {
-  "lat": 26.32562,
+  "lat4": 26.32562,
   ",": ",",
-  "lng": -81.8049,
+  "lng4": -81.8049,
   "name": "Store 985"
 },
 { 
-  "lat": 18.559658,
+  "lat4": 18.559658,
   ",": ",",
-  "lng": 73.779938,
+  "lng4": 73.779938,
   "name": "Store Balewadi"
 },
 { 
-  "lat": 16.4200137,
+  "lat4": 16.4200137,
   ",": ",",
-  "lng": 73.557363,
+  "lng4": 73.557363,
   "name": "Store ML"
 },
 { 
-  "lat": 18.4974828,
+  "lat4": 18.4974828,
   ",": ",",
-  "lng": 73.9344789,
+  "lng4": 73.9344789,
   "name": "Hadapsar+Bus+Stop"
 },
 { 
-  "lat": 18.4990294,
+  "lat4": 18.4990294,
   ",": ",",
-  "lng": 73.9268399,
+  "lng4": 73.9268399,
   "name": "Vaibhav+Theater"
 },
 { 
-  "lat": 18.5015933,
+  "lat4": 18.5015933,
   ",": ",",
-  "lng": 73.8959409,
+  "lng4": 73.8959409,
   "name": "INOX"
 },
 { 
-  "lat": 18.5083693,
+  "lat4": 18.5083693,
   ",": ",",
-  "lng": 73.8959409,
+  "lng4": 73.8959409,
   "name": "Croma+Krome+Mall"
 },
 { 
-  "lat": 18.5202316,
+  "lat4": 18.5202316,
   ",": ",",
-  "lng": 73.8903833,
+  "lng4": 73.8903833,
   "name": "Department Of Sainik Welfare"
 },
 { 
-  "lat": 18.5174645,
+  "lat4": 18.5174645,
   ",": ",",
-  "lng": 73.8818432,
+  "lng4": 73.8818432,
   "name": "National War Memorial Southern Command"
 },
 { 
-  "lat": 18.5233446,
+  "lat4": 18.5233446,
   ",": ",",
-  "lng": 73.8701058,
+  "lng4": 73.8701058,
   "name": "Sassoon General Hospital"
 },,
 { 
-  "lat": 18.5240646,
+  "lat4": 18.5240646,
   ",": ",",
-  "lng": 73.8677639,
+  "lng4": 73.8677639,
   "name": "Dr. Babasaheb Ambedkar Sanskrutik Bhavan"
 },,
 { 
-  "lat": 18.5259123,
+  "lat4": 18.5259123,
   ",": ",",
-  "lng": 73.8658435,
+  "lng4": 73.8658435,
   "name": "Aurora Towers Premises Society"
 },,
 { 
-  "lat": 18.5265506,
+  "lat4": 18.5265506,
   ",": ",",
-  "lng": 73.8642234,
+  "lng4": 73.8642234,
   "name": "HP Petroleum P Pancharatna Service Station"
 },
 { 
-  "lat": 18.5296114,
+  "lat4": 18.5296114,
   ",": ",",
-  "lng": 73.8507057,
+  "lng4": 73.8507057,
   "name": "Nexa Sale Department"
 },
 { 
-  "lat": 18.5310547,
+  "lat4": 18.5310547,
   ",": ",",
-  "lng": 73.8380838,
+  "lng4": 73.8380838,
   "name": "Manorama Ogale Memorial Hospital"
 },
 { 
-  "lat": 18.5310547,
+  "lat4": 18.5310547,
   ",": ",",
-  "lng": 73.8380838,
+  "lng4": 73.8380838,
   "name": "E-SQUARE"
 },
 { 
-  "lat": 18.5461096,
+  "lat4": 18.5461096,
   ",": ",",
-  "lng": 73.8180937,
+  "lng4": 73.8180937,
   "name": "Vrindavan Lawns"
 },
 { 
-  "lat": 18.5466324,
+  "lat4": 18.5466324,
   ",": ",",
-  "lng": 73.816905,
+  "lng4": 73.816905,
   "name": "NEXA Aundh Baner Sai Service Pune"
 }  ,
 { 
-    "lat": 18.4478378,
+    "lat4": 18.4478378,
     ",": ",",
-    "lng": 73.8566469,
+    "lng4": 73.8566469,
     "name": "shivshrushti"
   }
    ,
 { 
-    "lat": 18.4493135,
+    "lat4": 18.4493135,
     ",": ",",
-    "lng": 73.851422,
+    "lng4": 73.851422,
     "name": "VRL+Travels"
   }  ,
 { 
-    "lat": 18.4508096,
+    "lat4": 18.4508096,
     ",": ",",
-    "lng":73.8457786 ,
+    "lng4":73.8457786 ,
     "name": "Raj+Market"
   } ,
 { 
-    "lat":18.4508096 ,
+    "lat4":18.4508096 ,
     ",": ",",
-    "lng": 73.8457786,
+    "lng4": 73.8457786,
     "name": "D+Mart+Ambegaon"
   }
                  ,
 { 
-    "lat": 18.45198,
+    "lat4": 18.45198,
     ",": ",",
-    "lng":73.8409828 ,
+    "lng4":73.8409828 ,
     "name": "Abhinav+Educational+Society"
   }
                  ,
 { 
-    "lat":18.4543309 ,
+    "lat4":18.4543309 ,
     ",": ",",
-    "lng":73.83314 ,
+    "lng4":73.83314 ,
     "name": "Ishanya+Hyundai"
   }
                  ,
 { 
-    "lat": 18.4553181,
+    "lat4": 18.4553181,
     ",": ",",
-    "lng":73.8298034 ,
+    "lng4":73.8298034 ,
     "name": "CNG+Pump"
   }
                  ,
 { 
-    "lat":18.4578318 ,
+    "lat4":18.4578318 ,
     ",": ",",
-    "lng": 73.8240849,
+    "lng4": 73.8240849,
     "name": "Navale+Flyover"
   }
                  ,
 { 
-    "lat":18.4626759 ,
+    "lat4":18.4626759 ,
     ",": ",",
-    "lng": 73.8187741,
+    "lng4": 73.8187741,
     "name": "HDFC+Bank+ATM"
   }
                  ,
 { 
-    "lat": 18.4657391,
+    "lat4": 18.4657391,
     ",": ",",
-    "lng":18.4657391 ,
+    "lng4":18.4657391 ,
     "name": "Shree+Mata+Kumjai+Temple"
   }
                  ,
 { 
-    "lat": 18.4703286,
+    "lat4": 18.4703286,
     ",": ",",
-    "lng": 73.8122188,
+    "lng4": 73.8122188,
     "name": "Vision+Cricket+Academy"
   }
                  ,
 { 
-    "lat":18.4732084 ,
+    "lat4":18.4732084 ,
     ",": ",",
-    "lng":73.809322 ,
+    "lng4":73.809322 ,
     "name": "Mutha River"
   }
                  ,
 { 
-    "lat":18.4777672 ,
+    "lat4":18.4777672 ,
     ",": ",",
-    "lng": 73.805803,
-    "name": "Late+Pruthak+Barate+Garden"
+    "lng4": 73.805803,
+    "name": "Warje+Pruthak+Barate+Garden"
   }
                  ,
 { 
-    "lat": 18.4818476,
+    "lat4": 18.4818476,
     ",": ",",
-    "lng": 73.8017153,
+    "lng4": 73.8017153,
     "name": "Lodha+Hospital"
   }
                  ,
 { 
-    "lat":18.4858364 ,
+    "lat4":18.4858364 ,
     ",": ",",
-    "lng": 73.7956857,
+    "lng4": 73.7956857,
     "name": "Domino's+Pizza"
   }
                  ,
 { 
-    "lat":18.5052904 ,
+    "lat4":18.5052904 ,
     ",": ",",
-    "lng": 73.7884437,
+    "lng4": 73.7884437,
     "name": "Shringeri+Shankar+Math"
   }
                  ,
 { 
-    "lat":18.5057787 ,
+    "lat4":18.5057787 ,
     ",": ",",
-    "lng": 73.784474,
+    "lng4": 73.784474,
     "name": "Chandni Chowk"
   }
                  ,
 { 
-    "lat":18.509248 ,
+    "lat4":18.509248 ,
     ",": ",",
-    "lng":73.7742173 ,
+    "lng4":73.7742173 ,
     "name": "Amit+Cricket+Ground"
   }
                  ,
 { 
-    "lat":18.5149351 ,
+    "lat4":18.5149351 ,
     ",": ",",
-    "lng": 73.7695529,
+    "lng4": 73.7695529,
     "name": "OverHeadTank"
   }
                  ,
 { 
-    "lat": 18.5223203,
+    "lat4": 18.5223203,
     ",": ",",
-    "lng":73.7712481 ,
+    "lng4":73.7712481 ,
     "name": "Divyash+Lawns"
   }
                  ,
 { 
-    "lat": 18.5256164,
+    "lat4": 18.5256164,
     ",": ",",
-    "lng": 73.7756147,
+    "lng4": 73.7756147,
     "name": "Savera+Resto"
   }
                  ,
 { 
-    "lat": 18.5315878,
+    "lat4": 18.5315878,
     ",": ",",
-    "lng": 73.7795093,
+    "lng4": 73.7795093,
     "name": "Shiv+Mandir+Pashan+Lake"
   }   ,
 { 
-    "lat":18.5371826 ,
+    "lat4":18.5371826 ,
     ",": ",",
-    "lng": 73.78055,
+    "lng4": 73.78055,
     "name": "Yash+Enviro+Technologies"
   }
                  ,
 { 
-    "lat":18.5414447 ,
+    "lat4":18.5414447 ,
     ",": ",",
-    "lng": 73.7765267,
+    "lng4": 73.7765267,
     "name": "Rangla+Punjab"
   }
                  ,
 { 
-    "lat": 18.5460728,
+    "lat4": 18.5460728,
     ",": ",",
-    "lng": 73.7738874,
+    "lng4": 73.7738874,
     "name": "Audi+Pune"
   }
                  ,
 { 
-    "lat": 18.5516265,
+    "lat4": 18.5516265,
     ",": ",",
-    "lng": 73.7722995,
+    "lng4": 73.7722995,
     "name": "Shivam+Hyundai+Pune"
   }
                  ,
 { 
-    "lat": 18.5585022,
+    "lat4": 18.5585022,
     ",": ",",
-    "lng": 73.768759,
+    "lng4": 73.768759,
     "name": "Yaara+Di+Haaveli"
-  } ];
-
-let options = {
+  }];
+  var options = {
   enableHighAccuracy: true,
   timeout: 5000,
   maximumAge: 0
@@ -557,14 +557,17 @@ export class GeolocationMapPage {
   
 
   @ViewChild('map') mapElement: ElementRef;
-
-  constructor(public navCtrl: NavController, public platform: Platform,private http: HttpClient) {
+  
+  constructor(public navCtrl: NavController, public platform: Platform,private http: Http) {
+    
 
     platform.ready().then(() => {
       this.initMap();
     });
   }
+   
   initMap() {
+    
     navigator.geolocation.getCurrentPosition((location) => {
       map = new google.maps.Map(this.mapElement.nativeElement, {
         center: {
@@ -589,6 +592,8 @@ export class GeolocationMapPage {
         //   }
         //}
         var remark:any;
+        var lat4:number=0;
+        var lng4:number=0;
         // var arr=[{
         //   "userId": 1068680,
         //   "id": 1055650,
@@ -597,20 +602,25 @@ export class GeolocationMapPage {
         //   }];
         for(var i=0;i<arrstores.length;i++)
         {var dist:any;
-          dist=this.calcCrow(location.coords.latitude,location.coords.longitude, arrstores[i].lat,arrstores[i].lng).toFixed(1);
+         console.log("Lattitude1:"+arrstores[i].lat4);
+          //console.log("Lattitude:"+latt+",Logitude:"+long);
+          dist=this.calcCrow(location.coords.latitude,location.coords.longitude,arrstores[i].lat4,arrstores[i].lng4).toFixed(1);
        
                 if( dist< 3)
                 {
-                    remark=arrstores[i].lat+","+arrstores[i].lng+","+arrstores[i].name;
-                      // var body = JSON.stringify(remark);
-                      // var headerOptions = new Headers({'Content-Type':'application/json'});
-                      // var requestOptions:any = new RequestOptions({method : RequestMethod.Post,headers : headerOptions});
-                      // this.http.post('http://localhost:58651/api/Employees',body,requestOptions);
+                  console.log("Lattitude2:"+arrstores[i].lat4);
+                  console.log("Distance:"+dist);
+                    remark=arrstores[i].lat4+","+arrstores[i].lng4+","+arrstores[i].name;
+                      var body = JSON.stringify(remark);
+                      var headerOptions = new Headers({'Content-Type':'application/json'});
+                      var requestOptions:any = new RequestOptions({method : RequestMethod.Post,headers : headerOptions});
+                      this.http.post('http://52.42.196.11:8080/bjp/popup',body,requestOptions);
                     alert ("Send Offer from Store Name"+ arrstores[i].name)
                     //console.log(location);
                     //this.createMarker(location);
 
                 }
+              
         }
     });
     }, (error) => {
