@@ -4,15 +4,27 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Home</ion-title>
+  <button  class="item item-button-right" (click)= "openFilters()">
+      <ion-icon name="ios-color-filter"></ion-icon>
+  </button>
+  <button  class="item item-button-right" (click)="openFilters()">
+      <ion-icon name="ios-cart" md="md-cart"></ion-icon>
+  </button>
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
+  <ion-row>
+    <ion-col>  <a class="button"   (click)="listView()"  >LIST VIEW</a></ion-col>
+    
+    <ion-col> <a class="button"  (click)="mapView()"  >MAP VIEW</a> </ion-col> 
+         
+        </ion-row>
+   
   <ion-list>
   <ion-item *ngFor="let product of products | async" >
     <ion-avatar item-left>
-      <img src="">
+      <img class="img-responsive" src="../../assets/{{product.ProductImgURL}}">
     
     </ion-avatar>
     <h2>{{product.ProductName}}</h2>
