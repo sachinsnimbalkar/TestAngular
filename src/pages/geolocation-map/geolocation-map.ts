@@ -558,7 +558,8 @@ export class GeolocationMapPage {
 
   @ViewChild('map') mapElement: ElementRef;
 
-  constructor(public nav: NavController, public platform: Platform,private http: HttpClient) {
+  constructor(public navCtrl: NavController, public platform: Platform,private http: HttpClient) {
+
     platform.ready().then(() => {
       this.initMap();
     });
