@@ -1,7 +1,7 @@
 
 
     export class Product {
-        SrNo: number;
+        SrNo: string;
         ProductName: string;
         CatId: number;
         public price: number;

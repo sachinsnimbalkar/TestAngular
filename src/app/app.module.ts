@@ -28,6 +28,11 @@ import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
 import { CachcingServiceBase } from '../providers/caching.service';
 import { LoginScreenPageModule } from '../pages/login-screen/login-screen.module';
 import { HomePageModule } from '../pages/home/home.module';
+import { FilterPageModule } from '../pages/filter/filter.module';
+import { GeolocationMapPageModule } from '../pages/geolocation-map/geolocation-map.module';
+import { DeliveryOptionsDataService } from '../providers/delivery-options.service';
+import { ShoppingCartService } from '../providers/shopping-cart.service';
+import { LocalStorageServie } from '../providers/storage.service';
 
 @NgModule({
   declarations: [
@@ -41,17 +46,18 @@ import { HomePageModule } from '../pages/home/home.module';
    // ForgetPasswordPage,
     VerificationCodePage,
     ResetPasswordPage,
-    FilterPage,
+   // FilterPage,
     OrderhistoryPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
-    GeolocationMapPage,
+   // GeolocationMapPage,
     ExitPage,
 
   ],
   imports: [
     BrowserModule,HttpModule,LoginScreenPageModule,HomePageModule,
+    FilterPageModule,GeolocationMapPageModule,
     IonicModule.forRoot(MyApp),
       ],
   bootstrap: [IonicApp],
@@ -69,11 +75,11 @@ import { HomePageModule } from '../pages/home/home.module';
     ResetPasswordPage,
     TrackOrderPage,
     DisclaimerPage,
-    FilterPage,
+//FilterPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
-    GeolocationMapPage,
+   // GeolocationMapPage,
    ExitPage,
 
   ],
@@ -82,8 +88,8 @@ import { HomePageModule } from '../pages/home/home.module';
     SplashScreen,
     
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthService,
-    GetDataProvider,
+    AuthService,ShoppingCartService,LocalStorageServie,
+    GetDataProvider,DeliveryOptionsDataService,
   ]
 })
 export class AppModule {}
