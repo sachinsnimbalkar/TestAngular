@@ -31,7 +31,7 @@ export class AuthService {
     }
   }
  
-  public register(credentials) {
+  public signUp(credentials) {
     if (credentials.email === null || credentials.password === null) {
       return Observable.throw("Please insert credentials");
     } else {
