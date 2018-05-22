@@ -308,19 +308,19 @@ var arrstores = [{
   ",": ",",
   "lng4": 73.8701058,
   "name": "Sassoon General Hospital"
-},,
+},
 { 
   "lat4": 18.5240646,
   ",": ",",
   "lng4": 73.8677639,
   "name": "Dr. Babasaheb Ambedkar Sanskrutik Bhavan"
-},,
+},
 { 
   "lat4": 18.5259123,
   ",": ",",
   "lng4": 73.8658435,
   "name": "Aurora Towers Premises Society"
-},,
+},
 { 
   "lat4": 18.5265506,
   ",": ",",
@@ -578,7 +578,22 @@ export class GeolocationMapPage {
       });
 
       infowindow = new google.maps.InfoWindow();
-      
+      var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+      var marker = new google.maps.Marker({
+        map: map,
+        position:{ lat: location.coords.latitude, lng: location.coords.longitude } ,
+        icon: image
+      });
+      var circle = new google.maps.Circle({
+        center: { lat: location.coords.latitude, lng: location.coords.longitude } ,
+        radius: 300,
+        strokeColor: "#6588e1",
+        strokeOpacity: 1,
+        strokeWeight: 3,
+        fillColor: "#6588e1",
+        fillOpacity: 0
+    });
+    circle.setMap(map);
       var service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
         location: { lat: location.coords.latitude, lng: location.coords.longitude },
@@ -592,32 +607,39 @@ export class GeolocationMapPage {
         //   }
         //}
         var remark:any;
-        var lat4:number=0;
-        var lng4:number=0;
+        var lat5:number=0;
+        var lng5:number=0;
         // var arr=[{
         //   "userId": 1068680,
         //   "id": 1055650,
         //   "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
         //   "body": "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
         //   }];
+        //var arr_dist:number[][];
         for(var i=0;i<arrstores.length;i++)
-        {var dist:any;
-         console.log("Lattitude1:"+arrstores[i].lat4);
+        {
+          var dist:any;
+        //  console.log("Lattitude1:"+arrstores[i].lat4);
           //console.log("Lattitude:"+latt+",Logitude:"+long);
           dist=this.calcCrow(location.coords.latitude,location.coords.longitude,arrstores[i].lat4,arrstores[i].lng4).toFixed(1);
-       
+          
                 if( dist< 3)
                 {
-                  console.log("Lattitude2:"+arrstores[i].lat4);
+                  // console.log("Lattitude2:"+arrstores[i].lat4);
                   console.log("Distance:"+dist);
                     remark=arrstores[i].lat4+","+arrstores[i].lng4+","+arrstores[i].name;
                       var body = JSON.stringify(remark);
                       var headerOptions = new Headers({'Content-Type':'application/json'});
                       var requestOptions:any = new RequestOptions({method : RequestMethod.Post,headers : headerOptions});
                       this.http.post('http://52.42.196.11:8080/bjp/popup',body,requestOptions);
-                    alert ("Send Offer from Store Name"+ arrstores[i].name)
+                    //alert ("Send Offer from Store Name"+ arrstores[i].name)
                     //console.log(location);
-                    //this.createMarker(location);
+                    //var location1= { lat5:arrstores[i].lat4, lng5:arrstores[i].lng4 };
+                    let location1 = new google.maps.LatLng(arrstores[i].lat4,arrstores[i].lng4); 
+                    console.log("Store location for marker:"+location1);
+                    
+                    this.createMarker(location1,arrstores[i].name);
+                    //break;
 
                 }
               
@@ -651,8 +673,8 @@ export class GeolocationMapPage {
     
 
         
-    createMarker(place) {
-    var placeLoc = place.geometry.location;
+    createMarker(place,placename) {
+    var placeLoc = place;
     var image = {
       url: place.icon,
       size: new google.maps.Size(71, 71),
@@ -665,11 +687,42 @@ export class GeolocationMapPage {
       position: placeLoc,
       icon: image
     });
+    // Add the circle for this city to the map.
+    // var cityCircle = new google.maps.Circle({
+    //   strokeColor: '#FF0000',
+    //   strokeOpacity: 0.8,
+    //   strokeWeight: 2,
+    //   fillColor: '#FF0000',
+    //   fillOpacity: 0.35,
+    //   map: map,
+    //   center: place,
+    //   radius: 1500
+    // });
+    var circle = new google.maps.Circle({
+      center: place,
+      radius: 300,
+      strokeColor: "#E16D65",
+      strokeOpacity: 1,
+      strokeWeight: 3,
+      fillColor: "#E16D65",
+      fillOpacity: 0
+  });
+  circle.setMap(map);
+  
+  var direction = 1;
+  var rMin = 150, rMax = 300;
+  setInterval(function() {
+      var radius = circle.getRadius();
+      if ((radius > rMax) || (radius < rMin)) {
+          direction *= -1;
+      }
+      circle.setRadius(radius + direction * 10);
+  }, 50);
     console.log(place);
     google.maps.event.addListener(marker, 'click', function () {
       // infowindow.setContent(place.name);
       // infowindow.open(map, this);
-      infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+      infowindow.setContent('<div><strong>' + placename + '</strong><br>' +
         'Place ID: ' + place.place_id + '<br>' +
         place.vicinity + '</div>');
       infowindow.open(map, this);
