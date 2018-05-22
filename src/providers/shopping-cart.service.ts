@@ -4,10 +4,10 @@ import { Observer } from "rxjs/Observer";
 import { ShoppingCart } from "../model/shopping-cart.model";
 import { Product } from "../model/product.model";
 import { DeliveryOption } from "../model/delivery-option.model";
-import { ProductsDataService } from "./products.service";
 import { StorageService } from "./storage.service";
 import { DeliveryOptionsDataService } from "./delivery-options.service";
 import { CartItem } from "../model/cart-item.model";
+import { GetDataProvider } from "./get-data/get-data";
 
 
 const CART_KEY = "cart";
@@ -21,7 +21,7 @@ export class ShoppingCartService {
   private deliveryOptions: DeliveryOption[];
 
   public constructor(private storageService: StorageService,
-                     private productService: ProductsDataService,
+                     private productService: GetDataProvider,
                      private deliveryOptionsService: DeliveryOptionsDataService) {
     this.storage = this.storageService.get();
     this.productService.all().subscribe((products) => this.products = products);

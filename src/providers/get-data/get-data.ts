@@ -10,6 +10,7 @@ import { CachcingServiceBase } from '../caching.service';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+let count = 0;
 @Injectable()
 export class GetDataProvider extends CachcingServiceBase {
   public products: Observable<Product[]>;
