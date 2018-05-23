@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Product } from '../../model/product.model';
 import { CachcingServiceBase } from '../caching.service';
+import { Category } from '../../model/category.model';
 
 /*
   Generated class for the GetDataProvider provider.
@@ -14,24 +15,36 @@ let count = 0;
 @Injectable()
 export class GetDataProvider extends CachcingServiceBase {
   public products: Observable<Product[]>;
-
+  public categories: Observable<Category[]>;
   public constructor(private http: Http) {
     super();
   }
 
-  public all(): Observable<Product[]>
-   {
+  public allProduct(): Observable<Product[]> 
+  {
     return this.cache<Product[]>(() => this.products,
-                                 (val: Observable<Product[]>) => this.products = val,
-                                 () => this.http
-                                           .get("./assets/data/BJPProducts.json")
-                                           .map((response) => response.json()
-                                                                      .map((item) => {
-                                                                        let model = new Product();
-                                                                        model.updateFrom(item);
-                                                                        return model;
-                                                                      })));
-                                                                    }
+      (val: Observable<Product[]>) => this.products = val,
+      () => this.http
+        .get("./assets/data/BJPProducts.json")
+        .map((response) => response.json()
+          .map((item) => {
+            let model = new Product();
+            model.updateFrom(item);
+            return model;
+          })));
+  }
+  public allCategory(): Observable<Category[]> {
+    return this.cache<Category[]>(() => this.categories,
+      (val: Observable<Category[]>) => this.categories = val,
+      () => this.http
+        .get("./assets/data/BJPCategory.json")
+        .map((response) => response.json()
+          .map((item) => {
+            let model = new Category();
+            model.updateFrom(item);
+            return model;
+          })));
+  }
 
 
   // getRemoteData(){
@@ -39,18 +52,18 @@ export class GetDataProvider extends CachcingServiceBase {
   //       console.log(data);
   //   });
 
-//   getlocalData(){
-//     // this.http.get('../assets/data/BJPProducts.json').map(res => res.json()).subscribe(data=>{
-//     //     console.log(data);
-//     // });
-//     return this.http.get('../assets/data/BJPProducts.json')
-//     .map(res => res.json());
-// }
-// getCategory(){
-//   // this.http.get('../assets/data/BJPProducts.json').map(res => res.json()).subscribe(data=>{
-//   //     console.log(data);
-//   // });
-//   return this.http.get('../assets/data/BJPCategory.json')
-//   .map(res => res.json());
-// }
+  //   getlocalData(){
+  //     // this.http.get('../assets/data/BJPProducts.json').map(res => res.json()).subscribe(data=>{
+  //     //     console.log(data);
+  //     // });
+  //     return this.http.get('../assets/data/BJPProducts.json')
+  //     .map(res => res.json());
+  // }
+  // getCategory(){
+  //   // this.http.get('../assets/data/BJPProducts.json').map(res => res.json()).subscribe(data=>{
+  //   //     console.log(data);
+  //   // });
+  //   return this.http.get('../assets/data/BJPCategory.json')
+  //   .map(res => res.json());
+  // }
 }

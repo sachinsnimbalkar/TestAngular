@@ -33,7 +33,7 @@ import { GeolocationMapPageModule } from '../pages/geolocation-map/geolocation-m
 import { DeliveryOptionsDataService } from '../providers/delivery-options.service';
 import { ShoppingCartService } from '../providers/shopping-cart.service';
 import { LocalStorageServie } from '../providers/storage.service';
-
+import{Badge} from '@ionic-native/badge';
 @NgModule({
   declarations: [
     MyApp,
@@ -63,7 +63,7 @@ import { LocalStorageServie } from '../providers/storage.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,
+    LoginPage,   
   //  HomePage,
    // LoginScreenPage,
     AboutPage,
@@ -89,7 +89,7 @@ import { LocalStorageServie } from '../providers/storage.service';
     
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,ShoppingCartService,LocalStorageServie,
-    GetDataProvider,DeliveryOptionsDataService,
+    GetDataProvider,DeliveryOptionsDataService,Badge,
   ]
 })
 export class AppModule {}
