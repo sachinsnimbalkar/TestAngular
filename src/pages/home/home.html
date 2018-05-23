@@ -33,7 +33,7 @@
                 </ion-col> -->
                 <ion-slides >
                         <ion-slide  *ngFor="let category of categories | async">
-                           <p>{{ category.Category}}</p>  </ion-slide>
+                           <h5>{{ category.Category}}</h5>  </ion-slide>
                 </ion-slides>
                 <!-- <ion-col class="col-with-arrow" (click)="slideNext()" no-padding col-1>
                     <ion-icon *ngIf="showRightButton" name="arrow-forward"></ion-icon>
