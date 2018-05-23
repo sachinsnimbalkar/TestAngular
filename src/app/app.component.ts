@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform,AlertController} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
@@ -17,6 +17,11 @@ import {OrderhistoryPage} from '../pages/orderhistory/orderhistory'
 import { LoginScreenPage } from '../pages/login-screen/login-screen';
 import { FilterPage } from '../pages/filter/filter'
 import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
+import{StoreFrontComponent} from '../pages/store-front/store-front.component'
+import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
+import{CheckoutComponent} from '../pages/checkout/checkout.component'
+import{OrderConfirmationComponent} from '../pages/order-confirmation/order-confirmation.component'
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -24,12 +29,21 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
-
+//  public alertShown:boolean = false;
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    this.initializeApp();
-
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public alertCtrl: AlertController) {   
+    // platform.ready().then(() => {
+    //   statusBar.styleDefault();
+    //   splashScreen.hide();
+    //   platform.registerBackButtonAction(() => {
+    //     if (this.alertShown==false) {
+    //       this.presentConfirm();  
+    //     }
+    //   }, 0)
+    // });
+  this.initializeApp();
+  
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
@@ -45,7 +59,7 @@ export class MyApp {
       { title: 'MapView', component: GeolocationMapPage },
     ];
   }
-
+  
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -60,4 +74,30 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+  // presentConfirm() {
+  //   let alert = this.alertCtrl.create({
+  //     title: 'Confirm Exit',
+  //     message: 'Do you want Exit?',
+  //     buttons: [
+  //       {
+  //         text: 'Cancel',
+  //         role: 'cancel',
+  //         handler: () => {
+  //           console.log('Cancel clicked');
+  //           this.alertShown=false;
+  //         }
+  //       },
+  //       {
+  //         text: 'Yes',
+  //         handler: () => {
+  //           console.log('Yes clicked');
+  //           this.platform.exitApp();
+  //         }
+  //       }
+  //     ]
+  //   });
+  //    alert.present().then(()=>{
+  //     this.alertShown=true;
+  //   });
+  // }
 }

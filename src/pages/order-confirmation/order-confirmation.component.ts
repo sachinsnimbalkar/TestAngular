@@ -1,15 +1,15 @@
-// import { Component, OnInit } from "@angular/core";
-// import { ShoppingCartService } from "../../providers/shopping-cart.service";
+import { Component, OnInit } from "@angular/core";
+import { ShoppingCartService } from "../../providers/shopping-cart.service";
 
 
-// @Component({
-//   selector: "app-order-confirmation",
-//   templateUrl: "./order-confirmation.component.html"
-// })
-// export class OrderConfirmationComponent implements OnInit {
-//   public constructor(private shoppingCartService: ShoppingCartService) {}
+@Component({
+  selector: "app-order-confirmation",
+  templateUrl: "./order-confirmation.component.html"
+})
+export class OrderConfirmationComponent implements OnInit {
+  public constructor(private shoppingCartService: ShoppingCartService) {}
 
-//   public ngOnInit(): void {
-//     this.shoppingCartService.empty();
-//   }
-// }
+  public ngOnInit(): void {
+    this.shoppingCartService.empty();
+  }
+}

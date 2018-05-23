@@ -7,7 +7,7 @@ import { ExitPage } from './exit';
     ExitPage,
   ],
   imports: [
-    IonicPageModule.forChild(ExitPage),
+   IonicPageModule.forChild(ExitPage),
   ],
 })
 export class ExitPageModule {}
