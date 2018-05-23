@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,IonicPage } from 'ionic-angular';
+import { NavController,IonicPage, AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,7 +8,7 @@ import { NavController,IonicPage } from 'ionic-angular';
 })
 export class ListPage {
   
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,public alertCtrl: AlertController) {
 
   }
   // selectedItem: any;
