@@ -24,7 +24,7 @@ export class ShoppingCartService {
                      private productService: GetDataProvider,
                      private deliveryOptionsService: DeliveryOptionsDataService) {
     this.storage = this.storageService.get();
-    this.productService.all().subscribe((products) => this.products = products);
+    this.productService.allProduct().subscribe((products) => this.products = products);
     this.deliveryOptionsService.all().subscribe((options) => this.deliveryOptions = options);
 
     this.subscriptionObservable = new Observable<ShoppingCart>((observer: Observer<ShoppingCart>) => {

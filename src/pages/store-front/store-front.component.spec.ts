@@ -28,9 +28,9 @@ PRODUCT_2.ProdDesc = "desc2";
 
 // tslint:disable-next-line:max-classes-per-file
 class MockProductDataService extends GetDataProvider {
-  public all(): Observable<Product[]> {
-    return Observable.from([[PRODUCT_1, PRODUCT_2]]);
-  }
+ // public all(): Observable<Product[]> {
+   // return Observable.from([[PRODUCT_1, PRODUCT_2]]);
+ // }
 }
 
 // tslint:disable-next-line:max-classes-per-file
