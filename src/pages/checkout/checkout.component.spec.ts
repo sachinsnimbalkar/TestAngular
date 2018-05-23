@@ -37,16 +37,16 @@ DELIVERY_OPT_2.id = "2";
 DELIVERY_OPT_2.price = 2;
 
 class MockProductDataService extends GetDataProvider {
-  public all(): Observable<Product[]> {
-    return Observable.from([[PRODUCT_1, PRODUCT_2]]);
-  }
+  // public all(): Observable<Product[]> {
+  //   //return Observable.from([[PRODUCT_1, PRODUCT_2]]);
+  // }
 }
 
 // tslint:disable-next-line:max-classes-per-file
 class MockDeliveryOptionsDataService extends DeliveryOptionsDataService {
-  public all(): Observable<DeliveryOption[]> {
-    return Observable.from([[DELIVERY_OPT_1, DELIVERY_OPT_2]]);
-  }
+  // public all(): Observable<DeliveryOption[]> {
+  //  // return Observable.from([[DELIVERY_OPT_1, DELIVERY_OPT_2]]);
+  // }
 }
 
 // tslint:disable-next-line:max-classes-per-file

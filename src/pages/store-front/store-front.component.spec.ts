@@ -17,13 +17,13 @@ import { StoreFrontComponent } from "./store-front.component";
 const PRODUCT_1 = new Product();
 PRODUCT_1.ProductName = "Product 1";
 PRODUCT_1.SrNo = "1";
-PRODUCT_1.price = 1;
+PRODUCT_1.Price = 1;
 PRODUCT_1.ProdDesc = "desc1";
 
 const PRODUCT_2 = new Product();
 PRODUCT_2.ProductName = "Product 2";
 PRODUCT_2.SrNo = "2";
-PRODUCT_2.price = 2;
+PRODUCT_2.Price = 2;
 PRODUCT_2.ProdDesc = "desc2";
 
 // tslint:disable-next-line:max-classes-per-file
@@ -103,11 +103,11 @@ describe("StoreFrontComponent", () => {
     expect(productElements.length).toEqual(2);
 
     expect(productElements[0].querySelector(".js-product-name").textContent).toEqual(PRODUCT_1.ProductName);
-    expect(productElements[0].querySelector(".js-product-price").textContent).toContain(PRODUCT_1.price);
+    expect(productElements[0].querySelector(".js-product-price").textContent).toContain(PRODUCT_1.Price);
     expect(productElements[0].querySelector(".js-product-desc").textContent).toContain(PRODUCT_1.ProdDesc);
 
     expect(productElements[1].querySelector(".js-product-name").textContent).toEqual(PRODUCT_2.ProductName);
-    expect(productElements[1].querySelector(".js-product-price").textContent).toContain(PRODUCT_2.price);
+    expect(productElements[1].querySelector(".js-product-price").textContent).toContain(PRODUCT_2.Price);
     expect(productElements[1].querySelector(".js-product-desc").textContent).toContain(PRODUCT_2.ProdDesc);
   }));
 
@@ -121,7 +121,7 @@ describe("StoreFrontComponent", () => {
     expect(productElements.length).toEqual(2);
 
     expect(productElements[0].querySelector(".js-product-name").textContent).toEqual(PRODUCT_1.ProductName);
-    expect(productElements[0].querySelector(".js-product-price").textContent).toContain(PRODUCT_1.price);
+    expect(productElements[0].querySelector(".js-product-price").textContent).toContain(PRODUCT_1.Price);
     expect(productElements[0].querySelector(".js-product-desc").textContent).toContain(PRODUCT_1.ProdDesc);
     expect(productElements[0].querySelectorAll(".js-btn-remove").length).toEqual(0);
   }));

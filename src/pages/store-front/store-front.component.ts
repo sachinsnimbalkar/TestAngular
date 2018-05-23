@@ -40,7 +40,7 @@ export class StoreFrontComponent implements OnInit {
                         obs.next(cart.items.some((i) => i.productId === product.SrNo));
                         obs.complete();
                       });
-     // sub.unsubscribe();
+      sub.unsubscribe();
     });
   }
 
