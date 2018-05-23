@@ -582,21 +582,31 @@ export class GeolocationMapPage {
       var marker = new google.maps.Marker({
         map: map,
         position:{ lat: location.coords.latitude, lng: location.coords.longitude } ,
+        draggable: true,
         icon: image
       });
-      var circle = new google.maps.Circle({
-        center: { lat: location.coords.latitude, lng: location.coords.longitude } ,
-        radius: 300,
-        strokeColor: "#6588e1",
-        strokeOpacity: 1,
-        strokeWeight: 3,
-        fillColor: "#6588e1",
-        fillOpacity: 0
-    });
-    circle.setMap(map);
+      var mylocation={ lat: location.coords.latitude, lng: location.coords.longitude };
+      google.maps.event.addListener(marker, 'dragend', function() { 
+        mylocation={ lat: this.getPosition().lat(), lng: this.getPosition().lng() }
+        alert('marker dragged'+JSON.stringify(mylocation));
+        //this.initMap();
+        //this.drawcircle(mylocation)
+      } );
+      //marker.addListener('click', this.drawcircle(mylocation));
+     
+    //   var circle = new google.maps.Circle({
+    //     center: { lat: location.coords.latitude, lng: location.coords.longitude } ,
+    //     radius: 300,
+    //     strokeColor: "#6588e1",
+    //     strokeOpacity: 1,
+    //     strokeWeight: 3,
+    //     fillColor: "#6588e1",
+    //     fillOpacity: 0
+    // });
+      
       var service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
-        location: { lat: location.coords.latitude, lng: location.coords.longitude },
+        location: mylocation,
         radius: 1000,
         type: ['store']
       }, (results, status) => {
@@ -609,41 +619,45 @@ export class GeolocationMapPage {
         var remark:any;
         var lat5:number=0;
         var lng5:number=0;
-        // var arr=[{
-        //   "userId": 1068680,
-        //   "id": 1055650,
-        //   "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-        //   "body": "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
-        //   }];
-        //var arr_dist:number[][];
+        var myarray=[];
+      
         for(var i=0;i<arrstores.length;i++)
         {
           var dist:any;
-        //  console.log("Lattitude1:"+arrstores[i].lat4);
-          //console.log("Lattitude:"+latt+",Logitude:"+long);
           dist=this.calcCrow(location.coords.latitude,location.coords.longitude,arrstores[i].lat4,arrstores[i].lng4).toFixed(1);
           
                 if( dist< 3)
                 {
+                  myarray.push(dist,i);
+                  
                   // console.log("Lattitude2:"+arrstores[i].lat4);
-                  console.log("Distance:"+dist);
-                    remark=arrstores[i].lat4+","+arrstores[i].lng4+","+arrstores[i].name;
-                      var body = JSON.stringify(remark);
-                      var headerOptions = new Headers({'Content-Type':'application/json'});
-                      var requestOptions:any = new RequestOptions({method : RequestMethod.Post,headers : headerOptions});
-                      this.http.post('http://52.42.196.11:8080/bjp/popup',body,requestOptions);
+                  //console.log("Distance:"+dist);
+                    // remark=arrstores[i].lat4+","+arrstores[i].lng4+","+arrstores[i].name;
+                    //   var body = JSON.stringify(remark);
+                    //   var headerOptions = new Headers({'Content-Type':'application/json'});
+                    //   var requestOptions:any = new RequestOptions({method : RequestMethod.Post,headers : headerOptions});
+                    //   this.http.post('http://52.42.196.11:8080/bjp/popup',body,requestOptions);
                     //alert ("Send Offer from Store Name"+ arrstores[i].name)
-                    //console.log(location);
-                    //var location1= { lat5:arrstores[i].lat4, lng5:arrstores[i].lng4 };
-                    let location1 = new google.maps.LatLng(arrstores[i].lat4,arrstores[i].lng4); 
-                    console.log("Store location for marker:"+location1);
-                    
-                    this.createMarker(location1,arrstores[i].name);
-                    //break;
 
-                }
-              
+                }       
         }
+        var arr_dist=myarray[0];
+        var arr_index=myarray[1];
+        for(var j=2;j<myarray.length;)
+        {
+          if(arr_dist>myarray[j]){
+              arr_dist=myarray[j];
+              j++;
+              arr_index=myarray[j];
+              j++;
+          }
+          else{
+            j=j+2;
+          }
+        }
+        console.log("Minimum distance:"+arr_dist+", Index:"+arr_index);
+        let location1 = new google.maps.LatLng(arrstores[arr_index].lat4,arrstores[arr_index].lng4); 
+        this.createMarker(location1,arrstores[arr_index].name);
     });
     }, (error) => {
       console.log(error);
@@ -668,10 +682,21 @@ export class GeolocationMapPage {
       d= R * c;
       return d;
     }
-
+    drawcircle(mylocation){
+      var circle = new google.maps.Circle({
+        center: mylocation ,
+        radius: 300,
+        strokeColor: "#6588e1",
+        strokeOpacity: 1,
+        strokeWeight: 3,
+        fillColor: "#6588e1",
+        fillOpacity: 0
+    });
+    circle.setMap(map);
+    }
     // Converts numeric degrees to radians
     
-
+     
         
     createMarker(place,placename) {
     var placeLoc = place;
@@ -682,11 +707,14 @@ export class GeolocationMapPage {
       anchor: new google.maps.Point(17, 34),
       scaledSize: new google.maps.Size(25, 25)
     };
+    
     var marker = new google.maps.Marker({
       map: map,
       position: placeLoc,
-      icon: image
+      icon: image,
+      animation:google.maps.Animation.BOUNCE
     });
+    
     // Add the circle for this city to the map.
     // var cityCircle = new google.maps.Circle({
     //   strokeColor: '#FF0000',
@@ -698,6 +726,7 @@ export class GeolocationMapPage {
     //   center: place,
     //   radius: 1500
     // });
+    
     var circle = new google.maps.Circle({
       center: place,
       radius: 300,
@@ -707,6 +736,7 @@ export class GeolocationMapPage {
       fillColor: "#E16D65",
       fillOpacity: 0
   });
+
   circle.setMap(map);
   
   var direction = 1;

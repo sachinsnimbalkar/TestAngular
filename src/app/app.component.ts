@@ -28,8 +28,8 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+    
     this.initializeApp();
-
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
@@ -37,17 +37,19 @@ export class MyApp {
       { title: 'Offers', component: OfferPage },
       { title: 'Filter', component: FilterPage },
       { title: 'Track Order', component: TrackOrderPage },
+      { title: 'MapView', component: GeolocationMapPage },
       { title: 'T&C Disclaimer', component: DisclaimerPage },
       { title: 'Feedback', component: FeedbackPage },
-      { title: 'SignOut', component: SignOutPage },
       { title: 'About', component: AboutPage },
+      { title: 'SignOut', component: SignOutPage },
       { title: 'Exit', component: ExitPage },
-      { title: 'MapView', component: GeolocationMapPage },
+      
     ];
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
+    this.platform.ready().then(() => {      
+      this.splashScreen.show();
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
