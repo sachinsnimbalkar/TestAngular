@@ -606,7 +606,7 @@ export class GeolocationMapPage {
       
       var service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
-        location: mylocation,
+        location: { lat: location.coords.latitude, lng: location.coords.longitude },
         radius: 1000,
         type: ['store']
       }, (results, status) => {
