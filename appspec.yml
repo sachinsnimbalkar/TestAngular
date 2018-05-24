@@ -1,5 +1,5 @@
 version: 0.0
 os: windows
 files:
-  - source: \
-    destination: C:\xampp\htdocs\BJP
+  - source: \ProgramData\Amazon\CodeDeploy\e35797d9-3018-415b-a7a2-1bca1ea809ff\d-MG6FXK51S\deployment-archive\www
+    destination: C:\xampp\htdocs\BJPapp 
