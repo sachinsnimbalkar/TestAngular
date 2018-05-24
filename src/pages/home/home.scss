@@ -11,7 +11,23 @@ page-home {
 		right: 1px;
 		overflow: visible!important;
 	}
-
+    ion-toolbar.scrollable-segments {
+        overflow: hidden;
+        ion-segment {
+            border: 0px;
+          display: block;
+          overflow: hidden;
+          white-space: nowrap;
+        ::-webkit-scrollbar {
+           
+            display: none;
+        }
+          ion-segment-button.segment-button {
+            display: inline;
+            overflow: hidden;
+          }
+        }
+    }
 
 #notifications-badge {
 		background-color: red;

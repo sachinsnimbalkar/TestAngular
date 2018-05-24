@@ -21,6 +21,7 @@ export class HomePage {
   public categories: Observable<Category[]>;
    
   private count: number = 0;
+  public catID:number=1;
   @ViewChild(Slides) slides: Slides;
 
   constructor(public injector: Injector, public nav: NavController, private badge: Badge, public DataService: GetDataProvider, public events: Events) {
@@ -28,9 +29,6 @@ export class HomePage {
   ionViewDidLoad() {
     this.products = this.DataService.allProduct();
     this.categories = this.DataService.allCategory(); 
-    console.log(this.products);
-    console.log(this.categories);
-  // this.category = this.categoriesService.all();
   }
   // private initializeCategories(): void {
 
@@ -62,7 +60,11 @@ export class HomePage {
   // public slidePrev(): void {
   //   this.slides.slidePrev();
   // }
-
+   getItme(){
+    
+ //  console.log(this.categories;
+  // console.log(this.products);
+  }
 
   viewCart() {
     console.log("view to cart");

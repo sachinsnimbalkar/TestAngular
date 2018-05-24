@@ -21,8 +21,9 @@ export class GetDataProvider extends CachcingServiceBase {
   }
 
   public allProduct(): Observable<Product[]> 
-  {
-    return this.cache<Product[]>(() => this.products,
+  { 
+   
+     return this.cache<Product[]>(() => this.products,
       (val: Observable<Product[]>) => this.products = val,
       () => this.http
         .get("./assets/data/BJPProducts.json")
@@ -30,8 +31,9 @@ export class GetDataProvider extends CachcingServiceBase {
           .map((item) => {
             let model = new Product();
             model.updateFrom(item);
-            return model;
+          return model;
           })));
+        //  return this.cache<Product[]> 
   }
   public allCategory(): Observable<Category[]> {
     return this.cache<Category[]>(() => this.categories,
