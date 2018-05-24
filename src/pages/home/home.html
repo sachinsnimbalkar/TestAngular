@@ -51,8 +51,8 @@
     </ion-toolbar>
 
      <!-- <div ng-switch="Category.SrNo"> -->
-      <ion-list {{ category.SrNo}} *ngIf ="category.SrNo== 1"  > 
-               
+      <!-- <ion-list {{ category.SrNo}} *ngIf ="category.SrNo== 1"  >  -->
+           <ion-list>    
             <ion-item *ngFor="let product of products | async"  (click)="addCart()">
                 <ion-avatar item-left>
                     <img class="img-responsive" src="../../assets/{{product.ProductImgURL}}">
