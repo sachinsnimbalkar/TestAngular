@@ -1,14 +1,12 @@
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import {  Platform } from 'ionic-angular';
-//import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { Platform } from 'ionic-angular';
 import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
 
 declare var google;
 var map: any;
 var infowindow: any;
-
 var arrstores = [{
   "lat4": 39.71004,
   ",": ",",
@@ -255,294 +253,272 @@ var arrstores = [{
   "lng4": -81.8049,
   "name": "Store 985"
 },
-{ 
+{
   "lat4": 18.559658,
   ",": ",",
   "lng4": 73.779938,
   "name": "Store Balewadi"
 },
-{ 
+{
   "lat4": 16.4200137,
   ",": ",",
   "lng4": 73.557363,
   "name": "Store ML"
 },
-{ 
+{
   "lat4": 18.4974828,
   ",": ",",
   "lng4": 73.9344789,
   "name": "Hadapsar+Bus+Stop"
 },
-{ 
+{
   "lat4": 18.4990294,
   ",": ",",
   "lng4": 73.9268399,
   "name": "Vaibhav+Theater"
 },
-{ 
+{
   "lat4": 18.5015933,
   ",": ",",
   "lng4": 73.8959409,
   "name": "INOX"
 },
-{ 
+{
   "lat4": 18.5083693,
   ",": ",",
   "lng4": 73.8959409,
   "name": "Croma+Krome+Mall"
 },
-{ 
+{
   "lat4": 18.5202316,
   ",": ",",
   "lng4": 73.8903833,
   "name": "Department Of Sainik Welfare"
 },
-{ 
+{
   "lat4": 18.5174645,
   ",": ",",
   "lng4": 73.8818432,
   "name": "National War Memorial Southern Command"
 },
-{ 
+{
   "lat4": 18.5233446,
   ",": ",",
   "lng4": 73.8701058,
   "name": "Sassoon General Hospital"
 },
-{ 
+{
   "lat4": 18.5240646,
   ",": ",",
   "lng4": 73.8677639,
   "name": "Dr. Babasaheb Ambedkar Sanskrutik Bhavan"
 },
-{ 
+{
   "lat4": 18.5259123,
   ",": ",",
   "lng4": 73.8658435,
   "name": "Aurora Towers Premises Society"
 },
-{ 
+{
   "lat4": 18.5265506,
   ",": ",",
   "lng4": 73.8642234,
   "name": "HP Petroleum P Pancharatna Service Station"
 },
-{ 
+{
   "lat4": 18.5296114,
   ",": ",",
   "lng4": 73.8507057,
   "name": "Nexa Sale Department"
 },
-{ 
+{
   "lat4": 18.5310547,
   ",": ",",
   "lng4": 73.8380838,
   "name": "Manorama Ogale Memorial Hospital"
 },
-{ 
+{
   "lat4": 18.5310547,
   ",": ",",
   "lng4": 73.8380838,
   "name": "E-SQUARE"
 },
-{ 
+{
   "lat4": 18.5461096,
   ",": ",",
   "lng4": 73.8180937,
   "name": "Vrindavan Lawns"
 },
-{ 
+{
   "lat4": 18.5466324,
   ",": ",",
   "lng4": 73.816905,
   "name": "NEXA Aundh Baner Sai Service Pune"
-}  ,
-{ 
-    "lat4": 18.4478378,
-    ",": ",",
-    "lng4": 73.8566469,
-    "name": "shivshrushti"
-  }
-   ,
-{ 
-    "lat4": 18.4493135,
-    ",": ",",
-    "lng4": 73.851422,
-    "name": "VRL+Travels"
-  }  ,
-{ 
-    "lat4": 18.4508096,
-    ",": ",",
-    "lng4":73.8457786 ,
-    "name": "Raj+Market"
-  } ,
-{ 
-    "lat4":18.4508096 ,
-    ",": ",",
-    "lng4": 73.8457786,
-    "name": "D+Mart+Ambegaon"
-  }
-                 ,
-{ 
-    "lat4": 18.45198,
-    ",": ",",
-    "lng4":73.8409828 ,
-    "name": "Abhinav+Educational+Society"
-  }
-                 ,
-{ 
-    "lat4":18.4543309 ,
-    ",": ",",
-    "lng4":73.83314 ,
-    "name": "Ishanya+Hyundai"
-  }
-                 ,
-{ 
-    "lat4": 18.4553181,
-    ",": ",",
-    "lng4":73.8298034 ,
-    "name": "CNG+Pump"
-  }
-                 ,
-{ 
-    "lat4":18.4578318 ,
-    ",": ",",
-    "lng4": 73.8240849,
-    "name": "Navale+Flyover"
-  }
-                 ,
-{ 
-    "lat4":18.4626759 ,
-    ",": ",",
-    "lng4": 73.8187741,
-    "name": "HDFC+Bank+ATM"
-  }
-                 ,
-{ 
-    "lat4": 18.4657391,
-    ",": ",",
-    "lng4":18.4657391 ,
-    "name": "Shree+Mata+Kumjai+Temple"
-  }
-                 ,
-{ 
-    "lat4": 18.4703286,
-    ",": ",",
-    "lng4": 73.8122188,
-    "name": "Vision+Cricket+Academy"
-  }
-                 ,
-{ 
-    "lat4":18.4732084 ,
-    ",": ",",
-    "lng4":73.809322 ,
-    "name": "Mutha River"
-  }
-                 ,
-{ 
-    "lat4":18.4777672 ,
-    ",": ",",
-    "lng4": 73.805803,
-    "name": "Warje+Pruthak+Barate+Garden"
-  }
-                 ,
-{ 
-    "lat4": 18.4818476,
-    ",": ",",
-    "lng4": 73.8017153,
-    "name": "Lodha+Hospital"
-  }
-                 ,
-{ 
-    "lat4":18.4858364 ,
-    ",": ",",
-    "lng4": 73.7956857,
-    "name": "Domino's+Pizza"
-  }
-                 ,
-{ 
-    "lat4":18.5052904 ,
-    ",": ",",
-    "lng4": 73.7884437,
-    "name": "Shringeri+Shankar+Math"
-  }
-                 ,
-{ 
-    "lat4":18.5057787 ,
-    ",": ",",
-    "lng4": 73.784474,
-    "name": "Chandni Chowk"
-  }
-                 ,
-{ 
-    "lat4":18.509248 ,
-    ",": ",",
-    "lng4":73.7742173 ,
-    "name": "Amit+Cricket+Ground"
-  }
-                 ,
-{ 
-    "lat4":18.5149351 ,
-    ",": ",",
-    "lng4": 73.7695529,
-    "name": "OverHeadTank"
-  }
-                 ,
-{ 
-    "lat4": 18.5223203,
-    ",": ",",
-    "lng4":73.7712481 ,
-    "name": "Divyash+Lawns"
-  }
-                 ,
-{ 
-    "lat4": 18.5256164,
-    ",": ",",
-    "lng4": 73.7756147,
-    "name": "Savera+Resto"
-  }
-                 ,
-{ 
-    "lat4": 18.5315878,
-    ",": ",",
-    "lng4": 73.7795093,
-    "name": "Shiv+Mandir+Pashan+Lake"
-  }   ,
-{ 
-    "lat4":18.5371826 ,
-    ",": ",",
-    "lng4": 73.78055,
-    "name": "Yash+Enviro+Technologies"
-  }
-                 ,
-{ 
-    "lat4":18.5414447 ,
-    ",": ",",
-    "lng4": 73.7765267,
-    "name": "Rangla+Punjab"
-  }
-                 ,
-{ 
-    "lat4": 18.5460728,
-    ",": ",",
-    "lng4": 73.7738874,
-    "name": "Audi+Pune"
-  }
-                 ,
-{ 
-    "lat4": 18.5516265,
-    ",": ",",
-    "lng4": 73.7722995,
-    "name": "Shivam+Hyundai+Pune"
-  }
-                 ,
-{ 
-    "lat4": 18.5585022,
-    ",": ",",
-    "lng4": 73.768759,
-    "name": "Yaara+Di+Haaveli"
-  }];
-  var options = {
+},
+{
+  "lat4": 18.4478378,
+  ",": ",",
+  "lng4": 73.8566469,
+  "name": "shivshrushti"
+}
+  ,
+{
+  "lat4": 18.4493135,
+  ",": ",",
+  "lng4": 73.851422,
+  "name": "VRL+Travels"
+},
+{
+  "lat4": 18.4508096,
+  ",": ",",
+  "lng4": 73.8457786,
+  "name": "Raj+Market"
+},
+{
+  "lat4": 18.4508096,
+  ",": ",",
+  "lng4": 73.8457786,
+  "name": "D+Mart+Ambegaon"
+},
+{
+  "lat4": 18.45198,
+  ",": ",",
+  "lng4": 73.8409828,
+  "name": "Abhinav+Educational+Society"
+},
+{
+  "lat4": 18.4543309,
+  ",": ",",
+  "lng4": 73.83314,
+  "name": "Ishanya+Hyundai"
+},
+{
+  "lat4": 18.4553181,
+  ",": ",",
+  "lng4": 73.8298034,
+  "name": "CNG+Pump"
+},
+{
+  "lat4": 18.4578318,
+  ",": ",",
+  "lng4": 73.8240849,
+  "name": "Navale+Flyover"
+},
+{
+  "lat4": 18.4626759,
+  ",": ",",
+  "lng4": 73.8187741,
+  "name": "HDFC+Bank+ATM"
+},
+{
+  "lat4": 18.4657391,
+  ",": ",",
+  "lng4": 18.4657391,
+  "name": "Shree+Mata+Kumjai+Temple"
+},
+{
+  "lat4": 18.4703286,
+  ",": ",",
+  "lng4": 73.8122188,
+  "name": "Vision+Cricket+Academy"
+},
+{
+  "lat4": 18.4732084,
+  ",": ",",
+  "lng4": 73.809322,
+  "name": "Mutha River"
+},
+{
+  "lat4": 18.4777672,
+  ",": ",",
+  "lng4": 73.805803,
+  "name": "Warje+Pruthak+Barate+Garden"
+},
+{
+  "lat4": 18.4818476,
+  ",": ",",
+  "lng4": 73.8017153,
+  "name": "Lodha+Hospital"
+},
+{
+  "lat4": 18.4858364,
+  ",": ",",
+  "lng4": 73.7956857,
+  "name": "Domino's+Pizza"
+},
+{
+  "lat4": 18.5052904,
+  ",": ",",
+  "lng4": 73.7884437,
+  "name": "Shringeri+Shankar+Math"
+},
+{
+  "lat4": 18.5057787,
+  ",": ",",
+  "lng4": 73.784474,
+  "name": "Chandni Chowk"
+},
+{
+  "lat4": 18.509248,
+  ",": ",",
+  "lng4": 73.7742173,
+  "name": "Amit+Cricket+Ground"
+},
+{
+  "lat4": 18.5149351,
+  ",": ",",
+  "lng4": 73.7695529,
+  "name": "OverHeadTank"
+},
+{
+  "lat4": 18.5223203,
+  ",": ",",
+  "lng4": 73.7712481,
+  "name": "Divyash+Lawns"
+},
+{
+  "lat4": 18.5256164,
+  ",": ",",
+  "lng4": 73.7756147,
+  "name": "Savera+Resto"
+},
+{
+  "lat4": 18.5315878,
+  ",": ",",
+  "lng4": 73.7795093,
+  "name": "Shiv+Mandir+Pashan+Lake"
+},
+{
+  "lat4": 18.5371826,
+  ",": ",",
+  "lng4": 73.78055,
+  "name": "Yash+Enviro+Technologies"
+},
+{
+  "lat4": 18.5414447,
+  ",": ",",
+  "lng4": 73.7765267,
+  "name": "Rangla+Punjab"
+},
+{
+  "lat4": 18.5460728,
+  ",": ",",
+  "lng4": 73.7738874,
+  "name": "Audi+Pune"
+},
+{
+  "lat4": 18.5516265,
+  ",": ",",
+  "lng4": 73.7722995,
+  "name": "Shivam+Hyundai+Pune"
+},
+{
+  "lat4": 18.5585022,
+  ",": ",",
+  "lng4": 73.768759,
+  "name": "Yaara+Di+Haaveli"
+}];
+var options = {
   enableHighAccuracy: true,
   timeout: 5000,
   maximumAge: 0
@@ -554,151 +530,33 @@ var arrstores = [{
 })
 
 export class GeolocationMapPage {
-  
+
 
   @ViewChild('map') mapElement: ElementRef;
-  
-  constructor(public navCtrl: NavController, public platform: Platform,private http: Http) {
-    
 
+  constructor(public navCtrl: NavController, public platform: Platform, private http: Http) {
     platform.ready().then(() => {
       this.initMap();
     });
   }
-   
-  initMap() {
-    
-    navigator.geolocation.getCurrentPosition((location) => {
-      map = new google.maps.Map(this.mapElement.nativeElement, {
-        center: {
-          lat: location.coords.latitude,
-          lng: location.coords.longitude
-      },
-        zoom: 15
-      });
-
-      infowindow = new google.maps.InfoWindow();
-      var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-      var marker = new google.maps.Marker({
-        map: map,
-        position:{ lat: location.coords.latitude, lng: location.coords.longitude } ,
-        draggable: true,
-        icon: image
-      });
-      var mylocation={ lat: location.coords.latitude, lng: location.coords.longitude };
-      google.maps.event.addListener(marker, 'dragend', function() { 
-        mylocation={ lat: this.getPosition().lat(), lng: this.getPosition().lng() }
-        alert('marker dragged'+JSON.stringify(mylocation));
-        //this.initMap();
-        //this.drawcircle(mylocation)
-      } );
-      //marker.addListener('click', this.drawcircle(mylocation));
-     
-    //   var circle = new google.maps.Circle({
-    //     center: { lat: location.coords.latitude, lng: location.coords.longitude } ,
-    //     radius: 300,
-    //     strokeColor: "#6588e1",
-    //     strokeOpacity: 1,
-    //     strokeWeight: 3,
-    //     fillColor: "#6588e1",
-    //     fillOpacity: 0
-    // });
-      
-      var service = new google.maps.places.PlacesService(map);
-      service.nearbySearch({
-        location: { lat: location.coords.latitude, lng: location.coords.longitude },
-        radius: 1000,
-        type: ['store']
-      }, (results, status) => {
-        // if (status === google.maps.places.PlacesServiceStatus.OK)
-        //{
-        //   for (var i = 0; i < results.length; i++) {
-        //     this.createMarker(results[i]);
-        //   }
-        //}
-        var remark:any;
-        var lat5:number=0;
-        var lng5:number=0;
-        var myarray=[];
-      
-        for(var i=0;i<arrstores.length;i++)
-        {
-          var dist:any;
-          dist=this.calcCrow(location.coords.latitude,location.coords.longitude,arrstores[i].lat4,arrstores[i].lng4).toFixed(1);
-          
-                if( dist< 3)
-                {
-                  myarray.push(dist,i);
-                  
-                  // console.log("Lattitude2:"+arrstores[i].lat4);
-                  //console.log("Distance:"+dist);
-                    // remark=arrstores[i].lat4+","+arrstores[i].lng4+","+arrstores[i].name;
-                    //   var body = JSON.stringify(remark);
-                    //   var headerOptions = new Headers({'Content-Type':'application/json'});
-                    //   var requestOptions:any = new RequestOptions({method : RequestMethod.Post,headers : headerOptions});
-                    //   this.http.post('http://52.42.196.11:8080/bjp/popup',body,requestOptions);
-                    //alert ("Send Offer from Store Name"+ arrstores[i].name)
-
-                }       
-        }
-        var arr_dist=myarray[0];
-        var arr_index=myarray[1];
-        for(var j=2;j<myarray.length;)
-        {
-          if(arr_dist>myarray[j]){
-              arr_dist=myarray[j];
-              j++;
-              arr_index=myarray[j];
-              j++;
-          }
-          else{
-            j=j+2;
-          }
-        }
-        console.log("Minimum distance:"+arr_dist+", Index:"+arr_index);
-        let location1 = new google.maps.LatLng(arrstores[arr_index].lat4,arrstores[arr_index].lng4); 
-        this.createMarker(location1,arrstores[arr_index].name);
-    });
-    }, (error) => {
-      console.log(error);
-    }, options);
+  static toRad(Value) {
+    return Value * Math.PI / 180;
   }
-    toRad(Value) 
-    {
-        return Value * Math.PI / 180;
-    }
-   calcCrow(lat1, lon1, lat2, lon2): number
-    {
-      var R = 6371; // km
-      var dLat = this.toRad(lat2-lat1);
-      var dLon = this.toRad(lon2-lon1);
-      var lat1: any = this.toRad(lat1);
-      var lat2: any = this.toRad(lat2);
+  static calcCrow(lat1, lon1, lat2, lon2): number {
+    var R = 6371; // km
+    var dLat = this.toRad(lat2 - lat1);
+    var dLon = this.toRad(lon2 - lon1);
+    var lat1: any = this.toRad(lat1);
+    var lat2: any = this.toRad(lat2);
 
-      var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-      var d :number;
-      d= R * c;
-      return d;
-    }
-    drawcircle(mylocation){
-      var circle = new google.maps.Circle({
-        center: mylocation ,
-        radius: 300,
-        strokeColor: "#6588e1",
-        strokeOpacity: 1,
-        strokeWeight: 3,
-        fillColor: "#6588e1",
-        fillOpacity: 0
-    });
-    circle.setMap(map);
-    }
-    // Converts numeric degrees to radians
-    
-     
-        
-    createMarker(place,placename) {
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var d: number;
+    d = R * c;
+    return d;
+  }
+  static createMarker(place, placename) {
     var placeLoc = place;
     var image = {
       url: place.icon,
@@ -707,26 +565,12 @@ export class GeolocationMapPage {
       anchor: new google.maps.Point(17, 34),
       scaledSize: new google.maps.Size(25, 25)
     };
-    
     var marker = new google.maps.Marker({
       map: map,
       position: placeLoc,
       icon: image,
-      animation:google.maps.Animation.BOUNCE
+      animation: google.maps.Animation.BOUNCE
     });
-    
-    // Add the circle for this city to the map.
-    // var cityCircle = new google.maps.Circle({
-    //   strokeColor: '#FF0000',
-    //   strokeOpacity: 0.8,
-    //   strokeWeight: 2,
-    //   fillColor: '#FF0000',
-    //   fillOpacity: 0.35,
-    //   map: map,
-    //   center: place,
-    //   radius: 1500
-    // });
-    
     var circle = new google.maps.Circle({
       center: place,
       radius: 300,
@@ -735,27 +579,107 @@ export class GeolocationMapPage {
       strokeWeight: 3,
       fillColor: "#E16D65",
       fillOpacity: 0
-  });
-
-  circle.setMap(map);
-  
-  var direction = 1;
-  var rMin = 150, rMax = 300;
-  setInterval(function() {
+    });
+    circle.setMap(map);
+    var direction = 1;
+    var rMin = 150, rMax = 300;
+    setInterval(function () {
       var radius = circle.getRadius();
       if ((radius > rMax) || (radius < rMin)) {
-          direction *= -1;
+        direction *= -1;
       }
       circle.setRadius(radius + direction * 10);
-  }, 50);
+    }, 50);
     console.log(place);
     google.maps.event.addListener(marker, 'click', function () {
-      // infowindow.setContent(place.name);
-      // infowindow.open(map, this);
       infowindow.setContent('<div><strong>' + placename + '</strong><br>' +
         'Place ID: ' + place.place_id + '<br>' +
         place.vicinity + '</div>');
       infowindow.open(map, this);
     });
+  }
+  showOffers(mylocation): void {
+    console.log("In show offers:" + JSON.stringify(mylocation));
+    var service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(
+      {
+        location: mylocation,
+        radius: 1000,
+        type: ['store']
+      }, (results, status) => {
+
+        var remark: any;
+        var lat5: number = 0;
+        var lng5: number = 0;
+        var myarray = [];
+
+        for (var i = 0; i < arrstores.length; i++) {
+          var dist: any;
+          dist = GeolocationMapPage.calcCrow(mylocation.lat, mylocation.lng, arrstores[i].lat4, arrstores[i].lng4).toFixed(1);
+
+          if (dist < 3) {
+            myarray.push(dist, i);
+          }
+        }
+        var arr_dist = myarray[0];
+        var arr_index = myarray[1];
+        for (var j = 2; j < myarray.length;) {
+          if (arr_dist > myarray[j]) {
+            arr_dist = myarray[j];
+            j++;
+            arr_index = myarray[j];
+            j++;
+          }
+          else {
+            j = j + 2;
+          }
+        }
+        //console.log("Minimum distance:" + arr_dist + ", Index:" + arr_index);
+        let location1 = new google.maps.LatLng(arrstores[arr_index].lat4, arrstores[arr_index].lng4);
+        GeolocationMapPage.createMarker(location1, arrstores[arr_index].name);
+      });
+
+  }
+  initMap() {
+    navigator.geolocation.getCurrentPosition((location) => {
+      map = new google.maps.Map(this.mapElement.nativeElement, {
+        center: {
+          lat: location.coords.latitude,
+          lng: location.coords.longitude
+        },
+        zoom: 15
+      });
+      var mylocation = { lat: location.coords.latitude, lng: location.coords.longitude };
+      infowindow = new google.maps.InfoWindow();
+      var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+      var marker = new google.maps.Marker({
+        map: map,
+        position: mylocation,
+        draggable: true,
+        icon: image
+      });
+
+      this.showOffers(mylocation);
+      //drag marker logic
+      marker.addListener('dragend', (event) => {
+        mylocation = { lat: event.latLng.lat(), lng: event.latLng.lng() }
+        this.showOffers(mylocation);
+
+      })
+    }, (error) => {
+      console.log(error);
+    }, options);
+  }
+  drawcircle(mylocation) {
+    var circle = new google.maps.Circle({
+      center: mylocation,
+      radius: 300,
+      strokeColor: "#6588e1",
+      strokeOpacity: 1,
+      strokeWeight: 3,
+      fillColor: "#6588e1",
+      fillOpacity: 0
+    });
+    circle.setMap(map);
   }
 }

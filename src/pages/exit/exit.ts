@@ -18,39 +18,39 @@ import { StatusBar } from '@ionic-native/status-bar';
     public alertShown:boolean = false;
     constructor(public platform: Platform, public statusBar: StatusBar, public alertCtrl: AlertController){
 
-      // platform.ready().then(() => {
-      //   statusBar.styleDefault();
-      //   platform.registerBackButtonAction(() => {
-      //     if (this.alertShown==false) {
-      //       this.presentConfirm();  
-      //     }
-      //   }, 0)
-      // });
+      platform.ready().then(() => {
+        statusBar.styleDefault();
+        platform.registerBackButtonAction(() => {
+          if (this.alertShown==false) {
+            this.presentConfirm();  
+          }
+        }, 0)
+      });
     }    
-    // presentConfirm() {
-    //   let alert = this.alertCtrl.create({
-    //     title: 'Confirm Exit',
-    //     message: 'Do you want Exit?',
-    //     buttons: [
-    //       {
-    //         text: 'Cancel',
-    //         role: 'cancel',
-    //         handler: () => {
-    //           console.log('Cancel clicked');
-    //           this.alertShown=false;
-    //         }
-    //       },
-    //       {
-    //         text: 'Yes',
-    //         handler: () => {
-    //           console.log('Yes clicked');
-    //           this.platform.exitApp();
-    //         }
-    //       }
-    //     ]
-    //   });
-    //    alert.present().then(()=>{
-    //     this.alertShown=true;
-    //   });
-    // }
+    presentConfirm() {
+      let alert = this.alertCtrl.create({
+        title: 'Confirm Exit',
+        message: 'Do you want Exit?',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+              this.alertShown=false;
+            }
+          },
+          {
+            text: 'Yes',
+            handler: () => {
+              console.log('Yes clicked');
+              this.platform.exitApp();
+            }
+          }
+        ]
+      });
+       alert.present().then(()=>{
+        this.alertShown=true;
+      });
+    }
   }
