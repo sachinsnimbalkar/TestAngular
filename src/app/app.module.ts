@@ -34,6 +34,7 @@ import { DeliveryOptionsDataService } from '../providers/delivery-options.servic
 import { ShoppingCartService } from '../providers/shopping-cart.service';
 import { LocalStorageServie } from '../providers/storage.service';
 import{Badge} from '@ionic-native/badge';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     MyApp,
@@ -55,7 +56,7 @@ import{Badge} from '@ionic-native/badge';
     ExitPage,
 
   ],
-  imports: [
+  imports: [CommonModule,
     BrowserModule,HttpModule,LoginScreenPageModule,HomePageModule,
     FilterPageModule,GeolocationMapPageModule,
     IonicModule.forRoot(MyApp),
