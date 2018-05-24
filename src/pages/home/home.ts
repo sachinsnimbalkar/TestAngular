@@ -21,7 +21,6 @@ export class HomePage {
   public categories: Observable<Category[]>;
    
   private count: number = 0;
-  public catID:number=1;
   @ViewChild(Slides) slides: Slides;
 
   constructor(public injector: Injector, public nav: NavController, private badge: Badge, public DataService: GetDataProvider, public events: Events) {
@@ -29,7 +28,22 @@ export class HomePage {
   ionViewDidLoad() {
     this.products = this.DataService.allProduct();
     this.categories = this.DataService.allCategory(); 
-  }
+    //this.DataService.allCategory().subscribe(val => console.log(val));
+  this.DataService.allCategory().subscribe(res1 => {
+      //console.log(res1);
+      this.dataC = res1;
+    });
+       this.DataService.allProduct().subscribe(res2 => {
+     //  console.log(res2);
+        this.data = res2;
+   });
+  //  for(let i;; i++){
+  //     if (this.dataC[i].SrNo==this.data[i].CatId){
+  //       console.log("true");
+  //       }
+  // }
+}
+  
   // private initializeCategories(): void {
 
   //   // Select it by defaut
@@ -61,9 +75,11 @@ export class HomePage {
   //   this.slides.slidePrev();
   // }
    getItme(){
-    
- //  console.log(this.categories;
-  // console.log(this.products);
+    for(let i=0;; i++){
+       if (this.dataC[i].SrNo==this.data[i].CatId){
+    return;
+       }
+  }
   }
 
   viewCart() {
