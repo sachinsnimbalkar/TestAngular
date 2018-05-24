@@ -38,21 +38,22 @@
                     </ion-row> -->
     </ion-toolbar>
     <ion-toolbar no-border class="scrollable-segments">
-        <ion-segment>
+        <ion-segment ng-model="let category of categories|async">
             <!-- <ion-col class="col-with-arrow" (click)="slidePrev()" no-padding col-1>
                     <ion-icon *ngIf="showLeftButton" name="arrow-back"></ion-icon>
                 </ion-col> -->
             <!-- <ion-segment  > -->
-            <ion-segment-button *ngFor="let category of categories | async" value="{{category.SrNo}}" (click)="getItme()">
+            <ion-segment-button *ngFor="let category of categories | async" value="{{category.Category}}" (click)="getItme()">
                 {{ category.Category}} </ion-segment-button>
             <!-- </ion-segment> -->
 
         </ion-segment>
     </ion-toolbar>
 
-     <!-- <div [ngSwitch]="let category of categories | async"> -->
-        <ion-list>
-            <ion-item *ngFor="let product of products | async" (click)="addCart()">
+     <!-- <div ng-switch="Category.SrNo"> -->
+      <ion-list {{ category.SrNo}} *ngIf ="category.SrNo== 1"  > 
+               
+            <ion-item *ngFor="let product of products | async"  (click)="addCart()">
                 <ion-avatar item-left>
                     <img class="img-responsive" src="../../assets/{{product.ProductImgURL}}">
 

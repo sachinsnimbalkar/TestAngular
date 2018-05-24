@@ -44,8 +44,9 @@ export class GetDataProvider extends CachcingServiceBase {
           .map((item) => {
             let model = new Category();
             model.updateFrom(item);
-            return model;
+                return model;
           })));
+  
   }
 
 
