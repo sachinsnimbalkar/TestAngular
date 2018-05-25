@@ -1,0 +1,11 @@
+{
+  "android": {
+    "release": {
+      "keystore": "android.keystore",
+      "storePassword": "BJP@2019",
+      "alias": "release",
+	  "password" :"BJP@2019",
+	  "keystoreType":""
+    }
+  }
+}

@@ -19,50 +19,34 @@ export class HomePage {
    [x: string]: any;
   public products: Observable<Product[]>;
   public categories: Observable<Category[]>;
-   
   private count: number = 0;
   @ViewChild(Slides) slides: Slides;
-
+  //private i: number = 0;
   constructor(public injector: Injector, public nav: NavController, private badge: Badge, public DataService: GetDataProvider, public events: Events) {
+
   }
   ionViewDidLoad() {
-    this.products = this.DataService.allProduct();
-    this.categories = this.DataService.allCategory(); 
-    console.log(this.products);
-    console.log(this.categories);
-  // this.category = this.categoriesService.all();
+   this.products = this.DataService.allProduct();
+  this.categories = this.DataService.allCategory(); 
+  this.DataService.allCategory().subscribe(res1 => {
+      this.dataC = res1;
+    });
+       this.DataService.allProduct().subscribe(res2 => {
+        this.data = res2;
+   });
+  //  for(this.i;; this.i++){
+  //    if (this.dataC[this.i].SrNo==this.data[this.i].CatId){
+  //       console.log("true");
+  //       }
+  //  }
+}
+   getItme(){
+    for( let i=0;; this.i++){
+       if (this.dataC[i].SrNo==this.data[i].CatId){
+    return;
+       }
   }
-  // private initializeCategories(): void {
-
-  //   // Select it by defaut
-  //   this.selectedCategory = this.categories[0];
-
-  //   // Check which arrows should be shown
-  //   this.showLeftButton = false;
-  //  // this.showRightButton = this.categories.length > 3;
-  // }
-
-  // public filterData(categoryId: number): void {
-  //   // Handle what to do when a category is selected
-  // }
-
-  // // Method executed when the slides are changed
-  // public slideChanged(): void {
-  //   let currentIndex = this.slides.getActiveIndex();
-  //   this.showLeftButton = currentIndex !== 0;
-  //   this.showRightButton = currentIndex !== Math.ceil(this.slides.length() / 3);
-  // }
-
-  // // Method that shows the next slide
-  // public slideNext(): void {
-  //   this.slides.slideNext();
-  // }
-
-  // // Method that shows the previous slide
-  // public slidePrev(): void {
-  //   this.slides.slidePrev();
-  // }
-
+  }
 
   viewCart() {
     console.log("view to cart");
