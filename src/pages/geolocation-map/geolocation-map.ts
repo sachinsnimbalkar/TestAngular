@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
+import { Device } from '@ionic-native/device';
 
 declare var google;
 var map: any;
@@ -534,7 +535,7 @@ export class GeolocationMapPage {
 
   @ViewChild('map') mapElement: ElementRef;
 
-  constructor(public navCtrl: NavController, public platform: Platform, private http: Http) {
+  constructor(public navCtrl: NavController, public platform: Platform, private http: Http,private device: Device) {
     platform.ready().then(() => {
       this.initMap();
     });
