@@ -21,6 +21,7 @@ import{StoreFrontComponent} from '../pages/store-front/store-front.component'
 import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
 import{CheckoutComponent} from '../pages/checkout/checkout.component'
 import{OrderConfirmationComponent} from '../pages/order-confirmation/order-confirmation.component'
+import { Device } from '@ionic-native/device';
 
 @Component({
   templateUrl: 'app.html'

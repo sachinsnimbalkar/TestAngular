@@ -35,6 +35,7 @@ import { ShoppingCartService } from '../providers/shopping-cart.service';
 import { LocalStorageServie } from '../providers/storage.service';
 import{Badge} from '@ionic-native/badge';
 import { CommonModule } from '@angular/common';
+import { Device } from '@ionic-native/device';
 @NgModule({
   declarations: [
     MyApp,
@@ -90,7 +91,7 @@ import { CommonModule } from '@angular/common';
     
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,ShoppingCartService,LocalStorageServie,
-    GetDataProvider,DeliveryOptionsDataService,Badge,
+    GetDataProvider,DeliveryOptionsDataService,Badge,Device,
   ]
 })
 export class AppModule {}
