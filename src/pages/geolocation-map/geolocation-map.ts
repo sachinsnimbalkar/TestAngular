@@ -6,7 +6,7 @@ import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular
 import { Device } from '@ionic-native/device';
 
 declare var google;
-var map: any;
+var map;
 var infowindow: any;
 var arrstores = [{
   "lat4": 39.71004,
@@ -661,7 +661,7 @@ export class GeolocationMapPage {
       });
 
       this.showOffers(mylocation);
-      //drag marker logic
+      //drag marker and function logic
       marker.addListener('dragend', (event) => {
         mylocation = { lat: event.latLng.lat(), lng: event.latLng.lng() }
         this.showOffers(mylocation);

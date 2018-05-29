@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
-
- * Generated class for the OrderhistoryPage page.
+ * Generated class for the SuccessPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,21 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-orderhistory',
-  templateUrl: 'orderhistory.html',
+  selector: 'page-success',
+  templateUrl: 'success.html',
 })
-
-export class OrderhistoryPage {
+export class SuccessPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-
-    console.log('ionViewDidLoad OrderhistoryPage');
-  }
-  payOrder(){
-    alert("proceed to pay");
+    console.log('ionViewDidLoad SuccessPage');
   }
 
 }

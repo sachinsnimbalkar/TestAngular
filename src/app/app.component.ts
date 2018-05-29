@@ -21,7 +21,6 @@ import{StoreFrontComponent} from '../pages/store-front/store-front.component'
 import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
 import{CheckoutComponent} from '../pages/checkout/checkout.component'
 import{OrderConfirmationComponent} from '../pages/order-confirmation/order-confirmation.component'
-import { Device } from '@ionic-native/device';
 
 @Component({
   templateUrl: 'app.html'
@@ -45,7 +44,7 @@ export class MyApp {
       { title: 'Offers', component: OfferPage },
       { title: 'Filter', component: FilterPage },
       { title: 'Track Order', component: TrackOrderPage },
-      { title: 'MapView', component: GeolocationMapPage },
+      { title: 'MapView', component: GeolocationMapPage },      
       { title: 'T&C Disclaimer', component: DisclaimerPage },
       { title: 'Feedback', component: FeedbackPage },
       { title: 'About', component: AboutPage },

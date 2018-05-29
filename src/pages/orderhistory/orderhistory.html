@@ -5,9 +5,9 @@
 <ion-header>
 
   <ion-navbar>
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>orderhistory</ion-title>
   </ion-navbar>
 
@@ -15,7 +15,12 @@
 
 
 <ion-content padding>
-<ion-label>Order No.4</ion-label> <ion-label style="align-self: right">Successful</ion-label>
-<ion-label>Total: 1 Item</ion-label><ion-label style="align:right">Order Total 185</ion-label>
-<ion-label>2017-25-21 11:13:15</ion-label>
+  <ion-label>Order No.4</ion-label>
+  <ion-label style="align-self: right">Successful</ion-label>
+  <ion-label>Total: 1 Item</ion-label>
+  <ion-label style="align:right">Order Total 185</ion-label>
+  <ion-label>2017-25-21 11:13:15</ion-label>
+  <ion-footer>
+    <button ion-button full type="Submit" (click)="payOrder()">Proceed to Pay</button>
+  </ion-footer>
 </ion-content>
