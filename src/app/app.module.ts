@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
+import { PaymentPage } from '../pages/payment/payment';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { LoginPage} from '../pages/login/login';
+import { LoginPage } from '../pages/login/login';
 import { AuthService } from '../providers/auth-service/auth-service';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,8 +24,8 @@ import { LoginScreenPage } from '../pages/login-screen/login-screen';
 import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
 import { VerificationCodePage } from '../pages/verification-code/verification-code';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
-import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
-import { CachcingServiceBase } from '../providers/caching.service';
+import { GeolocationMapPage } from '../pages/geolocation-map/geolocation-map'
+//import { CachcingServiceBase } from '../providers/caching.service';
 import { LoginScreenPageModule } from '../pages/login-screen/login-screen.module';
 import { HomePageModule } from '../pages/home/home.module';
 import { FilterPageModule } from '../pages/filter/filter.module';
@@ -33,65 +33,68 @@ import { GeolocationMapPageModule } from '../pages/geolocation-map/geolocation-m
 import { DeliveryOptionsDataService } from '../providers/delivery-options.service';
 import { ShoppingCartService } from '../providers/shopping-cart.service';
 import { LocalStorageServie } from '../providers/storage.service';
-import{Badge} from '@ionic-native/badge';
+import { Badge } from '@ionic-native/badge';
 import { CommonModule } from '@angular/common';
 import { Device } from '@ionic-native/device';
+
 @NgModule({
   declarations: [
     MyApp,
     //HomePage,
-   AboutPage,
+    AboutPage,
     ListPage,
     LoginPage,
-   // LoginScreenPage,
+    // LoginScreenPage,
     OfferPage,
-   // ForgetPasswordPage,
+    // ForgetPasswordPage,
     VerificationCodePage,
     ResetPasswordPage,
-   // FilterPage,
+    // FilterPage,
     OrderhistoryPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
-   // GeolocationMapPage,
+    PaymentPage,
+    // GeolocationMapPage,
     ExitPage,
 
   ],
   imports: [CommonModule,
-    BrowserModule,HttpModule,LoginScreenPageModule,HomePageModule,
-    FilterPageModule,GeolocationMapPageModule,
+    BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
+    FilterPageModule, GeolocationMapPageModule,
     IonicModule.forRoot(MyApp),
-      ],
+  ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,   
-  //  HomePage,
-   // LoginScreenPage,
+    LoginPage,
+    //  HomePage,
+    // LoginScreenPage,
     AboutPage,
     ListPage,
     OrderhistoryPage,
     OfferPage,
-   // ForgetPasswordPage,
+    // ForgetPasswordPage,
     VerificationCodePage,
     ResetPasswordPage,
     TrackOrderPage,
     DisclaimerPage,
-//FilterPage,
+    //FilterPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
-   // GeolocationMapPage,
-   ExitPage,
+    PaymentPage,
+    // GeolocationMapPage,
+    ExitPage,
 
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthService,ShoppingCartService,LocalStorageServie,
-    GetDataProvider,DeliveryOptionsDataService,Badge,Device,
+
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AuthService, ShoppingCartService, LocalStorageServie,
+    GetDataProvider, DeliveryOptionsDataService, Badge, Device,
   ]
 })
-export class AppModule {}
+export class AppModule { }
