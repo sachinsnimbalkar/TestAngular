@@ -8,7 +8,11 @@ import { Badge } from '@ionic-native/badge';
 import { Observer } from 'rxjs/Observer';
 import { Subscription } from 'rxjs/Subscription';
 import { Category } from '../../model/category.model';
-import {SharedData} from  '../../providers/sharedData.service'
+import {SharedData} from  '../../providers/sharedData.service';
+import {ShoppingCartService} from '../../providers/shopping-cart.service';
+import { ToastController } from 'ionic-angular';
+
+
 
 @IonicPage()
 @Component({
@@ -24,7 +28,7 @@ export class HomePage {
   result;
   @ViewChild(Slides) slides: Slides;
   //private i: number = 0;
-  constructor(public injector: Injector, public nav: NavController, private badge: Badge, public DataService: GetDataProvider, public events: Events,public shareData:SharedData) {
+  constructor(private toastCtrl: ToastController,public injector: Injector, public nav: NavController, private badge: Badge, public DataService: GetDataProvider, public events: Events,public shareData:SharedData,public shoppingCartService: ShoppingCartService) {
 
   }
 
@@ -78,9 +82,29 @@ for(var i=0; i < dataItem.length; i++){
   }
 
 
-  // public addProductToCart()/*(product: Product): void*/ {
-  // //  this.shoppingCartService.addItem(product, 1);
-  // }
+ addProductToCart(product: Product,qty:number): void{
+   console.log(product,qty)
+      this.shoppingCartService.addItem(product, qty);
+      //notification to add cart ..........
+      this.presentToast(product,qty);
+  }
+
+//toast call
+presentToast(product: Product,qty:number) {
+  let toast = this.toastCtrl.create({
+    message: qty+' '+product.ProductName+'Added  to your cart',
+    duration: 3000,
+    position: 'top'
+  });
+
+  toast.onDidDismiss(() => {
+    console.log('Dismissed toast');
+  });
+
+  toast.present();
+}
+
+
 
   // public removeProductFromCart()/*(product: Product): void*/ {
   //  // this.shoppingCartService.addItem(product, -1);

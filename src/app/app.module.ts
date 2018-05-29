@@ -38,6 +38,7 @@ import { CommonModule } from '@angular/common';
 import { Device } from '@ionic-native/device';
 import {SharedData} from  '../providers/sharedData.service'
 
+
 @NgModule({
   declarations: [
     MyApp,
