@@ -8,6 +8,7 @@ import { Badge } from '@ionic-native/badge';
 import { Observer } from 'rxjs/Observer';
 import { Subscription } from 'rxjs/Subscription';
 import { Category } from '../../model/category.model';
+import {SharedData} from  '../../providers/sharedData.service'
 
 @IonicPage()
 @Component({
@@ -16,36 +17,51 @@ import { Category } from '../../model/category.model';
 
 })
 export class HomePage {
-   [x: string]: any;
+  [x: string]: any;
   public products: Observable<Product[]>;
   public categories: Observable<Category[]>;
   private count: number = 0;
+  result;
   @ViewChild(Slides) slides: Slides;
   //private i: number = 0;
-  constructor(public injector: Injector, public nav: NavController, private badge: Badge, public DataService: GetDataProvider, public events: Events) {
+  constructor(public injector: Injector, public nav: NavController, private badge: Badge, public DataService: GetDataProvider, public events: Events,public shareData:SharedData) {
 
   }
+
+  public ProductArray = [];
+
   ionViewDidLoad() {
-   this.products = this.DataService.allProduct();
-  this.categories = this.DataService.allCategory(); 
-  this.DataService.allCategory().subscribe(res1 => {
-      this.dataC = res1;
+    this.DataService.allProduct().subscribe(result => {
+      this.result = result;
+      this.shareData.setData(this.result);
+      console.log(this.result);
     });
-       this.DataService.allProduct().subscribe(res2 => {
-        this.data = res2;
-   });
-  //  for(this.i;; this.i++){
-  //    if (this.dataC[this.i].SrNo==this.data[this.i].CatId){
-  //       console.log("true");
-  //       }
-  //  }
-}
-   getItme(){
-    for( let i=0;; this.i++){
-       if (this.dataC[i].SrNo==this.data[i].CatId){
-    return;
-       }
+
+    this.categories = this.DataService.allCategory();
+
   }
+  public menuList = [];
+  getItem(category) {
+
+    //this.DataService.allProductbyID(categories.SrNo);
+    //console.log("cat:", category);
+    this.menuList.length = 0;
+    //this.result.length = 0;
+    
+    let dataItem = this.shareData.getData();
+
+for(var i=0; i < dataItem.length; i++){
+  
+
+      if (dataItem[i].CatId === category.SrNo) {
+        this.menuList.push(dataItem[i]);
+        console.log(this.menuList);
+        
+      }
+     
+    }
+     this.result = this.menuList;
+  
   }
 
   viewCart() {
