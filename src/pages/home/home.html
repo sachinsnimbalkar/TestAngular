@@ -43,36 +43,35 @@
                     <ion-icon *ngIf="showLeftButton" name="arrow-back"></ion-icon>
                 </ion-col> -->
             <!-- <ion-segment  > -->
-            <ion-segment-button *ngFor="let category of categories | async" value="{{category.Category}}" (click)="getItme()">
+            <ion-segment-button *ngFor="let category of categories | async" value="{{category.Category}}" (click)="getItem(category)">
                 {{ category.Category}} </ion-segment-button>
             <!-- </ion-segment> -->
 
         </ion-segment>
     </ion-toolbar>
 
-     <!-- <div ng-switch="Category.SrNo"> -->
-      <!-- <ion-list {{ category.SrNo}} *ngIf ="category.SrNo== 1"  >  -->
-           <ion-list>    
-            <ion-item *ngFor="let product of products | async"  (click)="addCart()">
-                <ion-avatar item-left>
-                    <img class="img-responsive" src="../../assets/{{product.ProductImgURL}}">
+    <!-- <div ng-switch="Category.SrNo"> -->
+    <!-- <ion-list {{ category.SrNo}} *ngIf ="category.SrNo== 1"  >  -->
+    <ion-list>
+        <ion-item *ngFor="let product of result" >
+            <ion-avatar item-left>
+                <img class="img-responsive" src="../../assets/{{product.ProductImgURL}}">
 
-                </ion-avatar>
-                <h2>{{product.ProductName}}</h2>
-                <!-- <h3>{{product.ProdDesc}}</h3> -->
-                <h4>{{product.Price}}</h4>
+            </ion-avatar>
+            <h2>{{product.ProductName}}</h2>
+            <!-- <h3>{{product.ProdDesc}}</h3> -->
+            <h4>Rs.{{product.Price}}/-</h4>
 
-                <!-- <button type="button" 
-    class="button success small js-btn-add"
-    (click)="addProductToCart(product, 1)"
-    >Add To Cart</button>
-    <button type="button"
-        class="button small js-btn-remove"
+            <button type="button" class="btn btn-danger" (click)="addProductToCart(product, 1)">Add To Cart
+    </button>
+
+            <!--<button type="button"
+        class="btn btn-dark"
         *ngIf="productInCart(product) | async"
         (click)="removeProductFromCart(product, 1)"
         >Remove item from cart</button> -->
-            </ion-item>
-        </ion-list>
+        </ion-item>
+    </ion-list>
     <!-- </div> -->
     <ion-fab right bottom>
         <button ion-fab color="primary" (click)="viewCart()">

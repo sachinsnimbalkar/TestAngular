@@ -36,6 +36,7 @@ import { LocalStorageServie } from '../providers/storage.service';
 import { Badge } from '@ionic-native/badge';
 import { CommonModule } from '@angular/common';
 import { Device } from '@ionic-native/device';
+import {SharedData} from  '../providers/sharedData.service'
 
 @NgModule({
   declarations: [
@@ -90,11 +91,9 @@ import { Device } from '@ionic-native/device';
   ],
   providers: [
     StatusBar,
-    SplashScreen,
-
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    AuthService, ShoppingCartService, LocalStorageServie,
-    GetDataProvider, DeliveryOptionsDataService, Badge, Device,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthService,ShoppingCartService,LocalStorageServie,
+    GetDataProvider,DeliveryOptionsDataService,Badge,Device,SharedData,
   ]
 })
 export class AppModule { }

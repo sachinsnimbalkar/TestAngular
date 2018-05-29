@@ -20,21 +20,64 @@ export class GetDataProvider extends CachcingServiceBase {
     super();
   }
 
-  public allProduct(): Observable<Product[]> 
-  { 
+  // public allProduct(): Observable<Product[]> 
+  // { 
    
-     return this.cache<Product[]>(() => this.products,
-      (val: Observable<Product[]>) => this.products = val,
-      () => this.http
-        .get("./assets/data/BJPProducts.json")
-        .map((response) => response.json()
-          .map((item) => {
-            let model = new Product();
-            model.updateFrom(item);
-          return model;
-          })));
-        //  return this.cache<Product[]> 
+  //    return this.cache<Product[]>(() => this.products,
+  //     (val: Observable<Product[]>) => this.products = val,
+  //     () => this.http
+  //       .get("./assets/data/BJPProducts.json")
+  //       .map((response) => response.json()
+  //         .map((item) => {
+  //           let model = new Product();
+  //           model.updateFrom(item);
+  //         return model;
+  //         })));
+  //       //  return this.cache<Product[]> 
+  // }
+
+public menuArry = [];
+
+public allProduct()
+  {  
+     return this.http.get("./assets/data/BJPProducts.json").map(response =>
+      response.json()
+      .map((item) => 
+      {
+         return item;
+         //return this.menuArry;
+      }));
+
+      
+      
   }
+
+
+
+
+//  public allProductbyID(catID)
+//   { 
+//       this.http
+//         .get("./assets/data/BJPProducts.json")
+//         .map((response) => response.json()
+//           .map((item) => {
+//             console.log(item);
+//             if(item.CatId === catID)
+//             {
+              
+//               conso
+
+//             }
+            
+//           }));
+        //  return this.cache<Product[]> 
+  //}
+
+
+
+
+
+
   public allCategory(): Observable<Category[]> {
     return this.cache<Category[]>(() => this.categories,
       (val: Observable<Category[]>) => this.categories = val,
