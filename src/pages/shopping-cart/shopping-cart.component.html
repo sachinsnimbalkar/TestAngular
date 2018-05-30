@@ -1,29 +1,39 @@
-<div class="row">
-  <div class="small-12 columns">
-    <h3>
-      <i class="material-icons">shopping_basket</i>
-      Your Shopping Basket
-    </h3>
-  </div>
-</div>
-<br/>
-<div class="row">
-  <div class="small-12 columns">
-    <h5>
-      Sub Total ({{itemCount}} items):
-      <span class="text--red text--bold js-cart-total">{{(cart | async).grossTotal | currency:'GBP':true}}</span>
-    </h5>
-  </div>
-</div>
-<br/>
-<div class="row">
+<!--
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cart Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ <ion-label>Sub Total ({{itemCount}} items):</ion-label>
+  <ion-label> {{(cart | async).grossTotal | currency:'GBP':true}}</ion-label>
+ 
+
+ 
+  <ion-footer>
+    <button ion-button full type="Submit" (click)="payOrder()">Proceed to Pay</button>
+  </ion-footer>
+</ion-content>
+
+
+<!--<div class="row">
   <div class="small-12 columns">
     <a class="success button large expanded"
        [attr.disabled]="itemCount === 0 ? true : null"
        routerLink="/checkout">Proceed To Checkout</a>
   </div>
-</div>
-<div class="row">
+</div>-->
+<!--<div class="row">
   <div class="small-12 columns text-center">
     or
   </div>
@@ -37,4 +47,4 @@
       Empty shopping basket
     </button>
   </div>
-</div>
+</div>-->

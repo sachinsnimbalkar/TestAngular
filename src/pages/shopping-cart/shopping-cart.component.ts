@@ -19,6 +19,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   public products: Observable<Product[]>;
   public cart: Observable<ShoppingCart>;
   public itemCount: number;
+  //public itemName = [];
 
   private cartSubscription: Subscription;
 
@@ -35,6 +36,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     this.cart = this.shoppingCartService.get();
     this.cartSubscription = this.cart.subscribe((cart) => {
       this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
+      //this.itemName.push(cart.items.map((x)=>x.producName));
     });
   }
 
