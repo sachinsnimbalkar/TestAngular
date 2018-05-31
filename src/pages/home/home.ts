@@ -78,11 +78,14 @@ for(var i=0; i < dataItem.length; i++){
     console.log("In view cart");
     this.nav.push(ShoppingCartComponent);
   }
+  login() {
+    this.nav.push('LoginScreenPage');
+  }
   openFilters() {
     this.nav.push('FilterPage');
   }
   listView() {
-    this.nav.push('');
+    this.nav.push('HomePage');
   }
   mapView() {
     this.nav.push('GeolocationMapPage');

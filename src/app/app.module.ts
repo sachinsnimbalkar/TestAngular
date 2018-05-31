@@ -5,7 +5,7 @@ import { PaymentPage } from '../pages/payment/payment';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { LoginPage } from '../pages/login/login';
+ import { LoginPage } from '../pages/login/login';
 import { AuthService } from '../providers/auth-service/auth-service';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -36,10 +36,24 @@ import { LocalStorageServie } from '../providers/storage.service';
 import { Badge } from '@ionic-native/badge';
 import { CommonModule } from '@angular/common';
 import { Device } from '@ionic-native/device';
-import {SharedData} from  '../providers/sharedData.service';
+import {SharedData} from  '../providers/sharedData.service'
+import { AngularFireModule, FirebaseApp } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import  * as Firebase from 'firebase';
+import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import {ShoppingCartModule} from '../pages/shopping-cart/shopping-cart.module'
 import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
 
+export const  firebaseConfig = {
+
+		apiKey: "AIzaSyDbknxObiTJwTaH4b4JxELtqbq9djoTpDY",
+    authDomain: "cmbjp2018-4fdc5.firebaseapp.com",
+    databaseURL: "https://cmbjp2018-4fdc5.firebaseio.com",
+    projectId: "cmbjp2018-4fdc5",
+    storageBucket: "cmbjp2018-4fdc5.appspot.com",
+    messagingSenderId: "682850594591"
+};
+Firebase.initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
@@ -64,9 +78,11 @@ import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.compone
     ExitPage,
 
   ],
-  imports: [CommonModule,
+  imports: [CommonModule,NgxErrorsModule,CommonModule,
     BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
     FilterPageModule, GeolocationMapPageModule,ShoppingCartModule,
+    BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
+    FilterPageModule, GeolocationMapPageModule,AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -97,9 +113,9 @@ import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.compone
   providers: [
     SplashScreen,
     StatusBar,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: ErrorHandler, useClass: IonicErrorHandler},AngularFireAuth,
     AuthService,ShoppingCartService,LocalStorageServie,
-    GetDataProvider,DeliveryOptionsDataService,Badge,Device,SharedData,
+    GetDataProvider,DeliveryOptionsDataService,Badge,SharedData,
   ]
 })
 export class AppModule { }
