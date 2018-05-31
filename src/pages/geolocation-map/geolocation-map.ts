@@ -5,9 +5,89 @@ import { Platform } from 'ionic-angular';
 import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
 import { Device } from '@ionic-native/device';
 
+
 declare var google;
 var map;
 var infowindow: any;
+var arroffers=[
+  {
+    "Offerid": 1,
+    "OfferDetails": "A1",
+    "OfferImgURL": "../../assets/OfferImages/A1.jpg",
+    "OfferStartDate": "30-05-2018",
+    "OfferEndDate": "31-05-2018"
+  },
+  {
+    "Offerid": 2,
+    "OfferDetails": "A2",
+    "OfferImgURL": "../../assets/OfferImages/A2.jpg",
+    "OfferStartDate": "31-05-2018",
+    "OfferEndDate": "01-06-2018"
+  },
+  {
+    "Offerid": 3,
+    "OfferDetails": "A3",
+    "OfferImgURL": "../../assets/OfferImages/A3.jpg",
+    "OfferStartDate": "01-06-2018",
+    "OfferEndDate": "02-06-2018"
+  },
+  {
+    "Offerid": 4,
+    "OfferDetails": "A4",
+    "OfferImgURL": "../../assets/OfferImages/A4.jpg",
+    "OfferStartDate": "02-06-2018",
+    "OfferEndDate": "03-06-2018"
+  },
+  {
+    "Offerid": 5,
+    "OfferDetails": "A5",
+    "OfferImgURL": "../../assets/A5.jpg",
+    "OfferStartDate": "03-06-2018",
+    "OfferEndDate": "04-06-2018"
+  },
+  {
+    "Offerid": 6,
+    "OfferDetails": "A6",
+    "OfferImgURL": "A6.jpg",
+    "OfferStartDate": "04-06-2018",
+    "OfferEndDate": "05-06-2018"
+  },
+  {
+    "Offerid": 7,
+    "OfferDetails": "A7",
+    "OfferImgURL": "A7.jpg",
+    "OfferStartDate": "05-06-2018",
+    "OfferEndDate": "06-06-2018"
+  },
+  {
+    "Offerid": 8,
+    "OfferDetails": "A8",
+    "OfferImgURL": "A8.jpg",
+    "OfferStartDate": "06-06-2018",
+    "OfferEndDate": "07-06-2018"
+  },
+  {
+    "Offerid": 9,
+    "OfferDetails": "A9",
+    "OfferImgURL": "A9.jpg",
+    "OfferStartDate": "07-06-2018",
+    "OfferEndDate": "08-06-2018"
+  },
+  {
+    "Offerid": 10,
+    "OfferDetails": "A10",
+    "OfferImgURL": "A10.jpg",
+    "OfferStartDate": "08-06-2018",
+    "OfferEndDate": "09-06-2018"
+  },
+  {
+    "Offerid": 11,
+    "OfferDetails": "A11",
+    "OfferImgURL": "A11.jpg",
+    "OfferStartDate": "09-06-2018",
+    "OfferEndDate": "10-06-2018"
+  }
+ ];
 var arrstores = [{
   "lat4": 39.71004,
   ",": ",",
@@ -534,12 +614,14 @@ export class GeolocationMapPage {
 
 
   @ViewChild('map') mapElement: ElementRef;
+  
 
   constructor(public navCtrl: NavController, public platform: Platform, private http: Http,private device: Device) {
     platform.ready().then(() => {
       this.initMap();
     });
   }
+
   static toRad(Value) {
     return Value * Math.PI / 180;
   }

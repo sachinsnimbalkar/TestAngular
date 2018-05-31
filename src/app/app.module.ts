@@ -90,6 +90,7 @@ import {SharedData} from  '../providers/sharedData.service'
 
   ],
   providers: [
+    SplashScreen,
     StatusBar,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,ShoppingCartService,LocalStorageServie,

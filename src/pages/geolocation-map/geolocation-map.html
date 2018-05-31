@@ -11,4 +11,38 @@
 
 <ion-content>
   <div #map id="map"></div>
+  
+  <div #map1>
+      <div *ngFor="let item of arroffers; let i = index; let f=first; let l=last;">
+          <h2>{{item.OfferDetails}}</h2>
+          <!-- <p>
+            {{item.club.name}}
+          </p>
+          <p>
+            <strong>{{item.attendees.length}} are going</strong>
+          </p> -->
+        </div>
+      <!-- <ion-slides loop>
+        <ion-slide *ngFor="let item of arroffers | async">
+          <ion-card>
+            <div>
+              <img [src]="item.OfferImgURL"/>
+            </div>
+            <ion-card-content>
+              <div>
+                <div>
+                  <h2>{{item.OfferDetails}}</h2> -->
+                  <!-- <p>
+                    {{item.club.name}}
+                  </p>
+                  <p>
+                    <strong>{{item.attendees.length}} are going</strong>
+                  </p> -->
+                <!-- </div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-slide>
+      </ion-slides> -->
+    </div>
 </ion-content>
