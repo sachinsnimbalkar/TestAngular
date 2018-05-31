@@ -23,7 +23,7 @@
           <ion-list inset>
               <ion-item>
                   <ion-label floating>User Name/Email/Mobile</ion-label>
-                <ion-input type="text" placeholder="User Name/Email/Mobile" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+                <ion-input type="email" placeholder="User Name/Email/Mobile" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
               </ion-item>
   
               <ion-item>
@@ -55,7 +55,8 @@
             <div padding-horizontal>
               <!-- <div class="form-error">{{loginError}}</div> -->
 
-              <button ion-button full type="submit" [disabled]="!loginForm.valid">Log in</button>
+              <button ion-button full type="submit"  (click)="login()">Log in</button>
+              <!-- [disabled]="!loginForm.valid" -->
               <div class="login-footer">
                 
                     <div (click)="forgotPass()">Forgot Password ? If you're a new user, please sign up .</div>

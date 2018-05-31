@@ -37,13 +37,23 @@ import { Badge } from '@ionic-native/badge';
 import { CommonModule } from '@angular/common';
 import { Device } from '@ionic-native/device';
 import {SharedData} from  '../providers/sharedData.service'
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, FirebaseApp } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { firebaseConfig } from '../config';
+import  * as Firebase from 'firebase';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import {ShoppingCartModule} from '../pages/shopping-cart/shopping-cart.module'
 import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
 
+export const  firebaseConfig = {
+
+		apiKey: "AIzaSyDbknxObiTJwTaH4b4JxELtqbq9djoTpDY",
+    authDomain: "cmbjp2018-4fdc5.firebaseapp.com",
+    databaseURL: "https://cmbjp2018-4fdc5.firebaseio.com",
+    projectId: "cmbjp2018-4fdc5",
+    storageBucket: "cmbjp2018-4fdc5.appspot.com",
+    messagingSenderId: "682850594591"
+};
+Firebase.initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
@@ -72,8 +82,7 @@ import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.compone
     BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
     FilterPageModule, GeolocationMapPageModule,ShoppingCartModule,
     BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
-    AngularFireModule.initializeApp(firebaseConfig.fire),
-    FilterPageModule, GeolocationMapPageModule,
+    FilterPageModule, GeolocationMapPageModule,AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

@@ -22,6 +22,7 @@ import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.compone
 import{CheckoutComponent} from '../pages/checkout/checkout.component'
 import{OrderConfirmationComponent} from '../pages/order-confirmation/order-confirmation.component'
 import { AuthService } from '../providers/auth-service/auth-service';
+import  * as Firebase from 'firebase';
 
 @Component({
   templateUrl: 'app.html'
@@ -43,7 +44,32 @@ export class MyApp {
      private auth: AuthService) {
     
     this.initializeApp();
-  
+var that=this;
+    Firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        that.rootPage= LoginScreenPage;
+       // that.rootPage = HomePage;
+        // User is signed in.
+        // var displayName = user.displayName;
+        // var email = user.email;
+        // var emailVerified = user.emailVerified;
+        // var photoURL = user.photoURL;
+        // var isAnonymous = user.isAnonymous;
+        // var uid = user.uid;
+        // var providerData = user.providerData;
+        // ...
+      } else {
+       // that.rootPage= LoginScreenPage;
+       that.rootPage = HomePage;
+        // User is signed out.
+        // ...
+      }
+    });
+
+
+
+
+    
 		this.menu = menu;
 		this.app = app;
 		this.platform = platform;

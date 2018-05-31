@@ -4,6 +4,7 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import  * as Firebase from 'firebase';
 
 /**
  * Generated class for the LoginScreenPage page.
@@ -16,8 +17,10 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 @Component({
   selector: 'page-login-screen',
   templateUrl: 'login-screen.html',
+  providers:[AuthService],
 })
 export class LoginScreenPage {
+  [x: string]: any;
   navCtrl: any;
   loading: Loading;
   registerCredentials = { email: '', password: '' };
@@ -45,21 +48,44 @@ export class LoginScreenPage {
     this.nav.pop();
   }
   login() {
-		let data = this.loginForm.value;
+var that=this;
+    var loader =this.loadingCtrl.create({
+      content:"Please wait..."
+    });
+    loader.present();
+    this.auth.loginUser(this.email,this.password).then(authData=>{
+      loader.dismiss();
+      that.nav.setRoot(HomePage);
+    },error=>{
+      loader.dismiss();
+      let toast=this.toastCtrl.create({
+        message:"fail to login",
+        duration:3000,
+        position:'top'
+      });
+      toast.present()
+      that.password="";
+    });
 
-		if (!data.email) {
-			return;
-		}
 
-		let credentials = {
-			email: data.email,
-			password: data.password
-		};
-		this.auth.signInWithEmail(credentials)
-			.then(
-				() => this.navCtrl.setRoot(HomePage),
-				error => this.loginError = error.message
-			);
+
+
+
+		// let data = this.loginForm.value;
+
+		// if (!data.email) {
+		// 	return;
+		// }
+
+		// let credentials = {
+		// 	email: data.email,
+		// 	password: data.password
+		// };
+		// this.auth.signInWithEmail(credentials)
+		// 	.then(
+		// 		() => this.navCtrl.setRoot(HomePage),
+		// 		error => this.loginError = error.message
+		// 	);
   }
   loginWithGoogle() {
     this.auth.signInWithGoogle()

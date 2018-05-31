@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController, ToastController, LoadingController} from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -21,34 +21,92 @@ import { HomePage } from '../home/home';
 })
 
 export class SignupPage {
+ 
+  public MobileNo: string;
+  public Password: string;
+  public Status: string;
+  public Email: string;
+  public FirstName: string;
+  public LastName: string;
+  public Gender: string;
+  public DateOfBirth: Date;
+
 	signupError: string;
 	form: FormGroup;
-  registerCredentials = { FirstName:'', LastName:'', Email:'',Password:'', Address:'', MobileNumber:'',DOB:'',Status:'',Gender:'',};
+  registerCredentials = { FirstName:'', LastName:'', Email:'',Password:'', Address:'', 
+  MobileNumber:'',DOB:'',Status:'',Gender:'',};
+  
 	constructor(
+         public navParams: NavParams,  
+    public toastCtrl: ToastController, 
+    public loadingCtrl: LoadingController,
     fb: FormBuilder,
     private nav: NavController,
 		private navCtrl: NavController,
     private auth: AuthService
-	) {
-		this.form = fb.group({
-			email: ['', Validators.compose([Validators.required, Validators.email])],
-			password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
-		});
+  ) 
+  {
+		// this.form = fb.group({
+		// 	email: ['', Validators.compose([Validators.required, Validators.email])],
+		// 	password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+		// });
   }
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad SignupPage');
+  }
+  signup(){
+
+    var account = {
+      FirstName: this.FirstName,
+      lastName: this.LastName || '',
+      Email: this.Email,
+      Gender: this.Gender || '',
+      Password: this.Password,
+      MobileNo: this.MobileNo || '',
+      DateOfBirth : this.DateOfBirth || ''
+    };
+    var that = this;
+
+    var loader = this.loadingCtrl.create({
+          content: "Please wait...",
+          
+        });
+        loader.present();
+    
+    
+        this.auth.signupUserService(account).then(authData => {
+          //successful
+          loader.dismiss();
+          that.navCtrl.setRoot(HomePage);
+    
+        }, error => {
+    loader.dismiss();
+         // Unable to log in
+          let toast = this.toastCtrl.create({
+            message: error,
+            duration: 3000,
+            position: 'top'
+          });
+          toast.present();
+    
+          that.Password = ""//empty the password field
+        }); 
+      }
+
   goBack() {
           this.nav.pop();
         }
-  signup() {
-		let data = this.form.value;
-		let credentials = {
-			email: data.email,
-			password: data.password
-		};
-		this.auth.signUp(credentials).then(
-			() => this.navCtrl.setRoot(HomePage),
-			error => this.signupError = error.message
-		);
-  }
+  // signup() {
+	// 	let data = this.form.value;
+	// 	let credentials = {
+	// 		email: data.email,
+	// 		password: data.password
+	// 	};
+	// 	this.auth.signUp(credentials).then(
+	// 		() => this.navCtrl.setRoot(HomePage),
+	// 		error => this.signupError = error.message
+	// 	);
+  // }
   loginWithGoogle() {
     this.auth.signInWithGoogle()
       .then(
