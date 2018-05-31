@@ -28,6 +28,7 @@ export class HomePage {
   public categories: Observable<Category[]>;
   private count: number = 0;
   result;
+  public currentAddedProduct;
 
   //private cartdata : Observable<ShoppingCart>;
   //private itemscount:
@@ -89,6 +90,7 @@ for(var i=0; i < dataItem.length; i++){
 
 
  addProductToCart(product: Product,qty:number): void{
+
    console.log(product,qty)
       this.shoppingCartService.addItem(product, qty);
       //notification to add cart ..........
