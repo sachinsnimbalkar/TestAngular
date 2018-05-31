@@ -41,6 +41,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { firebaseConfig } from '../config';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import {ShoppingCartModule} from '../pages/shopping-cart/shopping-cart.module'
+import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
+
 
 @NgModule({
   declarations: [
@@ -61,11 +64,15 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
     FeedbackPage,
     PaymentPage,
     // GeolocationMapPage,
+   // ShoppingCartComponent,
     ExitPage,
 
   ],
-  imports: [CommonModule,NgxErrorsModule,
-    BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,AngularFireModule.initializeApp(firebaseConfig.fire),
+  imports: [CommonModule,NgxErrorsModule,CommonModule,
+    BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
+    FilterPageModule, GeolocationMapPageModule,ShoppingCartModule,
+    BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
+    AngularFireModule.initializeApp(firebaseConfig.fire),
     FilterPageModule, GeolocationMapPageModule,
     IonicModule.forRoot(MyApp),
   ],
@@ -90,6 +97,7 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
     FeedbackPage,
     PaymentPage,
     // GeolocationMapPage,
+    ///ShoppingCartComponent,
     ExitPage,
 
   ],
