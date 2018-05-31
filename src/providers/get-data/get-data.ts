@@ -46,15 +46,8 @@ public allProduct()
       {
          return item;
          //return this.menuArry;
-      }));
-
-      
-      
+      })); 
   }
-
-
-
-
 //  public allProductbyID(catID)
 //   { 
 //       this.http
@@ -72,11 +65,6 @@ public allProduct()
 //           }));
         //  return this.cache<Product[]> 
   //}
-
-
-
-
-
 
   public allCategory(): Observable<Category[]> {
     return this.cache<Category[]>(() => this.categories,
