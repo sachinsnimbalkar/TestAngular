@@ -46,6 +46,7 @@ export class ShoppingCartService {
     if (item === undefined) {
       item = new CartItem();
       item.productId = product.SrNo;
+      item.producName = product.ProductName; 
       cart.items.push(item);
     }
 

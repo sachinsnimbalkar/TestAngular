@@ -11,6 +11,8 @@ import { Category } from '../../model/category.model';
 import {SharedData} from  '../../providers/sharedData.service';
 import {ShoppingCartService} from '../../providers/shopping-cart.service';
 import { ToastController } from 'ionic-angular';
+import {ShoppingCart} from '../../model/shopping-cart.model'
+import {ShoppingCartComponent} from '../shopping-cart/shopping-cart.component'
 
 
 
@@ -26,6 +28,9 @@ export class HomePage {
   public categories: Observable<Category[]>;
   private count: number = 0;
   result;
+
+  //private cartdata : Observable<ShoppingCart>;
+  //private itemscount:
   @ViewChild(Slides) slides: Slides;
   //private i: number = 0;
   constructor(private toastCtrl: ToastController,public injector: Injector, public nav: NavController, private badge: Badge, public DataService: GetDataProvider, public events: Events,public shareData:SharedData,public shoppingCartService: ShoppingCartService) {
@@ -69,7 +74,8 @@ for(var i=0; i < dataItem.length; i++){
   }
 
   viewCart() {
-    console.log("view to cart");
+    console.log("In view cart");
+    this.nav.push(ShoppingCartComponent);
   }
   openFilters() {
     this.nav.push('FilterPage');
@@ -110,13 +116,15 @@ presentToast(product: Product,qty:number) {
   //  // this.shoppingCartService.addItem(product, -1);
   // }
 
-  //  public productInCart(product: Product): boolean {
+  
+  //  public productInCart(): boolean {
   //   return Observable.create((obs: Observer<boolean>) => {
   //     const sub = this.shoppingCartService
   //                     .get()
   //                     .subscribe((cart) => {
-  //                       obs.next(cart.items.some((i) => i.productId === product.SrNo));
-  //                       obs.complete();
+  //                       //obs.next(cart.items.some((i) => i.productId === product.SrNo));
+  //                       this.cartData.push(cart.items);
+  //                      console.log("CartData :", this.cartData);
   //                     });
   //    sub.unsubscribe();
   //   });

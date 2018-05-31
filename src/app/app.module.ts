@@ -36,7 +36,10 @@ import { LocalStorageServie } from '../providers/storage.service';
 import { Badge } from '@ionic-native/badge';
 import { CommonModule } from '@angular/common';
 import { Device } from '@ionic-native/device';
-import {SharedData} from  '../providers/sharedData.service'
+import {SharedData} from  '../providers/sharedData.service';
+import {ShoppingCartModule} from '../pages/shopping-cart/shopping-cart.module'
+import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
+
 
 @NgModule({
   declarations: [
@@ -57,12 +60,13 @@ import {SharedData} from  '../providers/sharedData.service'
     FeedbackPage,
     PaymentPage,
     // GeolocationMapPage,
+   // ShoppingCartComponent,
     ExitPage,
 
   ],
   imports: [CommonModule,
     BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
-    FilterPageModule, GeolocationMapPageModule,
+    FilterPageModule, GeolocationMapPageModule,ShoppingCartModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -86,6 +90,7 @@ import {SharedData} from  '../providers/sharedData.service'
     FeedbackPage,
     PaymentPage,
     // GeolocationMapPage,
+    ///ShoppingCartComponent,
     ExitPage,
 
   ],
