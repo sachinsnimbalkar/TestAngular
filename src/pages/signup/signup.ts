@@ -25,7 +25,7 @@ export class SignupPage {
   public MobileNo: string;
   public Password: string;
   public Status: string;
-  public Email: string;
+  public email: string;
   public FirstName: string;
   public LastName: string;
   public Gender: string;
@@ -33,7 +33,7 @@ export class SignupPage {
 
 	signupError: string;
 	form: FormGroup;
-  registerCredentials = { FirstName:'', LastName:'', Email:'',Password:'', Address:'', 
+  registerCredentials = { FirstName:'', LastName:'', email:'',Password:'', Address:'', 
   MobileNumber:'',DOB:'',Status:'',Gender:'',};
   
 	constructor(
@@ -59,7 +59,7 @@ export class SignupPage {
     var account = {
       FirstName: this.FirstName,
       lastName: this.LastName || '',
-      Email: this.Email,
+      email: this.email,
       Gender: this.Gender || '',
       Password: this.Password,
       MobileNo: this.MobileNo || '',
@@ -74,7 +74,7 @@ export class SignupPage {
         loader.present();
     
     
-        this.auth.signupUserService(account).then(authData => {
+        this.auth.signUpuser(account).then(authData => {
           //successful
           loader.dismiss();
           that.navCtrl.setRoot(HomePage);

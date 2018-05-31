@@ -43,7 +43,7 @@ export class AuthService {
 
 		this.fireAuth=firebase.auth();
 
-		this.userProfile=firebase.database().ref('users');
+		//this.userProfile=firebase.database().ref('databaseURL');
 		}
 	signInWithGoogle() {
 		console.log('Sign in with google');
