@@ -5,7 +5,7 @@ import { PaymentPage } from '../pages/payment/payment';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { LoginPage } from '../pages/login/login';
+ import { LoginPage } from '../pages/login/login';
 import { AuthService } from '../providers/auth-service/auth-service';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -37,6 +37,10 @@ import { Badge } from '@ionic-native/badge';
 import { CommonModule } from '@angular/common';
 import { Device } from '@ionic-native/device';
 import {SharedData} from  '../providers/sharedData.service'
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { firebaseConfig } from '../config';
+import { NgxErrorsModule } from '@ultimate/ngxerrors';
 
 @NgModule({
   declarations: [
@@ -60,8 +64,8 @@ import {SharedData} from  '../providers/sharedData.service'
     ExitPage,
 
   ],
-  imports: [CommonModule,
-    BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
+  imports: [CommonModule,NgxErrorsModule,
+    BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,AngularFireModule.initializeApp(firebaseConfig.fire),
     FilterPageModule, GeolocationMapPageModule,
     IonicModule.forRoot(MyApp),
   ],
@@ -90,10 +94,11 @@ import {SharedData} from  '../providers/sharedData.service'
 
   ],
   providers: [
+    SplashScreen,
     StatusBar,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: ErrorHandler, useClass: IonicErrorHandler},AngularFireAuth,
     AuthService,ShoppingCartService,LocalStorageServie,
-    GetDataProvider,DeliveryOptionsDataService,Badge,Device,SharedData,
+    GetDataProvider,DeliveryOptionsDataService,Badge,SharedData,
   ]
 })
 export class AppModule { }

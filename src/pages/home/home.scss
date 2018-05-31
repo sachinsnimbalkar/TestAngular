@@ -18,16 +18,44 @@ page-home {
           display: block;
           overflow: hidden;
           white-space: nowrap;
-        ::-webkit-scrollbar {
-           
+       &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
             display: none;
         }
           ion-segment-button.segment-button {
             display: inline;
             overflow: hidden;
+            flex: 1 0 100px;
+            color: black;
           }
         }
     }
+
+
+
+    ion-segment {
+        display: block;
+        white-space: nowrap;
+        font-size: 0;
+        overflow: auto;
+    
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+    
+        ion-segment-button.segment-button {
+            display: inline-block;
+            min-width: 100px;
+            width: auto;
+        }
+    }
+
+
+
+
 
 #notifications-badge {
 		background-color: red;

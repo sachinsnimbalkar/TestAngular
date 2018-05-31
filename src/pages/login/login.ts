@@ -28,17 +28,17 @@ export class LoginPage {
   }
  
   public login() {
-    this.showLoading()
-    this.auth.login(this.registerCredentials).subscribe(allowed => {
-      if (allowed) {        
-        this.nav.setRoot('HomePage');
-      } else {
-        this.showError("Access Denied");
-      }
-    },
-      error => {
-        this.showError(error);
-      });
+    // this.showLoading()
+    // this.auth.login(this.registerCredentials).subscribe(allowed => {
+    //   if (allowed) {        
+    //     this.nav.setRoot('HomePage');
+    //   } else {
+    //     this.showError("Access Denied");
+    //   }
+    // },
+    //   error => {
+    //     this.showError(error);
+    //   });
   }
  
   showLoading() {

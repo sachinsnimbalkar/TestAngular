@@ -71,11 +71,14 @@ for(var i=0; i < dataItem.length; i++){
   viewCart() {
     console.log("view to cart");
   }
+  login() {
+    this.nav.push('LoginScreenPage');
+  }
   openFilters() {
     this.nav.push('FilterPage');
   }
   listView() {
-    this.nav.push('');
+    this.nav.push('HomePage');
   }
   mapView() {
     this.nav.push('GeolocationMapPage');
