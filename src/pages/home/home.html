@@ -70,12 +70,20 @@
         *ngIf="productInCart(product) | async"
         (click)="removeProductFromCart(product, 1)"
         >Remove item from cart</button> -->
+
+        
         </ion-item>
     </ion-list>
     <!-- </div> -->
     <ion-fab right bottom>
         <button ion-fab color="primary" (click)="viewCart()">
             <ion-icon name="cart"></ion-icon>
+            <!--<app-shopping-cart></app-shopping-cart>-->
+            <!--<ion-item *ngFor="let cartItem of cartData">
+                <h2>You have {{cartItem.quantity}} in your cart </h2>
+                <h3></h3>
+
+            </ion-item>-->
         </button>
     </ion-fab>
 
