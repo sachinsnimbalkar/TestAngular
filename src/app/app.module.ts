@@ -33,7 +33,7 @@ import { ShoppingCartService } from '../providers/shopping-cart.service';
 import { LocalStorageServie } from '../providers/storage.service';
 import { Badge } from '@ionic-native/badge';
 import { CommonModule } from '@angular/common';
-import { Device } from '@ionic-native/device';
+//import { Device } from '@ionic-native/device';
 import {SharedData} from  '../providers/sharedData.service'
 import { AngularFireModule, FirebaseApp } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -41,6 +41,8 @@ import  * as Firebase from 'firebase';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import {ShoppingCartModule} from '../pages/shopping-cart/shopping-cart.module'
 import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
+import { SignupPageModule } from '../pages/signup/signup.module';
+
 
 export const  firebaseConfig = {
 

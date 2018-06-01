@@ -119,8 +119,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from 'ionic-angular';
-import { HomePage } from '../home/home.page';
-import { AuthService } from '../../services/auth.service';
+import { HomePage } from '../home/home';
+ import { AuthService } from '../../providers/auth-service/auth-service';
+
 
 @Component({
 	selector: 'as-page-signup',
