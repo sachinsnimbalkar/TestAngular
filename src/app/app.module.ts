@@ -86,7 +86,6 @@ Firebase.initializeApp(firebaseConfig);
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,
     //  HomePage,
     // LoginScreenPage,
     AboutPage,
