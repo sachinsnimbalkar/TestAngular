@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SignupPage } from '../pages/signup/signup';
-//import {LoginPage} from '../pages/login/login';
 import { TrackOrderPage } from '../pages/track-order/track-order';
 import { SignOutPage } from '../pages/sign-out/sign-out';
 import { OfferPage } from '../pages/offer/offer';
@@ -65,11 +64,6 @@ var that=this;
         // ...
       }
     });
-
-
-
-
-    
 		this.menu = menu;
 		this.app = app;
 		this.platform = platform;

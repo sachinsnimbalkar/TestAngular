@@ -5,7 +5,6 @@ import { PaymentPage } from '../pages/payment/payment';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
- import { LoginPage } from '../pages/login/login';
 import { AuthService } from '../providers/auth-service/auth-service';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +24,6 @@ import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
 import { VerificationCodePage } from '../pages/verification-code/verification-code';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { GeolocationMapPage } from '../pages/geolocation-map/geolocation-map'
-//import { CachcingServiceBase } from '../providers/caching.service';
 import { LoginScreenPageModule } from '../pages/login-screen/login-screen.module';
 import { HomePageModule } from '../pages/home/home.module';
 import { FilterPageModule } from '../pages/filter/filter.module';
@@ -58,27 +56,20 @@ Firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: [
     MyApp,
-    //HomePage,
     AboutPage,
     ListPage,
-    LoginPage,
-    // LoginScreenPage,
     OfferPage,
-    // ForgetPasswordPage,
     VerificationCodePage,
     ResetPasswordPage,
-    // FilterPage,
     OrderhistoryPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
     PaymentPage,
-    // GeolocationMapPage,
-   // ShoppingCartComponent,
     ExitPage,
 
   ],
-  imports: [CommonModule,NgxErrorsModule,CommonModule,
+  imports: [CommonModule,NgxErrorsModule,CommonModule,SignupPageModule,
     BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
     FilterPageModule, GeolocationMapPageModule,ShoppingCartModule,
     BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
@@ -88,25 +79,18 @@ Firebase.initializeApp(firebaseConfig);
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,
-    //  HomePage,
-    // LoginScreenPage,
     AboutPage,
     ListPage,
     OrderhistoryPage,
     OfferPage,
-    // ForgetPasswordPage,
     VerificationCodePage,
     ResetPasswordPage,
     TrackOrderPage,
     DisclaimerPage,
-    //FilterPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
     PaymentPage,
-    // GeolocationMapPage,
-    ///ShoppingCartComponent,
     ExitPage,
 
   ],
