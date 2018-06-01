@@ -24,7 +24,6 @@ import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
 import { VerificationCodePage } from '../pages/verification-code/verification-code';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { GeolocationMapPage } from '../pages/geolocation-map/geolocation-map'
-//import { CachcingServiceBase } from '../providers/caching.service';
 import { LoginScreenPageModule } from '../pages/login-screen/login-screen.module';
 import { HomePageModule } from '../pages/home/home.module';
 import { FilterPageModule } from '../pages/filter/filter.module';
@@ -57,22 +56,16 @@ Firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: [
     MyApp,
-    //HomePage,
     AboutPage,
     ListPage,
-    // LoginScreenPage,
     OfferPage,
-    // ForgetPasswordPage,
     VerificationCodePage,
     ResetPasswordPage,
-    // FilterPage,
     OrderhistoryPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
     PaymentPage,
-    // GeolocationMapPage,
-   // ShoppingCartComponent,
     ExitPage,
 
   ],
@@ -86,24 +79,18 @@ Firebase.initializeApp(firebaseConfig);
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    //  HomePage,
-    // LoginScreenPage,
     AboutPage,
     ListPage,
     OrderhistoryPage,
     OfferPage,
-    // ForgetPasswordPage,
     VerificationCodePage,
     ResetPasswordPage,
     TrackOrderPage,
     DisclaimerPage,
-    //FilterPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
     PaymentPage,
-    // GeolocationMapPage,
-    ///ShoppingCartComponent,
     ExitPage,
 
   ],
