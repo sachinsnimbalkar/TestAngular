@@ -4,7 +4,7 @@
         SrNo: string;
         ProductName: string;
         CatId: number;
-        public Price: number;
+        Price: number;
         ProdDesc: string;
         ProductImgURL: string;
 

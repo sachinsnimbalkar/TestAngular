@@ -40,18 +40,44 @@ export class ShoppingCartService {
     return this.subscriptionObservable;
   }
 
+  public removeItem(product: Product,quantity: number) :void
+  {
+    const cart = this.retrieve();
+    let item = cart.items.find((p) => p.ProductId === product.SrNo);
+
+    console.log(item);
+    if(quantity === -1)
+    {
+      let index = cart.items.indexOf(item);
+      if(index !== -1)
+      {
+          cart.items.splice(index,1);
+      }
+
+    }
+
+    cart.itemsTotal = cart.itemsTotal - item.Price;
+    
+    this.storage.removeItem(CART_KEY);
+    this.dispatch(cart);
+
+  }
+
+
   public addItem(product: Product, quantity: number): void {
     const cart = this.retrieve();
-    let item = cart.items.find((p) => p.productId === product.SrNo);
+    let item = cart.items.find((p) => p.ProductId === product.SrNo);
     if (item === undefined) {
       item = new CartItem();
-      item.productId = product.SrNo;
-      item.producName = product.ProductName; 
+      item.ProductId = product.SrNo;
+      item.ProductName = product.ProductName; 
+      item.Price = product.Price; 
       cart.items.push(item);
     }
 
-    item.quantity += quantity;
-    cart.items = cart.items.filter((cartItem) => cartItem.quantity > 0);
+
+    item.Quantity += quantity;
+    cart.items = cart.items.filter((cartItem) => cartItem.Quantity > 0);
     if (cart.items.length === 0) {
       cart.deliveryOptionId = undefined;
     }
@@ -77,7 +103,7 @@ export class ShoppingCartService {
 
   private calculateCart(cart: ShoppingCart): void {
     cart.itemsTotal = cart.items
-                          .map((item) => item.quantity * this.products.find((p) => p.SrNo === item.productId).Price)
+                          .map((item) => item.Quantity * this.products.find((p) => p.SrNo === item.ProductId).Price)
                           .reduce((previous, current) => previous + current, 0);
     cart.deliveryTotal = cart.deliveryOptionId ?
                           this.deliveryOptions.find((x) => x.id === cart.deliveryOptionId).price :

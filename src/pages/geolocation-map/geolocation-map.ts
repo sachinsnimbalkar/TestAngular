@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
-import { Device } from '@ionic-native/device';
+//import { Device } from '@ionic-native/device';
 //import {arroffers } from '../../model/offer.model';
 import { GetDataProvider } from '../../providers/get-data/get-data';
 import { Offer } from '../../model/offer.model';
@@ -537,13 +537,13 @@ var arroffer = [];
   selector: 'page-geolocation-map',
   templateUrl: 'geolocation-map.html',
 })
-
+// private device: Device
 export class GeolocationMapPage {
   @ViewChild('map') mapElement: ElementRef;
   public arroffers: Observable<Offer[]>;
   result;
   constructor(public navCtrl: NavController, public platform: Platform, private http: Http,
-    private device: Device, public DataService: GetDataProvider, public shareData: SharedData) {
+    public DataService: GetDataProvider, public shareData: SharedData) {
     platform.ready().then(() => {
       this.initMap();
     });

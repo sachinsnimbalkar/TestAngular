@@ -1,11 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform,AlertController} from 'ionic-angular';
+import { App, MenuController, Nav,AlertController ,Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SignupPage } from '../pages/signup/signup';
-import {LoginPage} from '../pages/login/login';
 import { TrackOrderPage } from '../pages/track-order/track-order';
 import { SignOutPage } from '../pages/sign-out/sign-out';
 import { OfferPage } from '../pages/offer/offer';
@@ -21,21 +20,54 @@ import{StoreFrontComponent} from '../pages/store-front/store-front.component'
 import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
 import{CheckoutComponent} from '../pages/checkout/checkout.component'
 import{OrderConfirmationComponent} from '../pages/order-confirmation/order-confirmation.component'
+import { AuthService } from '../providers/auth-service/auth-service';
+import  * as Firebase from 'firebase';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
+	private menu: MenuController;
 
   rootPage: any = HomePage;
 //  public alertShown:boolean = false;
   pages: Array<{title: string, component: any}>;
 
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, 
+    public statusBar: StatusBar,
+     public splashScreen: SplashScreen,
+    public app: App,
+     menu: MenuController,
+     private auth: AuthService) {
     
     this.initializeApp();
+var that=this;
+    Firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        that.rootPage= LoginScreenPage;
+       // that.rootPage = HomePage;
+        // User is signed in.
+        // var displayName = user.displayName;
+        // var email = user.email;
+        // var emailVerified = user.emailVerified;
+        // var photoURL = user.photoURL;
+        // var isAnonymous = user.isAnonymous;
+        // var uid = user.uid;
+        // var providerData = user.providerData;
+        // ...
+      } else {
+       // that.rootPage= LoginScreenPage;
+       that.rootPage = HomePage;
+        // User is signed out.
+        // ...
+      }
+    });
+		this.menu = menu;
+		this.app = app;
+		this.platform = platform;
+	
 
     // used for an example of ngFor and navigation
     this.pages = [
@@ -62,13 +94,42 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+    // this.auth.afAuth.authState
+		// 		.subscribe(
+		// 			user => {
+		// 				if (user) {
+		// 					this.rootPage = HomePage;
+		// 				} else {
+		// 					this.rootPage = LoginScreenPage;
+		// 				}
+		// 			},
+		// 			() => {
+		// 				this.rootPage = LoginScreenPage;
+		// 			}
+		// 		);
   }
 
+	login() {
+		this.menu.close();
+		this.auth.signOut();
+		this.nav.setRoot(LoginScreenPage);
+	}
+
+	logout() {
+		this.menu.close();
+		this.auth.signOut();
+		this.nav.setRoot(HomePage);
+	}
+
+	
   openPage(page) {
+    this.menu.close();
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
   // presentConfirm() {
   //   let alert = this.alertCtrl.create({
   //     title: 'Confirm Exit',

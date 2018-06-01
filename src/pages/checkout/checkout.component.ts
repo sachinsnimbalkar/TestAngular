@@ -47,16 +47,16 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.deliveryOptions = this.deliveryOptionService.all();
     this.cart = this.shoppingCartService.get();
     this.cartSubscription = this.cart.subscribe((cart) => {
-      this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
+      this.itemCount = cart.items.map((x) => x.Quantity).reduce((p, n) => p + n, 0);
       this.productsService.allProduct().subscribe((products) => {
         this.products = products;
         this.cartItems = cart.items
                            .map((item) => {
-                              const product = this.products.find((p) => p.SrNo === item.productId);
+                              const product = this.products.find((p) => p.SrNo === item.ProductId);
                               return {
                                 ...item,
                                 product,
-                                totalCost: product.Price * item.quantity };
+                                totalCost: product.Price * item.Quantity };
                            });
       });
     });
