@@ -11,38 +11,21 @@
 
 <ion-content>
   <div #map id="map"></div>
-  
-  <div #map1>
-      <div *ngFor="let item of arroffers; let i = index; let f=first; let l=last;">
-          <h2>{{item.OfferDetails}}</h2>
-          <!-- <p>
-            {{item.club.name}}
-          </p>
-          <p>
-            <strong>{{item.attendees.length}} are going</strong>
-          </p> -->
-        </div>
-      <!-- <ion-slides loop>
-        <ion-slide *ngFor="let item of arroffers | async">
-          <ion-card>
+
+  <div #map1 class="header-banner">
+    <ion-slides  autoplay="600" loop>
+      <ion-slide *ngFor="let item of result; let i = index; let f=first; let l=last;">
+        <ion-card>
+          <ion-card-content>
             <div>
-              <img [src]="item.OfferImgURL"/>
+                <img src="../../assets/OfferImages/{{item.OfferImgURL}}" />
+                <h1><b>{{item.OfferDetails}}</b></h1>                
+                <h3>Offers start from date </h3>{{item.OfferStartDate}}
+                <h3>Offers valid upto date </h3>{{item.OfferEndDate}}
             </div>
-            <ion-card-content>
-              <div>
-                <div>
-                  <h2>{{item.OfferDetails}}</h2> -->
-                  <!-- <p>
-                    {{item.club.name}}
-                  </p>
-                  <p>
-                    <strong>{{item.attendees.length}} are going</strong>
-                  </p> -->
-                <!-- </div>
-              </div>
-            </ion-card-content>
-          </ion-card>
-        </ion-slide>
-      </ion-slides> -->
-    </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
 </ion-content>

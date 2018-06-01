@@ -4,90 +4,17 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
 import { Device } from '@ionic-native/device';
+//import {arroffers } from '../../model/offer.model';
+import { GetDataProvider } from '../../providers/get-data/get-data';
+import { Offer } from '../../model/offer.model';
+import { Observable } from 'rxjs/Observable';
+import { SharedData } from '../../providers/sharedData.service';
 
 
 declare var google;
 var map;
 var infowindow: any;
-var arroffers=[
-  {
-    "Offerid": 1,
-    "OfferDetails": "A1",
-    "OfferImgURL": "../../assets/OfferImages/A1.jpg",
-    "OfferStartDate": "30-05-2018",
-    "OfferEndDate": "31-05-2018"
-  },
-  {
-    "Offerid": 2,
-    "OfferDetails": "A2",
-    "OfferImgURL": "../../assets/OfferImages/A2.jpg",
-    "OfferStartDate": "31-05-2018",
-    "OfferEndDate": "01-06-2018"
-  },
-  {
-    "Offerid": 3,
-    "OfferDetails": "A3",
-    "OfferImgURL": "../../assets/OfferImages/A3.jpg",
-    "OfferStartDate": "01-06-2018",
-    "OfferEndDate": "02-06-2018"
-  },
-  {
-    "Offerid": 4,
-    "OfferDetails": "A4",
-    "OfferImgURL": "../../assets/OfferImages/A4.jpg",
-    "OfferStartDate": "02-06-2018",
-    "OfferEndDate": "03-06-2018"
-  },
-  {
-    "Offerid": 5,
-    "OfferDetails": "A5",
-    "OfferImgURL": "../../assets/A5.jpg",
-    "OfferStartDate": "03-06-2018",
-    "OfferEndDate": "04-06-2018"
-  },
-  {
-    "Offerid": 6,
-    "OfferDetails": "A6",
-    "OfferImgURL": "A6.jpg",
-    "OfferStartDate": "04-06-2018",
-    "OfferEndDate": "05-06-2018"
-  },
-  {
-    "Offerid": 7,
-    "OfferDetails": "A7",
-    "OfferImgURL": "A7.jpg",
-    "OfferStartDate": "05-06-2018",
-    "OfferEndDate": "06-06-2018"
-  },
-  {
-    "Offerid": 8,
-    "OfferDetails": "A8",
-    "OfferImgURL": "A8.jpg",
-    "OfferStartDate": "06-06-2018",
-    "OfferEndDate": "07-06-2018"
-  },
-  {
-    "Offerid": 9,
-    "OfferDetails": "A9",
-    "OfferImgURL": "A9.jpg",
-    "OfferStartDate": "07-06-2018",
-    "OfferEndDate": "08-06-2018"
-  },
-  {
-    "Offerid": 10,
-    "OfferDetails": "A10",
-    "OfferImgURL": "A10.jpg",
-    "OfferStartDate": "08-06-2018",
-    "OfferEndDate": "09-06-2018"
-  },
-  {
-    "Offerid": 11,
-    "OfferDetails": "A11",
-    "OfferImgURL": "A11.jpg",
-    "OfferStartDate": "09-06-2018",
-    "OfferEndDate": "10-06-2018"
-  }
- ];
+
 var arrstores = [{
   "lat4": 39.71004,
   ",": ",",
@@ -604,6 +531,7 @@ var options = {
   timeout: 5000,
   maximumAge: 0
 };
+var arroffer = [];
 @IonicPage()
 @Component({
   selector: 'page-geolocation-map',
@@ -611,17 +539,22 @@ var options = {
 })
 
 export class GeolocationMapPage {
-
-
   @ViewChild('map') mapElement: ElementRef;
-  
-
-  constructor(public navCtrl: NavController, public platform: Platform, private http: Http,private device: Device) {
+  public arroffers: Observable<Offer[]>;
+  result;
+  constructor(public navCtrl: NavController, public platform: Platform, private http: Http,
+    private device: Device, public DataService: GetDataProvider, public shareData: SharedData) {
     platform.ready().then(() => {
       this.initMap();
     });
   }
-
+  ionViewDidLoad() {
+    this.DataService.allOffers().subscribe(result => {
+      this.result = result;
+      this.shareData.setData(this.result);
+      console.log(this.result);
+    });
+  }
   static toRad(Value) {
     return Value * Math.PI / 180;
   }
@@ -675,6 +608,7 @@ export class GeolocationMapPage {
     }, 50);
     console.log(place);
     google.maps.event.addListener(marker, 'click', function () {
+
       infowindow.setContent('<div><strong>' + placename + '</strong><br>' +
         'Place ID: ' + place.place_id + '<br>' +
         place.vicinity + '</div>');
@@ -694,36 +628,39 @@ export class GeolocationMapPage {
         var remark: any;
         var lat5: number = 0;
         var lng5: number = 0;
-        var myarray = [];
+        //var myarray = [];
 
         for (var i = 0; i < arrstores.length; i++) {
           var dist: any;
           dist = GeolocationMapPage.calcCrow(mylocation.lat, mylocation.lng, arrstores[i].lat4, arrstores[i].lng4).toFixed(1);
 
           if (dist < 3) {
-            myarray.push(dist, i);
+            //myarray.push(dist, i);
+            var location1 = new google.maps.LatLng(arrstores[i].lat4, arrstores[i].lng4);
+            GeolocationMapPage.createMarker(location1, arrstores[i].name);
           }
         }
-        var arr_dist = myarray[0];
-        var arr_index = myarray[1];
-        for (var j = 2; j < myarray.length;) {
-          if (arr_dist > myarray[j]) {
-            arr_dist = myarray[j];
-            j++;
-            arr_index = myarray[j];
-            j++;
-          }
-          else {
-            j = j + 2;
-          }
-        }
+        // var arr_dist = myarray[0];
+        // var arr_index = myarray[1];
+        // for (var j = 2; j < myarray.length;) {
+        //   if (arr_dist > myarray[j]) {
+        //     arr_dist = myarray[j];
+        //     j++;
+        //     arr_index = myarray[j];
+        //     j++;
+        //   }
+        //   else {
+        //     j = j + 2;
+        //   }
+        // }
         //console.log("Minimum distance:" + arr_dist + ", Index:" + arr_index);
-        let location1 = new google.maps.LatLng(arrstores[arr_index].lat4, arrstores[arr_index].lng4);
-        GeolocationMapPage.createMarker(location1, arrstores[arr_index].name);
+        // let location1 = new google.maps.LatLng(arrstores[arr_index].lat4, arrstores[arr_index].lng4);
+        // GeolocationMapPage.createMarker(location1, arrstores[arr_index].name);
       });
 
   }
   initMap() {
+
     navigator.geolocation.getCurrentPosition((location) => {
       map = new google.maps.Map(this.mapElement.nativeElement, {
         center: {
