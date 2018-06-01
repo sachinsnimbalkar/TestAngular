@@ -133,6 +133,7 @@ export class SignupPage {
 	constructor(
 		fb: FormBuilder,
 		private navCtrl: NavController,
+    private nav: NavController,
     private auth: AuthService
 	) {
 		this.form = fb.group({
@@ -147,6 +148,7 @@ export class SignupPage {
 			email: data.email,
 			password: data.password,
       FirstName: data.FirstName,
+      Address:data.Address,
       lastName: data.LastName,
       Gender: data.Gender,
       Password: data.Password,

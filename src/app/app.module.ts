@@ -69,7 +69,7 @@ Firebase.initializeApp(firebaseConfig);
     ExitPage,
 
   ],
-  imports: [CommonModule,NgxErrorsModule,CommonModule,
+  imports: [CommonModule,NgxErrorsModule,CommonModule,SignupPageModule,
     BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
     FilterPageModule, GeolocationMapPageModule,ShoppingCartModule,
     BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,

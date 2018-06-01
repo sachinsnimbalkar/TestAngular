@@ -150,6 +150,7 @@ export class LoginScreenPage {
 
 	constructor(
 		private navCtrl: NavController,
+        private nav: NavController,
 		private auth: AuthService,
 		fb: FormBuilder
 	) {
@@ -186,7 +187,7 @@ export class LoginScreenPage {
     }
 
   signup(){
-    this.navCtrl.push(SignupPage);
+    this.nav.push(SignupPage);
   }
 
   loginWithGoogle() {
