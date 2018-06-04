@@ -15,7 +15,6 @@ import {ShoppingCart} from '../../model/shopping-cart.model'
 import {ShoppingCartComponent} from '../shopping-cart/shopping-cart.component'
 
 
-
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -33,7 +32,10 @@ export class HomePage {
   //private itemscount:
   @ViewChild(Slides) slides: Slides;
   //private i: number = 0;
-  constructor(private toastCtrl: ToastController,public injector: Injector, public nav: NavController, private badge: Badge, public DataService: GetDataProvider, public events: Events,public shareData:SharedData,public shoppingCartService: ShoppingCartService) {
+  constructor(private toastCtrl: ToastController,
+    public injector: Injector, public nav: NavController, private badge: Badge, 
+    public DataService: GetDataProvider, public events: Events,public shareData:SharedData,
+    public shoppingCartService: ShoppingCartService) {
 
   }
 
@@ -43,7 +45,7 @@ export class HomePage {
     this.DataService.allProduct().subscribe(result => {
       this.result = result;
       this.shareData.setData(this.result);
-      console.log(this.result);
+     
     });
 
     this.categories = this.DataService.allCategory();
@@ -64,7 +66,6 @@ for(var i=0; i < dataItem.length; i++){
 
       if (dataItem[i].CatId === category.SrNo) {
         this.menuList.push(dataItem[i]);
-        console.log(this.menuList);
         
       }
      
@@ -113,37 +114,5 @@ presentToast(product: Product,qty:number) {
   toast.present();
 }
 
-
-
-  // public removeProductFromCart()/*(product: Product): void*/ {
-  //  // this.shoppingCartService.addItem(product, -1);
-  // }
-
-  
-  //  public productInCart(): boolean {
-  //   return Observable.create((obs: Observer<boolean>) => {
-  //     const sub = this.shoppingCartService
-  //                     .get()
-  //                     .subscribe((cart) => {
-  //                       //obs.next(cart.items.some((i) => i.productId === product.SrNo));
-  //                       this.cartData.push(cart.items);
-  //                      console.log("CartData :", this.cartData);
-  //                     });
-  //    sub.unsubscribe();
-  //   });
-  // }
-  // public ngOnInit(): void {
-  //  this.products = this.productsService.all();
-  // }
-  // public ngOnDestroy():void {
-  //   this.sub.unsubscribe();
-  // }
-  // public updateTabBadge(): void {
-  //   this.events.publish('cart:updated', ++this.count);
-  // }
-
-
-
-  // openFilters(){}
 }
 

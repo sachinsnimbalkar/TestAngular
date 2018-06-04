@@ -21,47 +21,46 @@
        <!-- <form (ngSubmit)="signUp()" #registerForm="ngForm"> -->
         <form (ngSubmit)="signup()" [formGroup]="form">
                 <ion-list inset>
-                
-                    <ion-item>
+                                      <ion-item>
                             <ion-label floating>FirstName</ion-label>
-                            <ion-input type="text" placeholder="First Name" formControlName="FirstName"></ion-input>
+                            <ion-input type="text" formControlName="firstName" required></ion-input>
 
                             <!-- <ion-input type="text" [(ngModel)]="registerCredentials.FirstName" name="FirstName"></ion-input> -->
                           </ion-item>
                           <ion-item>
                                 <ion-label floating>LastName</ion-label>
-                                  <ion-input type="text" placeholder="LastName" formControlName="LastName"></ion-input>
+                                  <ion-input type="text"  formControlName="lastName"  required></ion-input>
                                 <!-- <ion-input type="text" [(ngModel)]="registerCredentials.LastName" name="LastName"></ion-input> -->
                               </ion-item>
                           <ion-item>
                               <ion-label floating>Email</ion-label>
-                                <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+                                <ion-input type="email"  formControlName="email" required></ion-input>
                               <!-- <ion-input type="email" [(ngModel)]="registerCredentials.email" name="email"></ion-input> -->
                             </ion-item>
                             <ion-item>
                                     <ion-label floating>Password</ion-label>
-                                      <ion-input type="Password" placeholder="Password" formControlName="Password"></ion-input>
+                                      <ion-input type="password" formControlName ="password" required></ion-input>
                                     <!-- <ion-input type="text" [(ngModel)]="registerCredentials.Password" name="Password"></ion-input> -->
                                   </ion-item>
                             <ion-item>
                                 <ion-label floating>Address</ion-label>
-                                  <ion-input type="Address" placeholder="Address" formControlName="Address"></ion-input>
+                                  <ion-input type="text"  formControlName="address" required></ion-input>
                                 <!-- <ion-input type="text" [(ngModel)]="registerCredentials.Address" name="Address"></ion-input> -->
                               </ion-item>
                           <ion-item>
                               <ion-label floating>Mobile Number</ion-label>
-                                <ion-input type="Mobile Number" placeholder="Mobile Number" formControlName="Mobile Number"></ion-input>
+                                <ion-input type="number"  formControlName="mobileNo"  required></ion-input>
                               <!-- <ion-input type="text" [(ngModel)]="registerCredentials.MobileNumber" name="MobileNumber"></ion-input> -->
                           </ion-item>   
                           <ion-item>
                                 <ion-label floating>Date Of Birth</ion-label>
-                                  <ion-input type="date" placeholder="Date Of Birth" formControlName="DOB"></ion-input>
+                                  <ion-input type="date" formControlName="DOB" ></ion-input>
                                 <!-- <ion-input type="date" [(ngModel)]="registerCredentials.DOB" name="DOB"></ion-input> -->
                               </ion-item> 
                              
                                   <ion-item>
                                         <ion-label>Gender</ion-label>
-                                        <ion-select [(ngModel)]="Credentials.Gender" name="Gender">
+                                        <ion-select value="Gender">
                                           <ion-option value="f">Female</ion-option>
                                           <ion-option value="m">Male</ion-option>
                                         </ion-select>
