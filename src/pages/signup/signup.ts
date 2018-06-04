@@ -127,6 +127,7 @@ import { LoginAppDetailsService } from '../../service/LoginAppDetails.service';
 import { Device } from '@ionic-native/device';
 import { SignUpInfoService } from '../../service/SignUpDetails.service';
 import { SignUpInfo } from '../../model/signUpInfo.model';
+
 @Component({
 	selector: 'as-page-signup',
 	templateUrl: './signup.html'

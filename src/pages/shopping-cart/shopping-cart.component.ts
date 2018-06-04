@@ -9,6 +9,7 @@ import { GetDataProvider } from "../../providers/get-data/get-data";
 import { ShoppingCartService } from "../../providers/shopping-cart.service";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
+import { Observer } from 'rxjs/Observer';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,7 +37,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     this.cart = this.shoppingCartService.get();
     console.log(this.cart);
     this.cartSubscription = this.cart.subscribe((cart) => {
-      this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
+      this.itemCount = cart.items.map((x) => x.Quantity).reduce((p, n) => p + n, 0);
       //this.itemName.push(cart.items.map((x)=>x.producName));
 
       cart.items.forEach(element => {
@@ -48,6 +49,35 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
       console.log("Product details: ",this.cartArray);
     });
   }
+
+ addProductToCart(product: Product,qty:number): void{
+
+   console.log("Add Shooping cart item :",product,qty)
+      this.shoppingCartService.addItem(product, qty);
+      //notification to add cart ..........
+      //this.presentToast(product,qty);
+  }
+
+
+    public removeProductFromCart(product: Product,Quantity:number): void {
+      console.log("Removig prdct :",product);
+    this.shoppingCartService.removeItem(product, -1);
+  }
+
+  public productInCart(product: Product): boolean {
+    console.log("checking for product in cart...........");
+    return Observable.create((obs: Observer<boolean>) => {
+      const sub = this.shoppingCartService
+                      .get()
+                      .subscribe((cart) => {
+                        obs.next(cart.items.some((i) => i.ProductId === product.SrNo));
+                        obs.complete();
+                      });
+      sub.unsubscribe();
+    });
+  }
+
+
 
   public ngOnDestroy(): void {
     if (this.cartSubscription) {
