@@ -18,39 +18,77 @@
 
 <ion-content padding>
  <div class="login-box">
-    <form (ngSubmit)="signUp()" #registerForm="ngForm">
-        <ion-list>
-          <ion-item>
-            <ion-label floating>Full Name</ion-label>
-            <ion-input type="text" [(ngModel)]="registerCredentials.FirstName" name="Name"></ion-input>
-          </ion-item>
-         
-          <ion-item>
-              <ion-label floating>Email</ion-label>
-              <ion-input type="text" [(ngModel)]="registerCredentials.Email" name="Email"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Address</ion-label>
-                <ion-input type="text" [(ngModel)]="registerCredentials.Address" name="Address"></ion-input>
-              </ion-item>
-          <ion-item>
-              <ion-label floating>Mobile Number</ion-label>
-              <ion-input type="text" [(ngModel)]="registerCredentials.MobileNumber" name="MobileNumber"></ion-input>
-          </ion-item>          
-        </ion-list>
-        <div padding>
-         <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>
-         <!-- <button ion-button class="register-btn" block clear (click)="createAccount()">Sign In</button> -->
+       <!-- <form (ngSubmit)="signUp()" #registerForm="ngForm"> -->
+        <form (ngSubmit)="signup()" [formGroup]="form">
+                <ion-list inset>
                 
-          <button ion-button full round>Register</button>
-        </div>
-      </form>
-     
+                    <ion-item>
+                            <ion-label floating>FirstName</ion-label>
+                            <ion-input type="text" placeholder="First Name" formControlName="FirstName"></ion-input>
+
+                            <!-- <ion-input type="text" [(ngModel)]="registerCredentials.FirstName" name="FirstName"></ion-input> -->
+                          </ion-item>
+                          <ion-item>
+                                <ion-label floating>LastName</ion-label>
+                                  <ion-input type="text" placeholder="LastName" formControlName="LastName"></ion-input>
+                                <!-- <ion-input type="text" [(ngModel)]="registerCredentials.LastName" name="LastName"></ion-input> -->
+                              </ion-item>
+                          <ion-item>
+                              <ion-label floating>Email</ion-label>
+                                <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+                              <!-- <ion-input type="email" [(ngModel)]="registerCredentials.email" name="email"></ion-input> -->
+                            </ion-item>
+                            <ion-item>
+                                    <ion-label floating>Password</ion-label>
+                                      <ion-input type="Password" placeholder="Password" formControlName="Password"></ion-input>
+                                    <!-- <ion-input type="text" [(ngModel)]="registerCredentials.Password" name="Password"></ion-input> -->
+                                  </ion-item>
+                            <ion-item>
+                                <ion-label floating>Address</ion-label>
+                                  <ion-input type="Address" placeholder="Address" formControlName="Address"></ion-input>
+                                <!-- <ion-input type="text" [(ngModel)]="registerCredentials.Address" name="Address"></ion-input> -->
+                              </ion-item>
+                          <ion-item>
+                              <ion-label floating>Mobile Number</ion-label>
+                                <ion-input type="Mobile Number" placeholder="Mobile Number" formControlName="Mobile Number"></ion-input>
+                              <!-- <ion-input type="text" [(ngModel)]="registerCredentials.MobileNumber" name="MobileNumber"></ion-input> -->
+                          </ion-item>   
+                          <ion-item>
+                                <ion-label floating>Date Of Birth</ion-label>
+                                  <ion-input type="date" placeholder="Date Of Birth" formControlName="DOB"></ion-input>
+                                <!-- <ion-input type="date" [(ngModel)]="registerCredentials.DOB" name="DOB"></ion-input> -->
+                              </ion-item> 
+                             
+                                  <ion-item>
+                                        <ion-label>Gender</ion-label>
+                                        <ion-select [(ngModel)]="Credentials.Gender" name="Gender">
+                                          <ion-option value="f">Female</ion-option>
+                                          <ion-option value="m">Male</ion-option>
+                                        </ion-select>
+                                      </ion-item>       
+                  
+                </ion-list>
+        
+        <div padding-horizontal>
+                <div class="form-error">{{signupError}}</div>
+        
+                <button ion-button full type="submit" [disabled]="!form.valid">Sign up</button>
+            </div>
+        </form>    
         <ion-row>
             <ion-item>Or</ion-item>
         </ion-row>
   
      <ion-label>Login With Account</ion-label>
-     <ion-img style="width: 310px; height: 60px;" src="../../assets/imgs/l.png"></ion-img> 
+     <ion-list>
+            <button ion-button icon-left block clear (click)="loginWithGoogle()">
+              <ion-icon name="logo-google"></ion-icon>
+              Log in with Google
+            </button>
+            <button ion-button icon-left block clear (click)="loginWithFacebook()">
+                <ion-icon name="logo-facebook"></ion-icon>
+                Log in with Facebook
+              </button>
+          </ion-list>
 </div>
 </ion-content>

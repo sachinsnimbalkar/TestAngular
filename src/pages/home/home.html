@@ -4,18 +4,20 @@
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>Home</ion-title>
-        <!-- <button  class="item item-button-right" (click)= "openFilters()">
+
+        <!-- <button ion-button icon-end class="item item-button-right" (click)= "openFilters()">
       <ion-icon name="ios-color-filter"></ion-icon>
-  </button>
-  <button  class="item item-button-right" (click)="addCart()">
+  </buttons>
+ 
+  <button ion-button icon-end class="item item-button-right" (click)="viewCart()">
       <ion-badge id="notifications-badge" *ngIf="n" color="danger">{{ n}}</ion-badge>
       <ion-icon name="ios-cart" md="md-cart"></ion-icon>
   </button> -->
 
+  <button ion-button icon-end class="item item-button-right" (click)= "login()">
+    <ion-icon name="log-in"></ion-icon>
+  </button>
     </ion-navbar>
-
-
-
 </ion-header>
 
 <ion-content padding>

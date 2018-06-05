@@ -5,7 +5,6 @@ import { PaymentPage } from '../pages/payment/payment';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { LoginPage } from '../pages/login/login';
 import { AuthService } from '../providers/auth-service/auth-service';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +24,6 @@ import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
 import { VerificationCodePage } from '../pages/verification-code/verification-code';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { GeolocationMapPage } from '../pages/geolocation-map/geolocation-map'
-//import { CachcingServiceBase } from '../providers/caching.service';
 import { LoginScreenPageModule } from '../pages/login-screen/login-screen.module';
 import { HomePageModule } from '../pages/home/home.module';
 import { FilterPageModule } from '../pages/filter/filter.module';
@@ -35,71 +33,75 @@ import { ShoppingCartService } from '../providers/shopping-cart.service';
 import { LocalStorageServie } from '../providers/storage.service';
 import { Badge } from '@ionic-native/badge';
 import { CommonModule } from '@angular/common';
-import { Device } from '@ionic-native/device';
-import {SharedData} from  '../providers/sharedData.service';
+//import { Device } from '@ionic-native/device';
+import {SharedData} from  '../providers/sharedData.service'
+import { AngularFireModule, FirebaseApp } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import  * as Firebase from 'firebase';
+import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import {ShoppingCartModule} from '../pages/shopping-cart/shopping-cart.module'
 import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
+import { SignupPageModule } from '../pages/signup/signup.module';
 
+
+export const  firebaseConfig = {
+
+		apiKey: "AIzaSyDbknxObiTJwTaH4b4JxELtqbq9djoTpDY",
+    authDomain: "cmbjp2018-4fdc5.firebaseapp.com",
+    databaseURL: "https://cmbjp2018-4fdc5.firebaseio.com",
+    projectId: "cmbjp2018-4fdc5",
+    storageBucket: "cmbjp2018-4fdc5.appspot.com",
+    messagingSenderId: "682850594591"
+};
+Firebase.initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
     MyApp,
-    //HomePage,
     AboutPage,
     ListPage,
-    LoginPage,
-    // LoginScreenPage,
     OfferPage,
-    // ForgetPasswordPage,
     VerificationCodePage,
     ResetPasswordPage,
-    // FilterPage,
     OrderhistoryPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
     PaymentPage,
-    // GeolocationMapPage,
-   // ShoppingCartComponent,
     ExitPage,
 
   ],
-  imports: [CommonModule,
+  imports: [CommonModule,NgxErrorsModule,CommonModule,SignupPageModule,
     BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
     FilterPageModule, GeolocationMapPageModule,ShoppingCartModule,
+    BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
+    FilterPageModule, GeolocationMapPageModule,AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,
-    //  HomePage,
-    // LoginScreenPage,
     AboutPage,
     ListPage,
     OrderhistoryPage,
     OfferPage,
-    // ForgetPasswordPage,
     VerificationCodePage,
     ResetPasswordPage,
     TrackOrderPage,
     DisclaimerPage,
-    //FilterPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
     PaymentPage,
-    // GeolocationMapPage,
-    ///ShoppingCartComponent,
     ExitPage,
 
   ],
   providers: [
     SplashScreen,
     StatusBar,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: ErrorHandler, useClass: IonicErrorHandler},AngularFireAuth,
     AuthService,ShoppingCartService,LocalStorageServie,
-    GetDataProvider,DeliveryOptionsDataService,Badge,Device,SharedData,
+    GetDataProvider,DeliveryOptionsDataService,Badge,SharedData,
   ]
 })
 export class AppModule { }
