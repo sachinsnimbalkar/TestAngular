@@ -54,8 +54,6 @@ export class HomePage {
   public menuList = [];
   getItem(category) {
 
-    //this.DataService.allProductbyID(categories.SrNo);
-    //console.log("cat:", category);
     this.menuList.length = 0;
     //this.result.length = 0;
     
@@ -113,6 +111,11 @@ presentToast(product: Product,qty:number) {
 
   toast.present();
 }
+
+  
+  // public updateTabBadge(): void {
+  //   this.events.publish('cart:updated', ++this.count);
+  // }
 
 }
 
