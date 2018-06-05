@@ -53,8 +53,6 @@ export class HomePage {
   public menuList = [];
   getItem(category) {
 
-    //this.DataService.allProductbyID(categories.SrNo);
-    //console.log("cat:", category);
     this.menuList.length = 0;
     //this.result.length = 0;
     
@@ -114,35 +112,10 @@ presentToast(product: Product,qty:number) {
 
 
 
-  // public removeProductFromCart()/*(product: Product): void*/ {
-  //  // this.shoppingCartService.addItem(product, -1);
-  // }
-
   
-  //  public productInCart(): boolean {
-  //   return Observable.create((obs: Observer<boolean>) => {
-  //     const sub = this.shoppingCartService
-  //                     .get()
-  //                     .subscribe((cart) => {
-  //                       //obs.next(cart.items.some((i) => i.productId === product.SrNo));
-  //                       this.cartData.push(cart.items);
-  //                      console.log("CartData :", this.cartData);
-  //                     });
-  //    sub.unsubscribe();
-  //   });
-  // }
-  // public ngOnInit(): void {
-  //  this.products = this.productsService.all();
-  // }
-  // public ngOnDestroy():void {
-  //   this.sub.unsubscribe();
-  // }
   // public updateTabBadge(): void {
   //   this.events.publish('cart:updated', ++this.count);
   // }
 
-
-
-  // openFilters(){}
 }
 
