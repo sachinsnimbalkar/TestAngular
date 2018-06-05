@@ -11,21 +11,4 @@
 
 <ion-content>
   <div #map id="map"></div>
-
-  <div #map1 class="header-banner">
-    <ion-slides  autoplay="600" loop>
-      <ion-slide *ngFor="let item of result; let i = index; let f=first; let l=last;">
-        <ion-card>
-          <ion-card-content>
-            <div>
-                <img src="../../assets/OfferImages/{{item.OfferImgURL}}" />
-                <h1><b>{{item.OfferDetails}}</b></h1>                
-                <h3>Offers start from date </h3>{{item.OfferStartDate}}
-                <h3>Offers valid upto date </h3>{{item.OfferEndDate}}
-            </div>
-          </ion-card-content>
-        </ion-card>
-      </ion-slide>
-    </ion-slides>
-  </div>
 </ion-content>

@@ -33,7 +33,7 @@ import { ShoppingCartService } from '../providers/shopping-cart.service';
 import { LocalStorageServie } from '../providers/storage.service';
 import { Badge } from '@ionic-native/badge';
 import { CommonModule } from '@angular/common';
-//import { Device } from '@ionic-native/device';
+import { Device } from '@ionic-native/device';
 import {SharedData} from  '../providers/sharedData.service'
 import { AngularFireModule, FirebaseApp } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -42,7 +42,9 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import {ShoppingCartModule} from '../pages/shopping-cart/shopping-cart.module'
 import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
 import { SignupPageModule } from '../pages/signup/signup.module';
-
+import { LoginAppDetailsService } from '../service/LoginAppDetails.service';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { SignUpInfoService } from '../service/SignUpDetails.service';
 
 export const  firebaseConfig = {
 
@@ -99,8 +101,8 @@ Firebase.initializeApp(firebaseConfig);
   providers: [
     SplashScreen,
     StatusBar,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},AngularFireAuth,
-    AuthService,ShoppingCartService,LocalStorageServie,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},AngularFireAuth,AngularFireDatabase,
+    AuthService,ShoppingCartService,LocalStorageServie,LoginAppDetailsService,Device,SignUpInfoService,
     GetDataProvider,DeliveryOptionsDataService,Badge,SharedData,
   ]
 })

@@ -6,7 +6,6 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SignupPage } from '../pages/signup/signup';
 import { TrackOrderPage } from '../pages/track-order/track-order';
-import { SignOutPage } from '../pages/sign-out/sign-out';
 import { OfferPage } from '../pages/offer/offer';
 import { ExitPage } from '../pages/exit/exit';
 import { AboutPage } from '../pages/about/about';
@@ -27,6 +26,7 @@ import  * as Firebase from 'firebase';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  [x: string]: any;
   @ViewChild(Nav) nav: Nav;
 	private menu: MenuController;
 
@@ -80,7 +80,6 @@ var that=this;
       { title: 'T&C Disclaimer', component: DisclaimerPage },
       { title: 'Feedback', component: FeedbackPage },
       { title: 'About', component: AboutPage },
-      { title: 'SignOut', component: SignOutPage },
       { title: 'Exit', component: ExitPage },
       
     ];
@@ -117,12 +116,36 @@ var that=this;
 	}
 
 	logout() {
-		this.menu.close();
-		this.auth.signOut();
-		this.nav.setRoot(HomePage);
-	}
-
-	
+    //this.presentConfirm();
+    this.menu.close();
+    this.auth.signOut();
+    this.nav.setRoot(HomePage);
+  }
+  // presentConfirm() {
+  //   let alert = this.alertCtrl.create({
+  //     title: 'Sign Out',
+  //     message: 'Do you want to Sign Out ?',
+  //     buttons: [
+  //       {
+  //         text: 'Cancel',
+  //         role: 'cancel',
+  //         handler: () => {
+  //           console.log('Cancel clicked');
+  //         }
+  //       },
+  //       {
+  //         text: 'Yes',
+  //         handler: () => {
+  //           this.menu.close();
+  //           this.auth.signOut();
+  //           this.nav.setRoot(HomePage);
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   alert.present();
+  // }
+  
   openPage(page) {
     this.menu.close();
     // Reset the content nav to have just this page
