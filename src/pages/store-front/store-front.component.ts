@@ -37,7 +37,7 @@ export class StoreFrontComponent implements OnInit {
       const sub = this.shoppingCartService
                       .get()
                       .subscribe((cart) => {
-                        obs.next(cart.items.some((i) => i.ProductId === product.SrNo));
+                        obs.next(cart.items.some((i) => i.productId === product.SrNo));
                         obs.complete();
                       });
       sub.unsubscribe();

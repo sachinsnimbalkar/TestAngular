@@ -27,7 +27,6 @@ export class HomePage {
   public categories: Observable<Category[]>;
   private count: number = 0;
   result;
-  public currentAddedProduct;
 
   //private cartdata : Observable<ShoppingCart>;
   //private itemscount:
@@ -79,9 +78,9 @@ for(var i=0; i < dataItem.length; i++){
     console.log("In view cart");
     this.nav.push(ShoppingCartComponent);
   }
-  login() {
-    this.nav.push('LoginScreenPage');
-  }
+  // login() {
+  //   this.nav.push('LoginScreenPage');
+  // }
   openFilters() {
     this.nav.push('FilterPage');
   }
@@ -94,7 +93,6 @@ for(var i=0; i < dataItem.length; i++){
 
 
  addProductToCart(product: Product,qty:number): void{
-
    console.log(product,qty)
       this.shoppingCartService.addItem(product, qty);
       //notification to add cart ..........

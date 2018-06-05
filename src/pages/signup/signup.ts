@@ -127,7 +127,6 @@ import { LoginAppDetailsService } from '../../service/LoginAppDetails.service';
 import { Device } from '@ionic-native/device';
 import { SignUpInfoService } from '../../service/SignUpDetails.service';
 import { SignUpInfo } from '../../model/signUpInfo.model';
-
 @Component({
 	selector: 'as-page-signup',
 	templateUrl: './signup.html'
@@ -163,7 +162,7 @@ export class SignupPage {
 		this.SignUpInfoList = this.signUpInfoService.getSignUpInfoList()
 			.snapshotChanges()
 			.map(
-				changes => {
+					changes => {
 					return changes.map(c => ({
 						key: c.payload.key, ...c.payload.val()
 					}))
@@ -171,12 +170,12 @@ export class SignupPage {
 		this.form = fb.group({
 			email: ['', Validators.compose([Validators.required, Validators.email])],
 			password: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
-			firstName: ['', Validators.compose([Validators.required])],
-			address: ['', Validators.compose([Validators.required])],
-			lastName:  ['', Validators.compose([Validators.required])],
-			gender:  ['', Validators.compose([Validators.required])],
-			mobileNo: ['', Validators.compose([Validators.required])],
-			DOB : ['', Validators.compose([Validators.required])],
+			firstName: ['', Validators.compose([])],
+			address: ['', Validators.compose([])],
+			lastName:  ['', Validators.compose([])],
+			gender:  ['', Validators.compose([])],
+			mobileNo: ['', Validators.compose([])],
+			DOB : ['', Validators.compose([])],
 		});
 
 	}

@@ -3,20 +3,22 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Home</ion-title>
-
-        <!-- <button ion-button icon-end class="item item-button-right" (click)= "openFilters()">
+           <ion-title>Home
+               <img class="filtericon" src="../../assets/icon/filter.png" (click)="openFilters()">
+            
+            </ion-title>
+            <!-- <img class="filtericon" src="../../assets/icon/filter.png" (click)="openFilters()"> -->
+     <!-- <button ion-button icon-end class="item item-button-right" (click)= "openFilters()">
       <ion-icon name="ios-color-filter"></ion-icon>
-  </buttons>
+  </button> -->
  
-  <button ion-button icon-end class="item item-button-right" (click)="viewCart()">
+  <!-- <button ion-button icon-end class="item item-button-left" (click)="viewCart()">
       <ion-badge id="notifications-badge" *ngIf="n" color="danger">{{ n}}</ion-badge>
       <ion-icon name="ios-cart" md="md-cart"></ion-icon>
-  </button> -->
-
-  <button ion-button icon-end class="item item-button-right" (click)= "login()">
+  </button>  -->
+  <!-- <button ion-button icon-end class="item item-button-right" (click)= "login()">
     <ion-icon name="log-in"></ion-icon>
-  </button>
+  </button> -->
     </ion-navbar>
 </ion-header>
 
@@ -40,7 +42,8 @@
                     </ion-row> -->
     </ion-toolbar>
     <ion-toolbar no-border class="scrollable-segments">
-        <ion-segment ng-model="let category of categories|async">
+    
+        <ion-segment ng-model="let category of categories|async" >
             <!-- <ion-col class="col-with-arrow" (click)="slidePrev()" no-padding col-1>
                     <ion-icon *ngIf="showLeftButton" name="arrow-back"></ion-icon>
                 </ion-col> -->
@@ -50,6 +53,7 @@
             <!-- </ion-segment> -->
 
         </ion-segment>
+   
     </ion-toolbar>
 
     <!-- <div ng-switch="Category.SrNo"> -->
