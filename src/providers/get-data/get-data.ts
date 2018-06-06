@@ -5,6 +5,7 @@ import { Product } from '../../model/product.model';
 import { CachcingServiceBase } from '../caching.service';
 import { Category } from '../../model/category.model';
 import { Offer} from '../../model/offer.model';
+
 /*
   Generated class for the GetDataProvider provider.
 
@@ -16,6 +17,7 @@ let count = 0;
 export class GetDataProvider extends CachcingServiceBase {
   public products: Observable<Product[]>;
   public categories: Observable<Category[]>;
+  public offers:Observable<Offer[]>;
   public constructor(private http: Http) {
     super();
   }
@@ -80,7 +82,19 @@ public allProduct()
   
   }
 
-
+  public allOffers(): Observable<Offer[]> {
+    return this.cache<Offer[]>(() => this.offers,
+      (val: Observable<Offer[]>) => this.offers = val,
+      () => this.http
+        .get("./assets/data/BJPOffers.json")
+        .map((response) => response.json()
+          .map((item) => {
+            let model = new Offer();
+            model.updateFrom(item);
+                return model;
+          })));
+  
+  }
   // getRemoteData(){
   //   this.http.get('').map(res=>res.json()).subscribe(data=>{
   //       console.log(data);

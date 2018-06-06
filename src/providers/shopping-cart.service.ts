@@ -40,33 +40,13 @@ export class ShoppingCartService {
     return this.subscriptionObservable;
   }
 
-  public removeItem(product: CartItem): void {
-    const cart = this.retrieve();
-
-    //let item = cart.items.find((p) => p.ProductId === product.ProductId);
-    //let itemIndex = cart.items.findIndex(item => item.ProductId == product.ProductId);
-
-    cart.items.forEach(element => {
-      if (element.ProductId == product.ProductId) {
-
-        element.Quantity = element.Quantity - 1;
-        cart.itemsTotal = cart.itemsTotal - product.Price;
-      }
-
-    });
-
-    console.log("updated cart",cart);
-    this.save(cart);
-    this.dispatch(cart);
-  }
   public addItem(product: Product, quantity: number): void {
     const cart = this.retrieve();
     let item = cart.items.find((p) => p.productId === product.SrNo);
     if (item === undefined) {
       item = new CartItem();
-      item.ProductId = product.SrNo;
-      item.ProductName = product.ProductName;
-      item.Price = product.Price;
+      item.productId = product.SrNo;
+      item.producName = product.ProductName; 
       cart.items.push(item);
     }
 
@@ -97,8 +77,8 @@ export class ShoppingCartService {
 
   private calculateCart(cart: ShoppingCart): void {
     cart.itemsTotal = cart.items
-      .map((item) => item.Quantity * this.products.find((p) => p.SrNo === item.ProductId).Price)
-      .reduce((previous, current) => previous + current, 0);
+                          .map((item) => item.quantity * this.products.find((p) => p.SrNo === item.productId).Price)
+                          .reduce((previous, current) => previous + current, 0);
     cart.deliveryTotal = cart.deliveryOptionId ?
                           this.deliveryOptions.find((x) => x.id === cart.deliveryOptionId).price :
                           0;
