@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Product } from '../../model/product.model';
 import { CachcingServiceBase } from '../caching.service';
 import { Category } from '../../model/category.model';
-
+import { Offer} from '../../model/offer.model';
 /*
   Generated class for the GetDataProvider provider.
 

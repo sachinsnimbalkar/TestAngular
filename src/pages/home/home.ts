@@ -114,5 +114,10 @@ presentToast(product: Product,qty:number) {
   toast.present();
 }
 
+  
+  // public updateTabBadge(): void {
+  //   this.events.publish('cart:updated', ++this.count);
+  // }
+
 }
 

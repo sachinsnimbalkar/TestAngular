@@ -9,6 +9,9 @@ import { GetDataProvider } from "../../providers/get-data/get-data";
 import { ShoppingCartService } from "../../providers/shopping-cart.service";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
+import { Observer } from 'rxjs/Observer';
+import { IonicPage, Slides, NavController, AlertController, LoadingController, Loading, Events } from 'ionic-angular';
+import { HomePage } from '../home/home'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,9 +39,26 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     this.cart = this.shoppingCartService.get();
     console.log(this.cart);
     this.cartSubscription = this.cart.subscribe((cart) => {
-      this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
-      //this.itemName.push(cart.items.map((x)=>x.producName));
 
+      this.itemCount = cart.items.map((x) => x.Quantity).reduce((p, n) => p + n, 0);
+      cart.items.forEach(element => {
+
+        let CartArrayIndex = this.cartArray.findIndex(item => item.ProductId == element.ProductId);
+        if (CartArrayIndex === -1) {
+          this.cartArray.push(element);
+        }
+        else {
+          for (let i = 0; i < this.cartArray.length; i++) {
+            if (this.cartArray[i].ProductId === element.ProductId) {
+
+
+              let itemIndex = cart.items.findIndex(ci => ci.ProductId == this.cartArray[i].ProductId);
+
+              this.cartArray[CartArrayIndex].Quantity = cart.items[itemIndex].Quantity;
+
+            }
+          }
+        }
       cart.items.forEach(element => {
 
         this.cartArray.push(element);
@@ -49,6 +69,35 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     });
   }
 
+//add item to cart
+  addProductToCart(product: CartItem, qty: number): void {
+
+    console.log("Add Shooping cart item :", product, qty)
+    this.shoppingCartService.addItemqty(product, qty);
+  }
+
+
+//Code to remove item from cart
+  public removeProductFromCart(product: CartItem): void {
+
+    console.log("Removig prdct :", product);
+
+    this.shoppingCartService.removeItem(product);
+  }
+
+//check if item present in the cart or not
+  public productInCart(product: Product): boolean {
+    console.log("checking for product in cart...........");
+    return Observable.create((obs: Observer<boolean>) => {
+      const sub = this.shoppingCartService
+        .get()
+        .subscribe((cart) => {
+          obs.next(cart.items.some((i) => i.ProductId === product.SrNo));
+          obs.complete();
+        });
+      sub.unsubscribe();
+    });
+  }
   public ngOnDestroy(): void {
     if (this.cartSubscription) {
       this.cartSubscription.unsubscribe();
