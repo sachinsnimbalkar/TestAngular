@@ -9,9 +9,6 @@ import { GetDataProvider } from "../../providers/get-data/get-data";
 import { ShoppingCartService } from "../../providers/shopping-cart.service";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
-import { Observer } from 'rxjs/Observer';
-import { IonicPage, Slides, NavController, AlertController, LoadingController, Loading, Events } from 'ionic-angular';
-import { HomePage } from '../home/home'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -44,6 +41,7 @@ public OpenMenuPage():void
     this.cart = this.shoppingCartService.get();
     console.log(this.cart);
     this.cartSubscription = this.cart.subscribe((cart) => {
+
       this.itemCount = cart.items.map((x) => x.Quantity).reduce((p, n) => p + n, 0);
       cart.items.forEach(element => {
 
@@ -72,6 +70,7 @@ public OpenMenuPage():void
 
     console.log(this.cartSubscription);
   }
+
 
 //add item to cart
   addProductToCart(product: CartItem, qty: number): void {

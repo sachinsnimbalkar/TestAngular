@@ -83,6 +83,73 @@ var that=this;
       { title: 'SignOut', component: SignOutPage },
       { title: 'Exit', component: ExitPage },
       
+// /////back button 
+// platform.ready().then(() => {
+//   statusBar.styleDefault();
+//   splashScreen.hide();
+//   platform.registerBackButtonAction(() => {
+//     if (this.alertShown==false) {
+//       this.presentConfirm();  
+//     }
+//   }, 0)
+// });
+// //////
+//   }
+
+//   presentConfirm() {
+//     let alert = this.alertCtrl.create({
+//       title: 'Confirm Exit',
+//       message: 'Do you want Exit?',
+//       buttons: [
+//         {
+//           text: 'Cancel',
+//           role: 'cancel',
+//           handler: () => {
+//             console.log('Cancel clicked');
+//             this.alertShown=false;
+//           }
+//         },
+//         {
+//           text: 'Yes',
+//           handler: () => {
+//             console.log('Yes clicked');
+//             this.platform.exitApp();
+//           }
+//         }
+//       ]
+//     });
+//      alert.present().then(()=>{
+//       this.alertShown=true;
+//     });
+   }
+
+  exitApp(){
+    this.platform.exitApp();
+    // let alert = this.alertCtrl.create({
+    //   title: 'Confirm Exit',
+    //   message: 'Do you want Exit?',
+    //   buttons: [
+    //     {
+    //       text: 'Cancel',
+    //       role: 'cancel',
+    //       handler: () => {
+    //         console.log('Cancel clicked');
+    //         this.alertShown=false;
+    //       }
+    //     },
+    //     {
+    //       text: 'Yes',
+    //       handler: () => {
+    //         console.log('Yes clicked');
+    //         this.platform.exitApp();
+    //       }
+    //     }
+    //   ]
+    // });
+    //  alert.present().then(()=>{
+    //   this.alertShown=true;
+    // });
+ }
     ];
   }
   
@@ -94,20 +161,6 @@ var that=this;
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-
-    // this.auth.afAuth.authState
-		// 		.subscribe(
-		// 			user => {
-		// 				if (user) {
-		// 					this.rootPage = HomePage;
-		// 				} else {
-		// 					this.rootPage = LoginScreenPage;
-		// 				}
-		// 			},
-		// 			() => {
-		// 				this.rootPage = LoginScreenPage;
-		// 			}
-		// 		);
   }
 
 	login() {
@@ -117,43 +170,16 @@ var that=this;
 	}
 
 	logout() {
-		this.menu.close();
-		this.auth.signOut();
-		this.nav.setRoot(HomePage);
-	}
+    //this.presentConfirm();
+    this.menu.close();
+    this.auth.signOut();
+    this.nav.setRoot(HomePage);
+  }
 
-	
   openPage(page) {
     this.menu.close();
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
-
-  // presentConfirm() {
-  //   let alert = this.alertCtrl.create({
-  //     title: 'Confirm Exit',
-  //     message: 'Do you want Exit?',
-  //     buttons: [
-  //       {
-  //         text: 'Cancel',
-  //         role: 'cancel',
-  //         handler: () => {
-  //           console.log('Cancel clicked');
-  //           this.alertShown=false;
-  //         }
-  //       },
-  //       {
-  //         text: 'Yes',
-  //         handler: () => {
-  //           console.log('Yes clicked');
-  //           this.platform.exitApp();
-  //         }
-  //       }
-  //     ]
-  //   });
-  //    alert.present().then(()=>{
-  //     this.alertShown=true;
-  //   });
-  // }
 }

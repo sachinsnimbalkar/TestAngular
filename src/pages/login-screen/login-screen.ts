@@ -166,7 +166,8 @@ export class LoginScreenPage {
     this.nav.push('ForgetPasswordPage');
   }
   goBack() {
-    this.nav.pop();
+	this.nav.pop();
+	//this.nav.push("Homepage");
   }
   login() {
 		let data = this.loginForm.value;

@@ -33,25 +33,25 @@ import { ShoppingCartService } from '../providers/shopping-cart.service';
 import { LocalStorageServie } from '../providers/storage.service';
 import { Badge } from '@ionic-native/badge';
 import { CommonModule } from '@angular/common';
-//import { Device } from '@ionic-native/device';
-import {SharedData} from  '../providers/sharedData.service'
+import { Device } from '@ionic-native/device';
+import { SharedData } from '../providers/sharedData.service'
 import { AngularFireModule, FirebaseApp } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
-import  * as Firebase from 'firebase';
+import * as Firebase from 'firebase';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
-import {ShoppingCartModule} from '../pages/shopping-cart/shopping-cart.module'
-import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
+import { ShoppingCartModule } from '../pages/shopping-cart/shopping-cart.module'
+import { ShoppingCartComponent } from '../pages/shopping-cart/shopping-cart.component'
 import { SignupPageModule } from '../pages/signup/signup.module';
 
 
-export const  firebaseConfig = {
+export const firebaseConfig = {
 
-		apiKey: "AIzaSyDbknxObiTJwTaH4b4JxELtqbq9djoTpDY",
-    authDomain: "cmbjp2018-4fdc5.firebaseapp.com",
-    databaseURL: "https://cmbjp2018-4fdc5.firebaseio.com",
-    projectId: "cmbjp2018-4fdc5",
-    storageBucket: "cmbjp2018-4fdc5.appspot.com",
-    messagingSenderId: "682850594591"
+  apiKey: "AIzaSyDbknxObiTJwTaH4b4JxELtqbq9djoTpDY",
+  authDomain: "cmbjp2018-4fdc5.firebaseapp.com",
+  databaseURL: "https://cmbjp2018-4fdc5.firebaseio.com",
+  projectId: "cmbjp2018-4fdc5",
+  storageBucket: "cmbjp2018-4fdc5.appspot.com",
+  messagingSenderId: "682850594591"
 };
 Firebase.initializeApp(firebaseConfig);
 
@@ -71,11 +71,17 @@ Firebase.initializeApp(firebaseConfig);
     ExitPage,
 
   ],
-  imports: [CommonModule,NgxErrorsModule,CommonModule,SignupPageModule,
-    BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
-    FilterPageModule, GeolocationMapPageModule,ShoppingCartModule,
-    BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
-    FilterPageModule, GeolocationMapPageModule,AngularFireModule.initializeApp(firebaseConfig),
+  imports: [CommonModule,
+    NgxErrorsModule,
+    SignupPageModule,
+    BrowserModule,
+    HttpModule,
+    LoginScreenPageModule,
+    HomePageModule,
+    FilterPageModule,
+    ShoppingCartModule,
+    GeolocationMapPageModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -99,9 +105,19 @@ Firebase.initializeApp(firebaseConfig);
   providers: [
     SplashScreen,
     StatusBar,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},AngularFireAuth,
-    AuthService,ShoppingCartService,LocalStorageServie,
-    GetDataProvider,DeliveryOptionsDataService,Badge,SharedData,
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AngularFireAuth,
+    AngularFireDatabase,
+    AuthService,
+    ShoppingCartService,
+    LocalStorageServie,
+    LoginAppDetailsService,
+    Device,
+    SignUpInfoService,
+    GetDataProvider,
+    DeliveryOptionsDataService,
+    Badge,
+    SharedData,
   ]
 })
 export class AppModule { }

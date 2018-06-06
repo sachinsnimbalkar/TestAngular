@@ -14,7 +14,9 @@
 
   <div #map1 class="header-banner">
     <ion-slides  autoplay="600" loop>
+    <!-- <ion-slides *ngIf="storearray"> -->
       <ion-slide *ngFor="let item of result; let i = index; let f=first; let l=last;">
+      <!-- <ion-slide *ngFor="let item of storearray; let i = index" [attr.data-index]="i"> -->
         <ion-card>
           <ion-card-content>
             <div>
@@ -22,6 +24,15 @@
                 <h1><b>{{item.OfferDetails}}</b></h1>                
                 <h3>Offers start from date </h3>{{item.OfferStartDate}}
                 <h3>Offers valid upto date </h3>{{item.OfferEndDate}}
+                <!-- <h1><b>Store Name:- {{item}}</b></h1>
+                
+                <h3>Store distance from current location:- {{item}} km.</h3>                 -->
+                <!-- <ul *ngFor="let item of storearray; let i = index" [attr.data-index]="i">
+                    <li >
+                        {{item}}
+                    </li>
+                </ul> -->                               
+
             </div>
           </ion-card-content>
         </ion-card>

@@ -1,4 +1,3 @@
-
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Platform } from 'ionic-angular';
@@ -545,14 +544,13 @@ export class GeolocationMapPage {
   constructor(public navCtrl: NavController, public platform: Platform, private http: Http,
     public DataService: GetDataProvider, public shareData: SharedData) {
     platform.ready().then(() => {
+      this.DataService.allOffers().subscribe(result => {
+        this.result = result;
+        this.shareData.setData(this.result);
+        console.log(this.result);
+      });
+
       this.initMap();
-    });
-  }
-  ionViewDidLoad() {
-    this.DataService.allOffers().subscribe(result => {
-      this.result = result;
-      this.shareData.setData(this.result);
-      console.log(this.result);
     });
   }
   static toRad(Value) {
@@ -616,7 +614,7 @@ export class GeolocationMapPage {
     });
   }
   showOffers(mylocation): void {
-    console.log("In show offers:" + JSON.stringify(mylocation));
+   console.log("In show offers:" + JSON.stringify(mylocation));
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch(
       {
