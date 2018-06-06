@@ -31,6 +31,11 @@
 
           <button type="button" class="button icon ion-plus btn-danger" (click)="addProductToCart(product, 1)">+</button>
           
+            <!--<button type="button"
+        class="btn btn-dark"
+        *ngIf="productInCart(product) | async"
+        (click)="removeProductFromCart(product, 1)"
+        >Remove item from cart</button> -->
 
         
         </ion-item>

@@ -14,6 +14,7 @@ import { OrderhistoryPage } from '../pages/orderhistory/orderhistory';
 import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { FilterPage } from '../pages/filter/filter'
+import { ExitPage } from '../pages/exit/exit';
 import { OfferPage } from '../pages/offer/offer';
 import { AboutPage } from '../pages/about/about';
 import { GetDataProvider } from '../providers/get-data/get-data';
@@ -32,7 +33,7 @@ import { ShoppingCartService } from '../providers/shopping-cart.service';
 import { LocalStorageServie } from '../providers/storage.service';
 import { Badge } from '@ionic-native/badge';
 import { CommonModule } from '@angular/common';
-import { Device } from '@ionic-native/device';
+//import { Device } from '@ionic-native/device';
 import {SharedData} from  '../providers/sharedData.service'
 import { AngularFireModule, FirebaseApp } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -41,10 +42,7 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import {ShoppingCartModule} from '../pages/shopping-cart/shopping-cart.module'
 import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
 import { SignupPageModule } from '../pages/signup/signup.module';
-import { IonicSwipeAllModule } from 'ionic-swipe-all';
-import { LoginAppDetailsService } from '../service/LoginAppDetails.service';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { SignUpInfoService } from '../service/SignUpDetails.service';
+
 
 export const  firebaseConfig = {
 
@@ -70,13 +68,14 @@ Firebase.initializeApp(firebaseConfig);
     DisclaimerPage,
     FeedbackPage,
     PaymentPage,
+    ExitPage,
 
   ],
   imports: [CommonModule,NgxErrorsModule,CommonModule,SignupPageModule,
     BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
     FilterPageModule, GeolocationMapPageModule,ShoppingCartModule,
     BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
-    FilterPageModule, GeolocationMapPageModule,IonicSwipeAllModule,AngularFireModule.initializeApp(firebaseConfig),
+    FilterPageModule, GeolocationMapPageModule,AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -94,12 +93,14 @@ Firebase.initializeApp(firebaseConfig);
     DisclaimerPage,
     FeedbackPage,
     PaymentPage,
+    ExitPage,
+
   ],
   providers: [
     SplashScreen,
     StatusBar,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},AngularFireAuth,AngularFireDatabase,
-    AuthService,ShoppingCartService,LocalStorageServie,LoginAppDetailsService,Device,SignUpInfoService,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},AngularFireAuth,
+    AuthService,ShoppingCartService,LocalStorageServie,
     GetDataProvider,DeliveryOptionsDataService,Badge,SharedData,
   ]
 })
