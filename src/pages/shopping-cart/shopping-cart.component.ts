@@ -27,8 +27,13 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   private cartSubscription: Subscription;
 
   public constructor(private productsService: GetDataProvider,
-                     private shoppingCartService: ShoppingCartService) {
+    private shoppingCartService: ShoppingCartService, private nav:NavController ) {
   }
+
+public OpenMenuPage():void
+{
+  this.nav.push(HomePage);
+}
 
   public emptyCart(): void {
     this.shoppingCartService.empty();
@@ -39,7 +44,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     this.cart = this.shoppingCartService.get();
     console.log(this.cart);
     this.cartSubscription = this.cart.subscribe((cart) => {
-
       this.itemCount = cart.items.map((x) => x.Quantity).reduce((p, n) => p + n, 0);
       cart.items.forEach(element => {
 
@@ -59,14 +63,14 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
             }
           }
         }
-      cart.items.forEach(element => {
 
-        this.cartArray.push(element);
-        
+
       });
 
-      console.log("Product details: ",this.cartArray);
+      console.log("Product details: ", this.cartArray);
     });
+
+    console.log(this.cartSubscription);
   }
 
 //add item to cart
@@ -98,6 +102,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
       sub.unsubscribe();
     });
   }
+
+
+
   public ngOnDestroy(): void {
     if (this.cartSubscription) {
       this.cartSubscription.unsubscribe();
