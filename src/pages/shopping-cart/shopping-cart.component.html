@@ -23,9 +23,7 @@
             <!-- <h3>{{product.ProdDesc}}</h3> -->
             <h4>Rs.{{product.Price}}/-</h4>
 
-          
-            <button type="button" class="button icon ion-minus btn-danger"
-        (click)="removeProductFromCart(product)" >-</button>
+<ion-content padding>
 
 						<button class="button  button-small btn-dark">{{product.Quantity}}</button>
 						
@@ -50,11 +48,9 @@
 
 </ion-item>
 
+    </ion-item>
 
-        
-        
     </ion-list>
-
  
   <ion-footer>
     <button ion-button full type="Submit" (click)="payOrder()">Proceed to Pay</button>

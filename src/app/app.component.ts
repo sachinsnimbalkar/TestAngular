@@ -7,7 +7,6 @@ import { ListPage } from '../pages/list/list';
 import { SignupPage } from '../pages/signup/signup';
 import { TrackOrderPage } from '../pages/track-order/track-order';
 import { OfferPage } from '../pages/offer/offer';
-import { ExitPage } from '../pages/exit/exit';
 import { AboutPage } from '../pages/about/about';
 import {FeedbackPage} from '../pages/feedback/feedback';
 import {DisclaimerPage} from '../pages/disclaimer/disclaimer'
@@ -41,7 +40,8 @@ export class MyApp {
     public app: App,
      menu: MenuController,
      private auth: AuthService) {
-    
+
+
     this.initializeApp();
 var that=this;
     Firebase.auth().onAuthStateChanged(function(user) {
@@ -80,11 +80,74 @@ var that=this;
       { title: 'T&C Disclaimer', component: DisclaimerPage },
       { title: 'Feedback', component: FeedbackPage },
       { title: 'About', component: AboutPage },
-      { title: 'Exit', component: ExitPage },
+      ];
       
-    ];
+/////back button 
+platform.ready().then(() => {
+  statusBar.styleDefault();
+  splashScreen.hide();
+  platform.registerBackButtonAction(() => {
+    if (this.alertShown==false) {
+      this.presentConfirm();  
+    }
+  }, 0)
+});
+//////
   }
-  
+
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Exit',
+      message: 'Do you want Exit?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+            this.alertShown=false;
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Yes clicked');
+            this.platform.exitApp();
+          }
+        }
+      ]
+    });
+     alert.present().then(()=>{
+      this.alertShown=true;
+    });
+  }
+
+  exitApp(){
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Exit',
+      message: 'Do you want Exit?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+            this.alertShown=false;
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Yes clicked');
+            this.platform.exitApp();
+          }
+        }
+      ]
+    });
+     alert.present().then(()=>{
+      this.alertShown=true;
+    });
+ }
   initializeApp() {
     this.platform.ready().then(() => {      
       this.splashScreen.show();

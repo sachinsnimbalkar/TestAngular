@@ -9,7 +9,6 @@ import { GetDataProvider } from "../../providers/get-data/get-data";
 import { ShoppingCartService } from "../../providers/shopping-cart.service";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
-
 import { Observer } from 'rxjs/Observer';
 import { IonicPage, Slides, NavController, AlertController, LoadingController, Loading, Events } from 'ionic-angular';
 import { HomePage } from '../home/home'
@@ -28,13 +27,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   private cartSubscription: Subscription;
 
   public constructor(private productsService: GetDataProvider,
-    private shoppingCartService: ShoppingCartService, private nav:NavController ) {
+                     private shoppingCartService: ShoppingCartService) {
   }
-
-public OpenMenuPage():void
-{
-  this.nav.push(HomePage);
-}
 
   public emptyCart(): void {
     this.shoppingCartService.empty();
@@ -65,16 +59,15 @@ public OpenMenuPage():void
             }
           }
         }
+      cart.items.forEach(element => {
 
-
+        this.cartArray.push(element);
+        
       });
 
-      console.log("Product details: ", this.cartArray);
+      console.log("Product details: ",this.cartArray);
     });
-
-    console.log(this.cartSubscription);
   }
-
 
 //add item to cart
   addProductToCart(product: CartItem, qty: number): void {
@@ -105,7 +98,6 @@ public OpenMenuPage():void
       sub.unsubscribe();
     });
   }
-
   public ngOnDestroy(): void {
     if (this.cartSubscription) {
       this.cartSubscription.unsubscribe();
