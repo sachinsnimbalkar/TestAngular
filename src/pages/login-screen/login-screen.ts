@@ -136,6 +136,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import  * as Firebase from 'firebase';
+//import { AuthService } from '../../services/auth.service';
 import { SignupPage } from '../signup/signup';
 
 @IonicPage()
@@ -151,8 +152,7 @@ export class LoginScreenPage {
 		private navCtrl: NavController,
         private nav: NavController,
 		private auth: AuthService,
-		fb: FormBuilder,
-		private loadingCtrl: LoadingController
+		fb: FormBuilder
 	) {
 		this.loginForm = fb.group({
 			email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -170,7 +170,6 @@ export class LoginScreenPage {
 	//this.nav.push("Homepage");
   }
   login() {
-
 		let data = this.loginForm.value;
 
 		if (!data.email) {
@@ -188,13 +187,6 @@ export class LoginScreenPage {
 			);
     }
 
-//   showLoading() {
-//     this.loading = this.loadingCtrl.create({
-//       content: 'Please wait...',
-//       dismissOnPageChange: true
-//     });
-//     this.loading.present();
-//   }
   signup(){
     this.nav.push(SignupPage);
   }
@@ -206,16 +198,5 @@ export class LoginScreenPage {
       error => console.log(error.message)
     );
   }
-  signInWithFacebook() {
-	this.auth.signInWithFacebook()
-	.then(
-		() => this.navCtrl.setRoot(HomePage),
-	error => console.log(error.message));
-  }
-  signInWithTwitter() {
-	this.auth.signInWithTwitter()
-	.then(
-		() => this.navCtrl.setRoot(HomePage),
-	error => console.log(error.message));
-  }
+
 }

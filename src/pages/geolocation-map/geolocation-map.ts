@@ -549,11 +549,9 @@ export class GeolocationMapPage {
         this.shareData.setData(this.result);
         console.log(this.result);
       });
+
       this.initMap();
     });
-  }
-  ionViewDidLoad() {
-   
   }
   static toRad(Value) {
     return Value * Math.PI / 180;

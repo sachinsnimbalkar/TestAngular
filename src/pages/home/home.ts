@@ -15,6 +15,7 @@ import {ShoppingCart} from '../../model/shopping-cart.model'
 import {ShoppingCartComponent} from '../shopping-cart/shopping-cart.component'
 
 
+
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -27,15 +28,13 @@ export class HomePage {
   public categories: Observable<Category[]>;
   private count: number = 0;
   result;
+  public currentAddedProduct;
 
   //private cartdata : Observable<ShoppingCart>;
   //private itemscount:
   @ViewChild(Slides) slides: Slides;
   //private i: number = 0;
-  constructor(private toastCtrl: ToastController,
-    public injector: Injector, public nav: NavController, private badge: Badge, 
-    public DataService: GetDataProvider, public events: Events,public shareData:SharedData,
-    public shoppingCartService: ShoppingCartService) {
+  constructor(private toastCtrl: ToastController,public injector: Injector, public nav: NavController, private badge: Badge, public DataService: GetDataProvider, public events: Events,public shareData:SharedData,public shoppingCartService: ShoppingCartService) {
 
   }
 
@@ -45,7 +44,7 @@ export class HomePage {
     this.DataService.allProduct().subscribe(result => {
       this.result = result;
       this.shareData.setData(this.result);
-     
+      console.log(this.result);
     });
 
     this.categories = this.DataService.allCategory();
@@ -54,8 +53,6 @@ export class HomePage {
   public menuList = [];
   getItem(category) {
 
-    //this.DataService.allProductbyID(categories.SrNo);
-    //console.log("cat:", category);
     this.menuList.length = 0;
     //this.result.length = 0;
     
@@ -66,6 +63,7 @@ for(var i=0; i < dataItem.length; i++){
 
       if (dataItem[i].CatId === category.SrNo) {
         this.menuList.push(dataItem[i]);
+        console.log(this.menuList);
         
       }
      
@@ -78,9 +76,9 @@ for(var i=0; i < dataItem.length; i++){
     console.log("In view cart");
     this.nav.push(ShoppingCartComponent);
   }
-  // login() {
-  //   this.nav.push('LoginScreenPage');
-  // }
+  login() {
+    this.nav.push('LoginScreenPage');
+  }
   openFilters() {
     this.nav.push('FilterPage');
   }
@@ -93,6 +91,7 @@ for(var i=0; i < dataItem.length; i++){
 
 
  addProductToCart(product: Product,qty:number): void{
+
    console.log(product,qty)
       this.shoppingCartService.addItem(product, qty);
       //notification to add cart ..........
@@ -113,6 +112,9 @@ presentToast(product: Product,qty:number) {
 
   toast.present();
 }
+  // public updateTabBadge(): void {
+  //   this.events.publish('cart:updated', ++this.count);
+  // }
 
 }
 

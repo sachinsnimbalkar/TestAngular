@@ -6,7 +6,9 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SignupPage } from '../pages/signup/signup';
 import { TrackOrderPage } from '../pages/track-order/track-order';
+import { SignOutPage } from '../pages/sign-out/sign-out';
 import { OfferPage } from '../pages/offer/offer';
+import { ExitPage } from '../pages/exit/exit';
 import { AboutPage } from '../pages/about/about';
 import {FeedbackPage} from '../pages/feedback/feedback';
 import {DisclaimerPage} from '../pages/disclaimer/disclaimer'
@@ -25,7 +27,6 @@ import  * as Firebase from 'firebase';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  [x: string]: any;
   @ViewChild(Nav) nav: Nav;
 	private menu: MenuController;
 
@@ -40,8 +41,7 @@ export class MyApp {
     public app: App,
      menu: MenuController,
      private auth: AuthService) {
-
-
+    
     this.initializeApp();
 var that=this;
     Firebase.auth().onAuthStateChanged(function(user) {
@@ -80,7 +80,8 @@ var that=this;
       { title: 'T&C Disclaimer', component: DisclaimerPage },
       { title: 'Feedback', component: FeedbackPage },
       { title: 'About', component: AboutPage },
-      ];
+      { title: 'SignOut', component: SignOutPage },
+      { title: 'Exit', component: ExitPage },
       
 // /////back button 
 // platform.ready().then(() => {
@@ -149,6 +150,9 @@ var that=this;
     //   this.alertShown=true;
     // });
  }
+    ];
+  }
+  
   initializeApp() {
     this.platform.ready().then(() => {      
       this.splashScreen.show();
@@ -171,6 +175,7 @@ var that=this;
     this.auth.signOut();
     this.nav.setRoot(HomePage);
   }
+
   openPage(page) {
     this.menu.close();
     // Reset the content nav to have just this page
