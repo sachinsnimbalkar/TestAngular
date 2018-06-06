@@ -27,7 +27,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   private cartSubscription: Subscription;
 
   public constructor(private productsService: GetDataProvider,
-    private shoppingCartService: ShoppingCartService, private nav:NavController ) {
+                     private shoppingCartService: ShoppingCartService,private nav: NavController ) {
   }
 
 public OpenMenuPage():void
@@ -40,6 +40,8 @@ public deleteItemfrmCart()
   console.log("hahahhaha");
   
 }
+
+
   public emptyCart(): void {
     this.shoppingCartService.empty();
   }
@@ -49,6 +51,7 @@ public deleteItemfrmCart()
     this.cart = this.shoppingCartService.get();
     console.log(this.cart);
     this.cartSubscription = this.cart.subscribe((cart) => {
+
       this.itemCount = cart.items.map((x) => x.Quantity).reduce((p, n) => p + n, 0);
       cart.items.forEach(element => {
 
@@ -68,14 +71,14 @@ public deleteItemfrmCart()
             }
           }
         }
+      cart.items.forEach(element => {
 
-
+        this.cartArray.push(element);
+        
       });
 
-      console.log("Product details: ", this.cartArray);
+      console.log("Product details: ",this.cartArray);
     });
-
-    console.log(this.cartSubscription);
   }
 
 //add item to cart
@@ -107,9 +110,6 @@ public deleteItemfrmCart()
       sub.unsubscribe();
     });
   }
-
-
-
   public ngOnDestroy(): void {
     if (this.cartSubscription) {
       this.cartSubscription.unsubscribe();

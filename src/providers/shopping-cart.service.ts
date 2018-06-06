@@ -20,9 +20,9 @@ export class ShoppingCartService {
   private products: Product[];
   private deliveryOptions: DeliveryOption[];
 
-  public constructor(private storageService: LocalStorageServie,
-    private productService: GetDataProvider,
-    private deliveryOptionsService: DeliveryOptionsDataService) {
+  public constructor(private storageService : LocalStorageServie,
+                     private productService: GetDataProvider,
+                     private deliveryOptionsService: DeliveryOptionsDataService) {
     this.storage = this.storageService.get();
     this.productService.allProduct().subscribe((products) => this.products = products);
     this.deliveryOptionsService.all().subscribe((options) => this.deliveryOptions = options);
@@ -58,15 +58,10 @@ export class ShoppingCartService {
     console.log("updated cart",cart);
     this.save(cart);
     this.dispatch(cart);
-
-   
-
   }
-
-
   public addItem(product: Product, quantity: number): void {
     const cart = this.retrieve();
-    let item = cart.items.find((p) => p.ProductId === product.SrNo);
+    let item = cart.items.find((p) => p.productId === product.SrNo);
     if (item === undefined) {
       item = new CartItem();
       item.ProductId = product.SrNo;
@@ -75,9 +70,8 @@ export class ShoppingCartService {
       cart.items.push(item);
     }
 
-
-    item.Quantity += quantity;
-    cart.items = cart.items.filter((cartItem) => cartItem.Quantity > 0);
+    item.quantity += quantity;
+    cart.items = cart.items.filter((cartItem) => cartItem.quantity > 0);
     if (cart.items.length === 0) {
       cart.deliveryOptionId = undefined;
     }
@@ -86,31 +80,6 @@ export class ShoppingCartService {
     this.save(cart);
     this.dispatch(cart);
   }
-
-  //add item quantity on plus action
-  public addItemqty(product: CartItem, quantity: number): void {
-    const cart = this.retrieve();
-    //let item = cart.items.find((p) => p.ProductId === product.ProductId);
-    //let itemIndex = cart.items.findIndex(item => item.ProductId == product.ProductId);
-
-    cart.items.forEach(element => {
-      if (element.ProductId == product.ProductId) {
-
-        element.Quantity = element.Quantity +  quantity;
-        cart.itemsTotal = cart.itemsTotal + product.Price;
-
-
-      }
-
-    });
-
-    console.log("updated cart",cart);
-    this.save(cart);
-    this.dispatch(cart);
-  }
-
-
-
 
   public empty(): void {
     const newCart = new ShoppingCart();
@@ -131,8 +100,8 @@ export class ShoppingCartService {
       .map((item) => item.Quantity * this.products.find((p) => p.SrNo === item.ProductId).Price)
       .reduce((previous, current) => previous + current, 0);
     cart.deliveryTotal = cart.deliveryOptionId ?
-      this.deliveryOptions.find((x) => x.id === cart.deliveryOptionId).price :
-      0;
+                          this.deliveryOptions.find((x) => x.id === cart.deliveryOptionId).price :
+                          0;
     cart.grossTotal = cart.itemsTotal + cart.deliveryTotal;
   }
 
@@ -152,12 +121,12 @@ export class ShoppingCartService {
 
   private dispatch(cart: ShoppingCart): void {
     this.subscribers
-      .forEach((sub) => {
-        try {
-          sub.next(cart);
-        } catch (e) {
-          // we want all subscribers to get the update even if one errors.
-        }
-      });
+        .forEach((sub) => {
+          try {
+            sub.next(cart);
+          } catch (e) {
+            // we want all subscribers to get the update even if one errors.
+          }
+        });
   }
 }

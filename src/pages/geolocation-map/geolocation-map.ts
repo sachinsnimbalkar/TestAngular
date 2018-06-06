@@ -4,17 +4,10 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
 //import { Device } from '@ionic-native/device';
-//import {arroffers } from '../../model/offer.model';
-import { GetDataProvider } from '../../providers/get-data/get-data';
-import { Offer } from '../../model/offer.model';
-import { Observable } from 'rxjs/Observable';
-import { SharedData } from '../../providers/sharedData.service';
-
 
 declare var google;
 var map;
 var infowindow: any;
-
 var arrstores = [{
   "lat4": 39.71004,
   ",": ",",
@@ -526,33 +519,35 @@ var arrstores = [{
   "lng4": 73.768759,
   "name": "Yaara+Di+Haaveli"
 }];
+
 var options = {
   enableHighAccuracy: true,
   timeout: 5000,
   maximumAge: 0
 };
-var arroffer = [];
 @IonicPage()
 @Component({
   selector: 'page-geolocation-map',
   templateUrl: 'geolocation-map.html',
 })
-// private device: Device
+
 export class GeolocationMapPage {
+
+
   @ViewChild('map') mapElement: ElementRef;
   public arroffers: Observable<Offer[]>;
   result;
+  storearray = [];
   constructor(public navCtrl: NavController, public platform: Platform, private http: Http,
     public DataService: GetDataProvider, public shareData: SharedData) {
-    platform.ready().then(() => {
+
+   platform.ready().then(() => {
+      this.DataService.allOffers().subscribe(result => {
+        this.result = result;
+        this.shareData.setData(this.result);
+        console.log(this.result);
+      });
       this.initMap();
-    });
-  }
-  ionViewDidLoad() {
-    this.DataService.allOffers().subscribe(result => {
-      this.result = result;
-      this.shareData.setData(this.result);
-      console.log(this.result);
     });
   }
   static toRad(Value) {
@@ -608,7 +603,6 @@ export class GeolocationMapPage {
     }, 50);
     console.log(place);
     google.maps.event.addListener(marker, 'click', function () {
-
       infowindow.setContent('<div><strong>' + placename + '</strong><br>' +
         'Place ID: ' + place.place_id + '<br>' +
         place.vicinity + '</div>');
@@ -628,39 +622,53 @@ export class GeolocationMapPage {
         var remark: any;
         var lat5: number = 0;
         var lng5: number = 0;
-        //var myarray = [];
+        var myarray = [];
 
         for (var i = 0; i < arrstores.length; i++) {
           var dist: any;
           dist = GeolocationMapPage.calcCrow(mylocation.lat, mylocation.lng, arrstores[i].lat4, arrstores[i].lng4).toFixed(1);
 
           if (dist < 3) {
-            //myarray.push(dist, i);
+
+            myarray.push(i, dist);
             var location1 = new google.maps.LatLng(arrstores[i].lat4, arrstores[i].lng4);
             GeolocationMapPage.createMarker(location1, arrstores[i].name);
           }
         }
-        // var arr_dist = myarray[0];
-        // var arr_index = myarray[1];
-        // for (var j = 2; j < myarray.length;) {
-        //   if (arr_dist > myarray[j]) {
-        //     arr_dist = myarray[j];
-        //     j++;
-        //     arr_index = myarray[j];
-        //     j++;
-        //   }
-        //   else {
-        //     j = j + 2;
-        //   }
-        // }
-        //console.log("Minimum distance:" + arr_dist + ", Index:" + arr_index);
+        var arr_dist = myarray[1];
+        var arr_index = myarray[0];
+
+        for (var j = 2; j < myarray.length;) {
+          if (arr_dist > myarray[j]) {
+            arr_dist = myarray[j];
+            j++;
+            arr_index = myarray[j];
+            j++;
+          }
+          else {
+            j = j + 2;
+          }
+        }
+        for (var k = 0; k < myarray.length; k++) {
+          this.storearray.push(arrstores[myarray[k]].name);
+          k++;
+          this.storearray.push(myarray[k]);
+        }
+ 
+
+        //storedetails.push(arrstores[arr_index].name,arr_dist)
+
+
+        console.log("Minimum distance:" + arr_dist + ", Index:" + arr_index);
+        //alert("Storedetails:-" + JSON.stringify(this.storearray));
         // let location1 = new google.maps.LatLng(arrstores[arr_index].lat4, arrstores[arr_index].lng4);
         // GeolocationMapPage.createMarker(location1, arrstores[arr_index].name);
+
       });
 
   }
+  
   initMap() {
-
     navigator.geolocation.getCurrentPosition((location) => {
       map = new google.maps.Map(this.mapElement.nativeElement, {
         center: {
