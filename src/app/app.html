@@ -11,6 +11,11 @@
         {{p.title}}
       </button>
       <ion-list-header *ngIf="auth.getEmail()">{{auth.getEmail()}}</ion-list-header>
+     
+      <ion-item (click)="exitApp()" >
+          <ion-icon name="ion-exit" ></ion-icon>
+          Exit
+        </ion-item>
 
 <ion-item (click)="logout()" *ngIf="auth.authenticated">
 	<ion-icon name="log-out" item-left></ion-icon>

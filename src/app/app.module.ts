@@ -14,7 +14,6 @@ import { OrderhistoryPage } from '../pages/orderhistory/orderhistory';
 import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { FilterPage } from '../pages/filter/filter'
-import { ExitPage } from '../pages/exit/exit';
 import { OfferPage } from '../pages/offer/offer';
 import { AboutPage } from '../pages/about/about';
 import { GetDataProvider } from '../providers/get-data/get-data';
@@ -70,7 +69,6 @@ Firebase.initializeApp(firebaseConfig);
     DisclaimerPage,
     FeedbackPage,
     PaymentPage,
-    ExitPage,
 
   ],
   imports: [CommonModule,NgxErrorsModule,CommonModule,SignupPageModule,
@@ -95,8 +93,6 @@ Firebase.initializeApp(firebaseConfig);
     DisclaimerPage,
     FeedbackPage,
     PaymentPage,
-    ExitPage,
-
   ],
   providers: [
     SplashScreen,
