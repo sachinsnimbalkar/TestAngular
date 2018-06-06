@@ -42,7 +42,7 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import {ShoppingCartModule} from '../pages/shopping-cart/shopping-cart.module'
 import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
 import { SignupPageModule } from '../pages/signup/signup.module';
-
+import { IonicSwipeAllModule } from 'ionic-swipe-all';
 
 export const  firebaseConfig = {
 
@@ -75,7 +75,7 @@ Firebase.initializeApp(firebaseConfig);
     BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
     FilterPageModule, GeolocationMapPageModule,ShoppingCartModule,
     BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
-    FilterPageModule, GeolocationMapPageModule,AngularFireModule.initializeApp(firebaseConfig),
+    FilterPageModule, GeolocationMapPageModule,IonicSwipeAllModule,AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

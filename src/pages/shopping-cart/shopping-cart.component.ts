@@ -35,6 +35,11 @@ public OpenMenuPage():void
   this.nav.push(HomePage);
 }
 
+public deleteItemfrmCart()
+{
+  console.log("hahahhaha");
+  
+}
   public emptyCart(): void {
     this.shoppingCartService.empty();
   }

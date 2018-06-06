@@ -14,9 +14,10 @@
 </ion-header>
 
 <ion-content>
+
     <ion-list>
-      <!--(swipe)="emptyCart()"-->
-        <ion-item *ngFor="let product of cartArray"  >
+      <!--(swipe)="emptyCart()" (swipeleft)="swipeLeft($event)"-->
+        <ion-item *ngFor="let product of cartArray" side="right" (ionSwipe)="deleteItemfrmCart()" >
            
             <h2>{{product.ProductName}}</h2>
             <!-- <h3>{{product.ProdDesc}}</h3> -->
@@ -39,6 +40,7 @@
 
         
         </ion-item>
+        
         <ion-item>
 
            <h2>Total Amount {{(cart | async).itemsTotal | currency:'INR':true}}</h2>

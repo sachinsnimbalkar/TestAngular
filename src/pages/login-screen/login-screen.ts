@@ -136,7 +136,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import  * as Firebase from 'firebase';
-import { AuthService } from '../../services/auth.service';
+//import { AuthService } from '../../services/auth.service';
 import { SignupPage } from '../signup/signup';
 
 @IonicPage()
