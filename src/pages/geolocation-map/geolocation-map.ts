@@ -541,7 +541,7 @@ export class GeolocationMapPage {
   @ViewChild('map') mapElement: ElementRef;
   public arroffers: Observable<Offer[]>;
   result;
-  constructor(public navCtrl: NavController, public platform: Platform, private http: Http,
+  constructor(public nav: NavController, public platform: Platform, private http: Http,
     public DataService: GetDataProvider, public shareData: SharedData) {
     platform.ready().then(() => {
       this.DataService.allOffers().subscribe(result => {
@@ -549,9 +549,11 @@ export class GeolocationMapPage {
         this.shareData.setData(this.result);
         console.log(this.result);
       });
-
       this.initMap();
     });
+  }
+  ionViewDidLoad() {
+   
   }
   static toRad(Value) {
     return Value * Math.PI / 180;

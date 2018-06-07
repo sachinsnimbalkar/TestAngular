@@ -6,9 +6,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SignupPage } from '../pages/signup/signup';
 import { TrackOrderPage } from '../pages/track-order/track-order';
-import { SignOutPage } from '../pages/sign-out/sign-out';
 import { OfferPage } from '../pages/offer/offer';
-import { ExitPage } from '../pages/exit/exit';
 import { AboutPage } from '../pages/about/about';
 import {FeedbackPage} from '../pages/feedback/feedback';
 import {DisclaimerPage} from '../pages/disclaimer/disclaimer'
@@ -27,6 +25,7 @@ import  * as Firebase from 'firebase';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  [x: string]: any;
   @ViewChild(Nav) nav: Nav;
 	private menu: MenuController;
 
@@ -40,8 +39,11 @@ export class MyApp {
      public splashScreen: SplashScreen,
     public app: App,
      menu: MenuController,
-     private auth: AuthService) {
-    
+     private auth: AuthService,
+     public alertCtrl:AlertController,
+    ) {
+
+
     this.initializeApp();
 var that=this;
     Firebase.auth().onAuthStateChanged(function(user) {
@@ -76,83 +78,59 @@ var that=this;
       { title: 'Offers', component: OfferPage },
       { title: 'Filter', component: FilterPage },
       { title: 'Track Order', component: TrackOrderPage },
-      { title: 'MapView', component: GeolocationMapPage },      
+      // { title: 'MapView', component: GeolocationMapPage },      
       { title: 'T&C Disclaimer', component: DisclaimerPage },
       { title: 'Feedback', component: FeedbackPage },
       { title: 'About', component: AboutPage },
-      { title: 'SignOut', component: SignOutPage },
-      { title: 'Exit', component: ExitPage },
+      ];
       
-// /////back button 
-// platform.ready().then(() => {
-//   statusBar.styleDefault();
-//   splashScreen.hide();
-//   platform.registerBackButtonAction(() => {
-//     if (this.alertShown==false) {
-//       this.presentConfirm();  
-//     }
-//   }, 0)
-// });
-// //////
-//   }
+/////////////////////////////////////shri exit pop code start with back button press
 
-//   presentConfirm() {
-//     let alert = this.alertCtrl.create({
-//       title: 'Confirm Exit',
-//       message: 'Do you want Exit?',
-//       buttons: [
-//         {
-//           text: 'Cancel',
-//           role: 'cancel',
-//           handler: () => {
-//             console.log('Cancel clicked');
-//             this.alertShown=false;
-//           }
-//         },
-//         {
-//           text: 'Yes',
-//           handler: () => {
-//             console.log('Yes clicked');
-//             this.platform.exitApp();
-//           }
-//         }
-//       ]
-//     });
-//      alert.present().then(()=>{
-//       this.alertShown=true;
-//     });
+platform.ready().then(() => {
+  statusBar.styleDefault();
+  splashScreen.hide();
+  platform.registerBackButtonAction(() => {
+    if (this.alertShown==false) {
+      this.exitConfirm();  
+    }
+  }, 0)
+});
+  }
+  exitConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Exit',
+      message: 'Do you want Exit?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+            this.alertShown=false;
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Yes clicked');
+            this.platform.exitApp();
+          }
+        }
+      ]
+    });
+     alert.present().then(()=>{
+      this.alertShown=true;
+    });
    }
+   
+
 
   exitApp(){
     this.platform.exitApp();
-    // let alert = this.alertCtrl.create({
-    //   title: 'Confirm Exit',
-    //   message: 'Do you want Exit?',
-    //   buttons: [
-    //     {
-    //       text: 'Cancel',
-    //       role: 'cancel',
-    //       handler: () => {
-    //         console.log('Cancel clicked');
-    //         this.alertShown=false;
-    //       }
-    //     },
-    //     {
-    //       text: 'Yes',
-    //       handler: () => {
-    //         console.log('Yes clicked');
-    //         this.platform.exitApp();
-    //       }
-    //     }
-    //   ]
-    // });
-    //  alert.present().then(()=>{
-    //   this.alertShown=true;
-    // });
- }
-    ];
-  }
-  
+    this.exitConfirm()
+   }
+ /////////////////////////////////////shri exit pop code end
+
   initializeApp() {
     this.platform.ready().then(() => {      
       this.splashScreen.show();
@@ -162,7 +140,7 @@ var that=this;
       this.splashScreen.hide();
     });
   }
-
+/////////////////////////////////////shri login code start
 	login() {
 		this.menu.close();
 		this.auth.signOut();
@@ -170,12 +148,34 @@ var that=this;
 	}
 
 	logout() {
-    //this.presentConfirm();
-    this.menu.close();
-    this.auth.signOut();
-    this.nav.setRoot(HomePage);
-  }
-
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Log Out',
+      message: 'Do you want LOG OUT ?',
+      buttons: [
+        {
+          text: 'NO',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+            this.alertShown=false;
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Yes clicked');
+            this.menu.close();
+            this.auth.signOut();
+            this.nav.setRoot(HomePage);
+          }
+        }
+      ]
+    });
+     alert.present().then(()=>{
+      this.alertShown=true;
+    });
+    }
+///////////////////////////shrii login code end
   openPage(page) {
     this.menu.close();
     // Reset the content nav to have just this page
