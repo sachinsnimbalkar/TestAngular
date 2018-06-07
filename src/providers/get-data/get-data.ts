@@ -81,19 +81,6 @@ public allProduct()
           })));
   
   }
-  public allOffers(): Observable<Offer[]> {
-    return this.cache<Offer[]>(() => this.offers,
-      (val: Observable<Offer[]>) => this.offers = val,
-      () => this.http
-        .get("./assets/data/BJPOffers.json")
-        .map((response) => response.json()
-          .map((item) => {
-            let model = new Offer();
-            model.updateFrom(item);
-                return model;
-          })));
-  
-  }
 
   public allOffers(): Observable<Offer[]> {
     return this.cache<Offer[]>(() => this.offers,
