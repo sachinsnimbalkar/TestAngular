@@ -83,6 +83,7 @@ public allProduct()
           })));
   
   }
+
   public allOffers(): Observable<Offer[]> {
     return this.cache<Offer[]>(() => this.offers,
       (val: Observable<Offer[]>) => this.offers = val,
@@ -96,6 +97,7 @@ public allProduct()
           })));
   
   }
+
   public allStores(): Observable<Store[]> {
     return this.cache<Store[]>(() => this.stores,
       (val: Observable<Store[]>) => this.stores = val,
@@ -109,6 +111,7 @@ public allProduct()
           })));
   
   }
+
 
 
   // getRemoteData(){
