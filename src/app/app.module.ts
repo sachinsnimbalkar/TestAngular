@@ -42,6 +42,7 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import {ShoppingCartModule} from '../pages/shopping-cart/shopping-cart.module'
 import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
 import { SignupPageModule } from '../pages/signup/signup.module';
+//import {ModelPageCutomizingItemsPage} from '../pages/model-page-cutomizing-items/model-page-cutomizing-items';
 
 
 export const  firebaseConfig = {
@@ -69,6 +70,7 @@ Firebase.initializeApp(firebaseConfig);
     FeedbackPage,
     PaymentPage,
     ExitPage,
+    
 
   ],
   imports: [CommonModule,NgxErrorsModule,CommonModule,SignupPageModule,
