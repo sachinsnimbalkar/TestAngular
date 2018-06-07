@@ -20,6 +20,13 @@ import{CheckoutComponent} from '../pages/checkout/checkout.component'
 import{OrderConfirmationComponent} from '../pages/order-confirmation/order-confirmation.component'
 import { AuthService } from '../providers/auth-service/auth-service';
 import  * as Firebase from 'firebase';
+import { GetDataProvider } from '../providers/get-data/get-data';
+import { Offer } from '../model/offer.model';
+import { Observable } from 'rxjs/Observable';
+import { SharedData } from '../providers/sharedData.service';
+
+
+
 
 @Component({
   templateUrl: 'app.html'
@@ -28,7 +35,7 @@ export class MyApp {
   [x: string]: any;
   @ViewChild(Nav) nav: Nav;
 	private menu: MenuController;
-
+  stores;
   rootPage: any = HomePage;
 //  public alertShown:boolean = false;
   pages: Array<{title: string, component: any}>;
@@ -42,8 +49,6 @@ export class MyApp {
      private auth: AuthService,
      public alertCtrl:AlertController,
     ) {
-
-
     this.initializeApp();
 var that=this;
     Firebase.auth().onAuthStateChanged(function(user) {
@@ -78,7 +83,7 @@ var that=this;
       { title: 'Offers', component: OfferPage },
       { title: 'Filter', component: FilterPage },
       { title: 'Track Order', component: TrackOrderPage },
-      // { title: 'MapView', component: GeolocationMapPage },      
+      { title: 'MapView', component: GeolocationMapPage },      
       { title: 'T&C Disclaimer', component: DisclaimerPage },
       { title: 'Feedback', component: FeedbackPage },
       { title: 'About', component: AboutPage },
@@ -134,6 +139,7 @@ platform.ready().then(() => {
   initializeApp() {
     this.platform.ready().then(() => {      
       this.splashScreen.show();
+      
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();

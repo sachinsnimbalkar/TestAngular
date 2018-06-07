@@ -80,8 +80,7 @@ Firebase.initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage,
+    MyApp,    
     AboutPage,
     ListPage,
     OfferPage,
@@ -94,6 +93,7 @@ Firebase.initializeApp(firebaseConfig);
     PaymentPage,
 
   ],
+
   imports: [CommonModule,
     NgxErrorsModule,
     SignupPageModule,
@@ -116,8 +116,6 @@ Firebase.initializeApp(firebaseConfig);
     OfferPage,
     VerificationCodePage,
     ResetPasswordPage,
-    TrackOrderPage,
-    DisclaimerPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
