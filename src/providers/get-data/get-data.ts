@@ -83,7 +83,6 @@ public allProduct()
           })));
   
   }
-
   public allOffers(): Observable<Offer[]> {
     return this.cache<Offer[]>(() => this.offers,
       (val: Observable<Offer[]>) => this.offers = val,
