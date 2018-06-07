@@ -40,28 +40,6 @@ export class ShoppingCartService {
     return this.subscriptionObservable;
   }
 
-  public removeItem(product: CartItem): void {
-    const cart = this.retrieve();
-
-    //let item = cart.items.find((p) => p.ProductId === product.ProductId);
-    //let itemIndex = cart.items.findIndex(item => item.ProductId == product.ProductId);
-
-    cart.items.forEach(element => {
-      if (element.ProductId == product.ProductId) {
-
-        element.Quantity = element.Quantity - 1;
-        cart.itemsTotal = cart.itemsTotal - product.Price;
-      }
-
-    });
-
-    console.log("updated cart",cart);
-    this.save(cart);
-    this.dispatch(cart);
-
-   
-
-  }
 
 
   public addItem(product: Product, quantity: number): void {
@@ -110,6 +88,52 @@ export class ShoppingCartService {
   }
 
 
+  public removeItem(product: CartItem): void {
+    const cart = this.retrieve();
+
+    //let item = cart.items.find((p) => p.ProductId === product.ProductId);
+    //let itemIndex = cart.items.findIndex(item => item.ProductId == product.ProductId);
+
+    cart.items.forEach(element => {
+      if (element.ProductId == product.ProductId) {
+
+        element.Quantity = element.Quantity - 1;
+        cart.itemsTotal = cart.itemsTotal - product.Price;
+      }
+
+    });
+
+    console.log("updated cart",cart);
+    this.save(cart);
+    this.dispatch(cart);
+
+   
+
+  }
+
+  public deleteItemFromCart(product:CartItem):void
+  {
+
+     const cart = this.retrieve();
+
+    //let item = cart.items.find((p) => p.ProductId === product.ProductId);
+    let itemIndex = cart.items.findIndex(item => item.ProductId == product.ProductId);
+
+    cart.items.forEach(element => {
+      if (element.ProductId == product.ProductId) {
+
+        let deductionAmt = (element.Quantity * product.Price);
+        cart.itemsTotal = cart.itemsTotal - deductionAmt;
+        cart.items.splice(itemIndex,1);
+      }
+
+    });
+
+    console.log("updated cart",cart);
+    this.save(cart);
+    this.dispatch(cart);
+    
+  }
 
 
   public empty(): void {

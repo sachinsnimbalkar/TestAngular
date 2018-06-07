@@ -82,7 +82,7 @@ describe("ShoppingCartComponent", () => {
     async(inject([ShoppingCartService], (service: MockShoppingCartService) => {
       const newCart = new ShoppingCart();
       const cartItem = new CartItem();
-      cartItem.Quantity = 1;
+      cartItem.quantity = 1;
       newCart.grossTotal = 1.5;
       newCart.items = [cartItem];
       service.dispatchCart(newCart);

@@ -16,7 +16,8 @@
 <ion-content>
     <ion-list>
       <!--(swipe)="emptyCart()"-->
-        <ion-item *ngFor="let product of cartArray"  >
+      <ion-item-sliding *ngFor="let product of cartArray; let i=index">
+        <ion-item>
            
             <h2>{{product.ProductName}}</h2>
             <!-- <h3>{{product.ProdDesc}}</h3> -->
@@ -39,6 +40,16 @@
 
         
         </ion-item>
+
+ <ion-item-options>
+      <button type="button" class="button btn-danger" (click)="deleteItem(product,i)"><ion-icon name="trash"></ion-icon>      Delete</button>
+     <button ion-button (click)="openModal()">Customize Now</button>
+    </ion-item-options>
+
+     
+    
+
+      </ion-item-sliding> 
         <ion-item>
 
            <h2>Total Amount {{(cart | async).itemsTotal | currency:'INR':true}}</h2>
