@@ -33,6 +33,7 @@ import { ShoppingCartService } from '../providers/shopping-cart.service';
 import { LocalStorageServie } from '../providers/storage.service';
 import { Badge } from '@ionic-native/badge';
 import { CommonModule } from '@angular/common';
+///my changes
 //import { Device } from '@ionic-native/device';
 import {SharedData} from  '../providers/sharedData.service'
 import { AngularFireModule, FirebaseApp } from 'angularfire2';
