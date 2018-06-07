@@ -59,7 +59,7 @@ Firebase.initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
-    MyApp,
+    MyApp,    
     AboutPage,
     ListPage,
     OfferPage,
@@ -74,11 +74,18 @@ Firebase.initializeApp(firebaseConfig);
     
 
   ],
-  imports: [CommonModule,NgxErrorsModule,CommonModule,SignupPageModule,
-    BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
-    FilterPageModule, GeolocationMapPageModule,ShoppingCartModule,
-    BrowserModule, HttpModule, LoginScreenPageModule, HomePageModule,
-    FilterPageModule, GeolocationMapPageModule,AngularFireModule.initializeApp(firebaseConfig),
+
+  imports: [CommonModule,
+    NgxErrorsModule,
+    SignupPageModule,
+    BrowserModule,
+    HttpModule,
+    LoginScreenPageModule,
+    HomePageModule,
+    FilterPageModule,
+    ShoppingCartModule,
+    GeolocationMapPageModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -90,8 +97,6 @@ Firebase.initializeApp(firebaseConfig);
     OfferPage,
     VerificationCodePage,
     ResetPasswordPage,
-    TrackOrderPage,
-    DisclaimerPage,
     TrackOrderPage,
     DisclaimerPage,
     FeedbackPage,
