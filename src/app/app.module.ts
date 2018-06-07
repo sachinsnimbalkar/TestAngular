@@ -81,7 +81,7 @@ Firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    //HomePage,
     AboutPage,
     ListPage,
     OfferPage,
