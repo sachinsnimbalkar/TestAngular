@@ -1,11 +1,6 @@
 page-home {
- 
-    .filtericon
-    {
-        float: right;
-        width:40px;
-        height:30px;
-    }
+
+
     ion-icon {
         font-size: 40px; //Preferred size here
     }
@@ -17,31 +12,33 @@ page-home {
 		overflow: visible!important;
 	}
     ion-toolbar.scrollable-segments {
-//overflow: hidden;
+        overflow: hidden;
+        ion-segment {
+            border: 0px;
+          display: block;
+          overflow: hidden;
+          white-space: nowrap;
+       &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+          ion-segment-button.segment-button {
+            display: inline;
+            overflow: hidden;
+            flex: 1 0 100px;
+            color: black;
+          }
+        }
+    }
 
-    //     ion-segment {
-    //         border: 0px;
-    //       display: block;
-    //       overflow: hidden;
-    //       white-space: nowrap;
-    //    &::-webkit-scrollbar {
-    //         width: 0;
-    //         height: 0;
-    //         display: none;
-    //     }
-    //       ion-segment-button.segment-button {
-    //         display: inline;
-    //         overflow: hidden;
-    //         flex: 1 0 100px;
-    //         color: black;
-    //       }
-    //     }
+
 
     ion-segment {
         display: block;
         white-space: nowrap;
         font-size: 0;
-        overflow: hidden;
+        overflow: auto;
     
         &::-webkit-scrollbar {
             width: 0;
@@ -55,10 +52,10 @@ page-home {
             width: auto;
         }
     }
-    }
 
 
-    
+
+
 
 #notifications-badge {
 		background-color: red;

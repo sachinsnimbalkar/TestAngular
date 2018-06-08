@@ -11,7 +11,10 @@ import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
 import { Observer } from 'rxjs/Observer';
 import { IonicPage, Slides, NavController, AlertController, LoadingController, Loading, Events } from 'ionic-angular';
-import { HomePage } from '../home/home'
+import { HomePage } from '../home/home';
+
+import { ModalController } from 'ionic-angular';
+import {ModelPageCutomizingItemsPage} from '../model-page-cutomizing-items/model-page-cutomizing-items'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,17 +30,27 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   private cartSubscription: Subscription;
 
   public constructor(private productsService: GetDataProvider,
-    private shoppingCartService: ShoppingCartService, private nav:NavController ) {
+    private shoppingCartService: ShoppingCartService, private nav: NavController,public modalCtrl : ModalController) {
   }
 
-public OpenMenuPage():void
-{
-  this.nav.push(HomePage);
+  //open Modal on click of items
+
+  public openModal(){
+    var data = { message : 'hello world' };
+    var modalPage = this.modalCtrl.create('ModelPageCutomizingItemsPage',data);
+    modalPage.present();
+
 }
+
+  public OpenMenuPage(): void {
+    this.nav.push(HomePage);
+  }
 
   public emptyCart(): void {
     this.shoppingCartService.empty();
   }
+
+ 
 
   public ngOnInit(): void {
     this.products = this.productsService.allProduct();
@@ -73,7 +86,14 @@ public OpenMenuPage():void
     console.log(this.cartSubscription);
   }
 
-//add item to cart
+
+  deleteItem(product: CartItem,index:number): void {
+    console.log("Delete item");
+    
+    this.shoppingCartService.deleteItemFromCart(product);
+    this.cartArray.splice(index,1);
+  }
+  //add item to cart
   addProductToCart(product: CartItem, qty: number): void {
 
     console.log("Add Shooping cart item :", product, qty)
@@ -81,7 +101,7 @@ public OpenMenuPage():void
   }
 
 
-//Code to remove item from cart
+  //Code to remove item from cart
   public removeProductFromCart(product: CartItem): void {
 
     console.log("Removig prdct :", product);
@@ -89,7 +109,7 @@ public OpenMenuPage():void
     this.shoppingCartService.removeItem(product);
   }
 
-//check if item present in the cart or not
+  //check if item present in the cart or not
   public productInCart(product: Product): boolean {
     console.log("checking for product in cart...........");
     return Observable.create((obs: Observer<boolean>) => {

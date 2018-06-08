@@ -110,8 +110,8 @@ describe("CheckoutComponent", () => {
     async(inject([ShoppingCartService], (service: MockShoppingCartService) => {
       const newCart = new ShoppingCart();
       const cartItem = new CartItem();
-      cartItem.ProductId = PRODUCT_1.SrNo;
-      cartItem.Quantity = 2;
+      cartItem.productId = PRODUCT_1.SrNo;
+      cartItem.quantity = 2;
       newCart.grossTotal = 3;
       newCart.items = [cartItem];
       service.dispatchCart(newCart);
@@ -126,9 +126,9 @@ describe("CheckoutComponent", () => {
       expect(productElements[0].querySelector(".js-product-name").textContent).toEqual(PRODUCT_1.ProductName);
       expect(productElements[0].querySelector(".js-product-desc").textContent).toContain(PRODUCT_1.ProdDesc);
       expect(productElements[0].querySelector(".js-product-costs").textContent)
-        .toContain(`${cartItem.Quantity} x £${PRODUCT_1.Price}`);
+        .toContain(`${cartItem.quantity} x £${PRODUCT_1.Price}`);
       expect(productElements[0].querySelector(".js-product-total").textContent)
-        .toContain(PRODUCT_1.Price * cartItem.Quantity);
+        .toContain(PRODUCT_1.Price * cartItem.quantity);
     })));
 
   it("should display all the delivery options",

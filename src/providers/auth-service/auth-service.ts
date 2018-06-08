@@ -103,7 +103,8 @@ export class AuthService {
 	signOut(): Promise<void> {
 		return this.afAuth.auth.signOut();
 	}
-	signInWithFacebook() {
+
+signInWithFacebook() {
 		console.log('Sign in with facebook');
 		return this.oauthSignIn(new firebase.auth.FacebookAuthProvider());
 	}
@@ -111,10 +112,7 @@ export class AuthService {
 		console.log('Sign in with google');
 		return this.oauthSignIn(new firebase.auth.GoogleAuthProvider());
 	}
-	signInWithTwitter() {
-		console.log('Sign in with twitter');
-		return this.oauthSignIn(new firebase.auth.TwitterAuthProvider());
-	  }
+
 	private oauthSignIn(provider: AuthProvider) {
 		if (!(<any>window).cordova) {
 			return this.afAuth.auth.signInWithPopup(provider);
