@@ -14,7 +14,6 @@ import { OrderhistoryPage } from '../pages/orderhistory/orderhistory';
 import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { FilterPage } from '../pages/filter/filter'
-import { ExitPage } from '../pages/exit/exit';
 import { OfferPage } from '../pages/offer/offer';
 import { AboutPage } from '../pages/about/about';
 import { GetDataProvider } from '../providers/get-data/get-data';
@@ -28,38 +27,62 @@ import { LoginScreenPageModule } from '../pages/login-screen/login-screen.module
 import { HomePageModule } from '../pages/home/home.module';
 import { FilterPageModule } from '../pages/filter/filter.module';
 import { GeolocationMapPageModule } from '../pages/geolocation-map/geolocation-map.module';
+//import { MapGeolocationPageModule } from '../pages/map-geolocation/map-geolocation.module'
 import { DeliveryOptionsDataService } from '../providers/delivery-options.service';
 import { ShoppingCartService } from '../providers/shopping-cart.service';
 import { LocalStorageServie } from '../providers/storage.service';
 import { Badge } from '@ionic-native/badge';
 import { CommonModule } from '@angular/common';
-///my changes
-//import { Device } from '@ionic-native/device';
-import {SharedData} from  '../providers/sharedData.service'
+import { Device } from '@ionic-native/device';
+import { SharedData } from '../providers/sharedData.service'
 import { AngularFireModule, FirebaseApp } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
-import  * as Firebase from 'firebase';
+import * as Firebase from 'firebase';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
-import {ShoppingCartModule} from '../pages/shopping-cart/shopping-cart.module'
-import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
+import { ShoppingCartModule } from '../pages/shopping-cart/shopping-cart.module'
+import { ShoppingCartComponent } from '../pages/shopping-cart/shopping-cart.component'
 import { SignupPageModule } from '../pages/signup/signup.module';
+import { LoginAppDetailsService } from '../service/LoginAppDetails.service';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { SignUpInfoService } from '../service/SignUpDetails.service';
+//import{RouterModule,Routes}from '@angular/router';
 //import {ModelPageCutomizingItemsPage} from '../pages/model-page-cutomizing-items/model-page-cutomizing-items';
-
-
-export const  firebaseConfig = {
-
-		apiKey: "AIzaSyDbknxObiTJwTaH4b4JxELtqbq9djoTpDY",
-    authDomain: "cmbjp2018-4fdc5.firebaseapp.com",
-    databaseURL: "https://cmbjp2018-4fdc5.firebaseio.com",
-    projectId: "cmbjp2018-4fdc5",
-    storageBucket: "cmbjp2018-4fdc5.appspot.com",
-    messagingSenderId: "682850594591"
+//import { Geolocation } from '@ionic-native/geolocation';
+export const firebaseConfig = {
+  apiKey: "AIzaSyDbknxObiTJwTaH4b4JxELtqbq9djoTpDY",
+  authDomain: "cmbjp2018-4fdc5.firebaseapp.com",
+  databaseURL: "https://cmbjp2018-4fdc5.firebaseio.com",
+  projectId: "cmbjp2018-4fdc5",
+  storageBucket: "cmbjp2018-4fdc5.appspot.com",
+  messagingSenderId: "682850594591"
 };
 Firebase.initializeApp(firebaseConfig);
 
+
+// const appRoutes:Routes=[
+
+//   {path:'home',component:HomePage},
+//   {path:'login',component:LoginScreenPage},
+//   {path:'map',component:GeolocationMapPage},
+//   {path:'about',component:AboutPage},
+//   {path:'Offer',component:OfferPage},
+//   {path:'Offer',component:OfferPage},
+//   {path:'Offer',component:OfferPage},
+//   {path:'Offer',component:OfferPage},
+//   {path:'Offer',component:OfferPage},
+//   {path:'Offer',component:OfferPage},
+//   {path:'Offer',component:OfferPage},
+//   {path:'Offer',component:OfferPage},
+//   {path:'Offer',component:OfferPage},
+//   {path:'Offer',component:OfferPage}
+
+
+// ]
+
 @NgModule({
   declarations: [
-    MyApp,    
+    MyApp,
+    //HomePage,
     AboutPage,
     ListPage,
     OfferPage,
@@ -70,11 +93,8 @@ Firebase.initializeApp(firebaseConfig);
     DisclaimerPage,
     FeedbackPage,
     PaymentPage,
-    ExitPage,
-    
 
   ],
-
   imports: [CommonModule,
     NgxErrorsModule,
     SignupPageModule,
@@ -85,6 +105,7 @@ Firebase.initializeApp(firebaseConfig);
     FilterPageModule,
     ShoppingCartModule,
     GeolocationMapPageModule,
+    // MapGeolocationPageModule,
     AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
   ],
@@ -99,17 +120,29 @@ Firebase.initializeApp(firebaseConfig);
     ResetPasswordPage,
     TrackOrderPage,
     DisclaimerPage,
+    TrackOrderPage,
+    DisclaimerPage,
     FeedbackPage,
     PaymentPage,
-    ExitPage,
-
   ],
   providers: [
     SplashScreen,
     StatusBar,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},AngularFireAuth,
-    AuthService,ShoppingCartService,LocalStorageServie,
-    GetDataProvider,DeliveryOptionsDataService,Badge,SharedData,
+
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AngularFireAuth,
+    AngularFireDatabase,
+    AuthService,
+    ShoppingCartService,
+    LocalStorageServie,
+    LoginAppDetailsService,
+    Device,
+    SignUpInfoService,
+    GetDataProvider,
+    DeliveryOptionsDataService,
+    Badge,
+    SharedData,//Geolocation
+
   ]
 })
 export class AppModule { }

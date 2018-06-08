@@ -13,7 +13,7 @@
   <div #map id="map"></div>
 
   <div #map1 class="header-banner">
-    <ion-slides  autoplay="600" loop>
+    <ion-slides *ngIf="result && result.length" class="slideroption" pager="true"  autoplay="600" loop>
       <ion-slide *ngFor="let item of result; let i = index; let f=first; let l=last;">
         <ion-card>
           <ion-card-content>
