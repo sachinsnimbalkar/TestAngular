@@ -15,7 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FilterPage {
 
-  constructor(public nav: NavController, public navParams: NavParams) {
+  constructor(public nav: NavController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
