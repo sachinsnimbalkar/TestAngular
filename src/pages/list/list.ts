@@ -8,7 +8,7 @@ import { NavController,IonicPage, AlertController } from 'ionic-angular';
 })
 export class ListPage {
   
-  constructor(public navCtrl: NavController,public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController,public nav: NavController,public alertCtrl: AlertController) {
 
   }
   // selectedItem: any;
