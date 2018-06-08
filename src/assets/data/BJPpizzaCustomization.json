@@ -1,0 +1,44 @@
+[
+  {
+    "crust": {
+      "typeCrust": [
+        "New Hand Tossed",
+        "Wheat Thin Crust",
+        "Cheese Brust",
+        "Classic Hand Tossed"
+      ],
+      "priceCrust": "25"
+    },
+    "toppings": {
+      "meats": [
+        "Sausage",
+        "Pepperoni"
+      ],
+      "nonMeats": [
+        "Green Peppers",
+        "Mushrooms",
+        "Black Olives",
+        "Onions"
+      ],
+      "toppingsPrice": "55"
+    },
+    "size": [
+      {
+        "pizzaSize": "Small",
+        "sizePrice": "20"
+      },
+      {
+        "pizzaSize": "Medium",
+        "sizePrice": "30"
+      },
+      {
+        "pizzaSize": "Large",
+        "sizePrice": "50"
+      },
+      {
+        "pizzaSize": "Regular",
+        "sizePrice": "25"
+      }
+    ]
+  }
+]
