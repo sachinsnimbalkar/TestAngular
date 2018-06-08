@@ -76,7 +76,6 @@ var that=this;
 		this.app = app;
 		this.platform = platform;
 	
-
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
