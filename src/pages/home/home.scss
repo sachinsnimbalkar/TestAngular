@@ -52,11 +52,7 @@ page-home {
             width: auto;
         }
     }
-
-
-
-
-
+ 
 #notifications-badge {
 		background-color: red;
 		position: absolute;
@@ -93,7 +89,9 @@ page-home {
             font-weight: 700;
         }
     }
-
- 
+    
 }
 
+.segment-md .segment-button{
+    width: 50%;
+}

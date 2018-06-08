@@ -16,7 +16,7 @@ import {OrderhistoryPage} from '../pages/orderhistory/orderhistory'
 import { LoginScreenPage } from '../pages/login-screen/login-screen';
 import { FilterPage } from '../pages/filter/filter';
 import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map';
-import { MapGeolocationPage } from '../pages/map-geolocation/map-geolocation';
+//import { MapGeolocationPage } from '../pages/map-geolocation/map-geolocation';
 import{StoreFrontComponent} from '../pages/store-front/store-front.component';
 import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component';
 import{CheckoutComponent} from '../pages/checkout/checkout.component';
@@ -85,7 +85,7 @@ var that=this;
       { title: 'Filter', component: FilterPage },
       { title: 'Track Order', component: TrackOrderPage },
       { title: 'MapView', component: GeolocationMapPage },
-      { title: 'Viewmap', component:MapGeolocationPage },      
+      //{ title: 'Viewmap', component:MapGeolocationPage },      
       { title: 'T&C Disclaimer', component: DisclaimerPage },
       { title: 'Feedback', component: FeedbackPage },
       { title: 'About', component: AboutPage },   

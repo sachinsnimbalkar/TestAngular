@@ -28,7 +28,7 @@ import { LoginScreenPageModule } from '../pages/login-screen/login-screen.module
 import { HomePageModule } from '../pages/home/home.module';
 import { FilterPageModule } from '../pages/filter/filter.module';
 import { GeolocationMapPageModule } from '../pages/geolocation-map/geolocation-map.module';
-import { MapGeolocationPageModule } from '../pages/map-geolocation/map-geolocation.module'
+//import { MapGeolocationPageModule } from '../pages/map-geolocation/map-geolocation.module'
 import { DeliveryOptionsDataService } from '../providers/delivery-options.service';
 import { ShoppingCartService } from '../providers/shopping-cart.service';
 import { LocalStorageServie } from '../providers/storage.service';
@@ -45,7 +45,7 @@ import {ShoppingCartModule} from '../pages/shopping-cart/shopping-cart.module'
 import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
 import { SignupPageModule } from '../pages/signup/signup.module';
 //import {ModelPageCutomizingItemsPage} from '../pages/model-page-cutomizing-items/model-page-cutomizing-items';
-import { Geolocation } from '@ionic-native/geolocation';
+//import { Geolocation } from '@ionic-native/geolocation';
 
 export const  firebaseConfig = {
 
@@ -87,7 +87,7 @@ Firebase.initializeApp(firebaseConfig);
     FilterPageModule,
     ShoppingCartModule,
     GeolocationMapPageModule,
-    MapGeolocationPageModule,
+    //MapGeolocationPageModule,
     AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
   ],
@@ -112,7 +112,7 @@ Firebase.initializeApp(firebaseConfig);
     StatusBar,
     {provide: ErrorHandler, useClass: IonicErrorHandler},AngularFireAuth,
     AuthService,ShoppingCartService,LocalStorageServie,
-    GetDataProvider,DeliveryOptionsDataService,Badge,SharedData,Geolocation
+    GetDataProvider,DeliveryOptionsDataService,Badge,SharedData
   ]
 })
 export class AppModule { }
