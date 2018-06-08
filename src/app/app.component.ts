@@ -6,7 +6,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SignupPage } from '../pages/signup/signup';
 import { TrackOrderPage } from '../pages/track-order/track-order';
-import { SignOutPage } from '../pages/sign-out/sign-out';
+
 import { OfferPage } from '../pages/offer/offer';
 import { ExitPage } from '../pages/exit/exit';
 import { AboutPage } from '../pages/about/about';
@@ -88,8 +88,7 @@ var that=this;
       { title: 'Viewmap', component:MapGeolocationPage },      
       { title: 'T&C Disclaimer', component: DisclaimerPage },
       { title: 'Feedback', component: FeedbackPage },
-      { title: 'About', component: AboutPage },
-      { title: 'SignOut', component: SignOutPage },
+      { title: 'About', component: AboutPage },   
       { title: 'Exit', component: ExitPage },
       
     ];
