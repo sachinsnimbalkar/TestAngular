@@ -70,7 +70,6 @@ var that=this;
 		this.app = app;
 		this.platform = platform;
 	
-
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
@@ -78,7 +77,7 @@ var that=this;
       { title: 'Offers', component: OfferPage },
       { title: 'Filter', component: FilterPage },
       { title: 'Track Order', component: TrackOrderPage },
-      // { title: 'MapView', component: GeolocationMapPage },      
+      { title: 'MapView', component: GeolocationMapPage },      
       { title: 'T&C Disclaimer', component: DisclaimerPage },
       { title: 'Feedback', component: FeedbackPage },
       { title: 'About', component: AboutPage },
