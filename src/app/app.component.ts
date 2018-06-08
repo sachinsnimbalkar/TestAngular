@@ -6,7 +6,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SignupPage } from '../pages/signup/signup';
 import { TrackOrderPage } from '../pages/track-order/track-order';
-import { SignOutPage } from '../pages/sign-out/sign-out';
+
 import { OfferPage } from '../pages/offer/offer';
 import { ExitPage } from '../pages/exit/exit';
 import { AboutPage } from '../pages/about/about';
@@ -14,12 +14,13 @@ import {FeedbackPage} from '../pages/feedback/feedback';
 import {DisclaimerPage} from '../pages/disclaimer/disclaimer'
 import {OrderhistoryPage} from '../pages/orderhistory/orderhistory'
 import { LoginScreenPage } from '../pages/login-screen/login-screen';
-import { FilterPage } from '../pages/filter/filter'
-import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map'
-import{StoreFrontComponent} from '../pages/store-front/store-front.component'
-import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component'
-import{CheckoutComponent} from '../pages/checkout/checkout.component'
-import{OrderConfirmationComponent} from '../pages/order-confirmation/order-confirmation.component'
+import { FilterPage } from '../pages/filter/filter';
+import {GeolocationMapPage} from '../pages/geolocation-map/geolocation-map';
+import { MapGeolocationPage } from '../pages/map-geolocation/map-geolocation';
+import{StoreFrontComponent} from '../pages/store-front/store-front.component';
+import{ShoppingCartComponent} from '../pages/shopping-cart/shopping-cart.component';
+import{CheckoutComponent} from '../pages/checkout/checkout.component';
+import{OrderConfirmationComponent} from '../pages/order-confirmation/order-confirmation.component';
 import { AuthService } from '../providers/auth-service/auth-service';
 import  * as Firebase from 'firebase';
 import { GetDataProvider } from '../providers/get-data/get-data';
@@ -83,11 +84,11 @@ var that=this;
       { title: 'Offers', component: OfferPage },
       { title: 'Filter', component: FilterPage },
       { title: 'Track Order', component: TrackOrderPage },
-      { title: 'MapView', component: GeolocationMapPage },      
+      { title: 'MapView', component: GeolocationMapPage },
+      { title: 'Viewmap', component:MapGeolocationPage },      
       { title: 'T&C Disclaimer', component: DisclaimerPage },
       { title: 'Feedback', component: FeedbackPage },
-      { title: 'About', component: AboutPage },
-      { title: 'SignOut', component: SignOutPage },
+      { title: 'About', component: AboutPage },   
       { title: 'Exit', component: ExitPage },
       
     ];

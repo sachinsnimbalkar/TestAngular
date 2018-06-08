@@ -47,7 +47,7 @@ export class GeolocationMapPage {
     this.DataService.allOffers().subscribe(result => {
       this.result = result;
       this.shareData.setData(this.result);
-      this.loadMap();
+      //this.loadMap();
       //console.log(this.result);                
     });
   } 
