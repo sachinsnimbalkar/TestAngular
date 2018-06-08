@@ -52,23 +52,7 @@ public allProduct()
          //return this.menuArry;
       })); 
   }
-//  public allProductbyID(catID)
-//   { 
-//       this.http
-//         .get("./assets/data/BJPProducts.json")
-//         .map((response) => response.json()
-//           .map((item) => {
-//             console.log(item);
-//             if(item.CatId === catID)
-//             {
-              
-//               conso
 
-//             }
-            
-//           }));
-        //  return this.cache<Product[]> 
-  //}
 
   public allCategory(): Observable<Category[]> {
     return this.cache<Category[]>(() => this.categories,
@@ -111,25 +95,17 @@ public allProduct()
   
   }
 
+//get data from customization json
+public getCustomizationData()
+  {  
+     return this.http.get("./assets/data/BJPpizzaCustomization.json").map(response =>
+      response.json()
+      .map((customD) => 
+      {
+         return customD;
+         //return this.menuArry;
+      })); 
+  }
 
 
-  // getRemoteData(){
-  //   this.http.get('').map(res=>res.json()).subscribe(data=>{
-  //       console.log(data);
-  //   });
-
-  //   getlocalData(){
-  //     // this.http.get('../assets/data/BJPProducts.json').map(res => res.json()).subscribe(data=>{
-  //     //     console.log(data);
-  //     // });
-  //     return this.http.get('../assets/data/BJPProducts.json')
-  //     .map(res => res.json());
-  // }
-  // getCategory(){
-  //   // this.http.get('../assets/data/BJPProducts.json').map(res => res.json()).subscribe(data=>{
-  //   //     console.log(data);
-  //   // });
-  //   return this.http.get('../assets/data/BJPCategory.json')
-  //   .map(res => res.json());
-  // }
 }
