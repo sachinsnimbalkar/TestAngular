@@ -163,8 +163,10 @@ export class GeolocationMapPage {
           lat: location.coords.latitude,
           lng: location.coords.longitude
         },
-        zoom: 15
+        zoom: 15,
+        mapTypeId:'hybrid'
       });
+      
       var mylocation = { lat: location.coords.latitude, lng: location.coords.longitude };
       infowindow = new google.maps.InfoWindow();
       //https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png
